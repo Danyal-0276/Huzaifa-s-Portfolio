@@ -1,6 +1,8 @@
 "use client";
 
-import { useRef, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
+import AsciiRippleText from "@/components/ui/ascii-ripple-text";
+import LightLinesIntro from "@/components/ui/light-lines-intro";
 import StatsCounter from "@/components/ui/stats-counter";
 import { usePortfolioMotion } from "@/hooks/use-portfolio-motion";
 import styles from "./portfolio-page.module.css";
@@ -142,7 +144,7 @@ function ProjectArtwork({ project }: { project: Project }) {
       {project.type === "pulse" && (
         <div className={styles.pulseScene}>
           <aside><b>P.</b><i /><i /><i /><i /></aside>
-          <div className={styles.pulseBoard}><div className={styles.pulseBoardHead}><b>Weekly overview</b><span>Last 7 days⌄</span></div><div className={styles.pulseMetric}><span>Active users</span><strong>24,892</strong><i>↗ 12.8%</i></div><div className={styles.pulseChart}><svg viewBox="0 0 420 130" preserveAspectRatio="none"><path d="M0 95 C45 90 45 61 95 72 S150 87 188 46 239 67 275 33 339 60 365 20 399 35 420 12" fill="none" stroke="#5e69e7" strokeWidth="4"/><path d="M0 95 C45 90 45 61 95 72 S150 87 188 46 239 67 275 33 339 60 365 20 399 35 420 12V130H0Z" fill="url(#pulseFill)" opacity=".2"/></svg></div><div className={styles.pulseTiles}><i /><i /><i /></div></div>
+          <div className={styles.pulseBoard}><div className={styles.pulseBoardHead}><b>Weekly overview</b><span>Last 7 days⌄</span></div><div className={styles.pulseMetric}><span>Active users</span><strong>24,892</strong><i>↗ 12.8%</i></div><div className={styles.pulseChart}><svg viewBox="0 0 420 130" preserveAspectRatio="none"><defs><linearGradient id="pulseFill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stopColor="#5e69e7"/><stop offset="1" stopColor="#5e69e7" stopOpacity="0"/></linearGradient></defs><path d="M0 95 C45 90 45 61 95 72 S150 87 188 46 239 67 275 33 339 60 365 20 399 35 420 12" fill="none" stroke="#5e69e7" strokeWidth="4"/><path d="M0 95 C45 90 45 61 95 72 S150 87 188 46 239 67 275 33 339 60 365 20 399 35 420 12V130H0Z" fill="url(#pulseFill)" opacity=".2"/></svg></div><div className={styles.pulseTiles}><i /><i /><i /></div></div>
         </div>
       )}
       {project.type === "luma" && (
@@ -163,6 +165,22 @@ export default function PortfolioPage() {
 
   usePortfolioMotion(rootRef);
 
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMenuOpen(false);
+    };
+    window.addEventListener("keydown", closeOnEscape);
+    return () => window.removeEventListener("keydown", closeOnEscape);
+  }, [menuOpen]);
+
   const handleNewsletterSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setNewsletterMessage("Thanks — the mailing list connection will be added before launch.");
@@ -172,8 +190,9 @@ export default function PortfolioPage() {
 
   return (
     <div className={styles.site} ref={rootRef}>
+      <LightLinesIntro />
       <a className={styles.skipLink} href="#main-content">Skip to content</a>
-      <header className={styles.header}>
+      <header className={`${styles.header} ${menuOpen ? styles.headerMenuOpen : ""}`}>
         <a className={styles.brand} href="#home" aria-label="Michael, home" onClick={closeMenu}>M<span>.</span></a>
         <nav className={styles.desktopNav} aria-label="Main navigation">
           <a href="#home">Home</a><a href="#about">About</a><a href="#services">Service</a><a href="#contact">Contact</a>
@@ -199,7 +218,7 @@ export default function PortfolioPage() {
             </a>
           ))}
         </nav>
-        <div className={styles.menuFoot}><span>INDEPENDENT DESIGNER</span><a href="mailto:hello@michael.design">LET'S TALK ↗</a></div>
+        <div className={styles.menuFoot}><span>INDEPENDENT DESIGNER</span><a href="mailto:michael@example.com">LET'S TALK ↗</a></div>
       </div>
 
       <main id="main-content">
@@ -214,13 +233,13 @@ export default function PortfolioPage() {
           </div>
           <div className={styles.heroCopy} data-reveal>
             <p className={styles.heroKicker}><span>THOUGHTFUL BY DESIGN</span><i>✳</i></p>
-            <h1>Make digital<br /><span>feel human.</span></h1>
+            <h1>Make digital<br /><span><AsciiRippleText text="feel human." /></span></h1>
             <p className={styles.heroText}>Good design does more than look right. It makes the next step feel obvious.</p>
             <a className={styles.primaryButton} href="#projects">Explore selected work <span>↗</span></a>
           </div>
           <a className={styles.heroProject} href="#projects" data-float aria-label="See the Novu project">
-            <ProjectArtwork project={projects[0]} />
-            <div className={styles.projectFooter}><strong><i /> NOVU</strong><span>/Research</span></div>
+            <ProjectArtwork project={{ name: "ZENTIX", category: "Design", type: "novu", description: "A confident digital identity." }} />
+            <div className={styles.projectFooter}><strong><i /> ZENTIX</strong><span>/Design</span></div>
           </a>
           <div className={styles.heroBottom}><span>SCROLL TO EXPLORE <b>↓</b></span><span>BASED IN NEW YORK · WORKING EVERYWHERE</span></div>
         </section>
@@ -274,19 +293,21 @@ export default function PortfolioPage() {
         <section className={styles.projectsSection} id="projects">
           <div className={styles.sectionTop}><span>03 / SELECTED WORK</span><span>A FEW RECENT COLLABORATIONS</span></div>
           <div className={styles.projectsIntro} data-reveal>
-            <div><div className={styles.pill}><i /> THE WORK SPEAKS</div><h2>Thoughtful ideas,<br /><span>beautifully useful.</span></h2></div>
+            <div><div className={styles.pill}><i /> THE WORK SPEAKS</div><h2>Thoughtful ideas,<br /><span><AsciiRippleText text="beautifully useful." /></span></h2></div>
             <p>A small selection of product and brand work, made better with good people.</p>
           </div>
           <div className={styles.projectGrid}>
             {projects.map((project, index) => (
-              <a className={`${styles.projectCard} ${index % 2 === 1 ? styles.projectOffset : ""}`} href="mailto:hello@michael.design?subject=Tell%20me%20about%20your%20work" key={project.name} data-reveal>
-                <ProjectArtwork project={project} />
+              <a className={`${styles.projectCard} ${index % 2 === 1 ? styles.projectOffset : ""}`} href="mailto:michael@example.com?subject=Tell%20me%20about%20your%20work" key={project.name} data-reveal>
+                <div className={styles.projectPanel} data-card-tilt>
+                  <ProjectArtwork project={project} />
+                </div>
                 <div className={styles.projectFooter}><strong><i /> {project.name}</strong><span>/{project.category}</span></div>
                 <p className={styles.projectDescription}>{project.description}</p>
               </a>
             ))}
           </div>
-          <a className={styles.allProjectsButton} href="mailto:hello@michael.design?subject=Portfolio%20projects">ALL PROJECTS <span>↗</span></a>
+          <a className={styles.allProjectsButton} href="mailto:michael@example.com?subject=Portfolio%20projects">ALL PROJECTS <span>↗</span></a>
         </section>
 
         <section className={styles.processSection}>
@@ -307,8 +328,8 @@ export default function PortfolioPage() {
           <div className={styles.pricingIntro} data-reveal>
             <div><div className={styles.pill}><i /> SIMPLE, BY DESIGN</div><h2>Simple plans<br />for <span>every need.</span></h2></div>
             <div className={styles.priceToggle} role="group" aria-label="Choose a pricing model">
-              <button type="button" className={billing === "monthly" ? styles.toggleActive : ""} onClick={() => setBilling("monthly")}>Monthly</button>
-              <button type="button" className={billing === "project" ? styles.toggleActive : ""} onClick={() => setBilling("project")}>Project based</button>
+              <button type="button" aria-pressed={billing === "monthly"} className={billing === "monthly" ? styles.toggleActive : ""} onClick={() => setBilling("monthly")}>Monthly</button>
+              <button type="button" aria-pressed={billing === "project"} className={billing === "project" ? styles.toggleActive : ""} onClick={() => setBilling("project")}>Project based</button>
               <span className={`${styles.toggleThumb} ${billing === "project" ? styles.toggleThumbRight : ""}`} aria-hidden="true" />
             </div>
           </div>
@@ -319,17 +340,17 @@ export default function PortfolioPage() {
               <h3>Basic Design<br />Package</h3>
               <p className={styles.packageIntro}>A focused foundation for your next digital idea.</p>
               <div className={styles.packageFacts}><span><small>DELIVERY</small><b>2–3 weeks</b></span><span><small>REVISIONS</small><b>Up to 2</b></span></div>
-              <a className={styles.packageLink} href="mailto:hello@michael.design?subject=Basic%20Design%20Package">Let's talk about it <b>↗</b></a>
+              <a className={styles.packageLink} href="mailto:michael@example.com?subject=Basic%20Design%20Package">Let's talk about it <b>↗</b></a>
             </article>
             <article className={`${styles.packageCard} ${styles.featuredPackage}`} data-reveal>
-              <div className={styles.featuredPackageTop}><span>ONE-TIME PAYMENT</span><span className={styles.featuredBadge}>POPULAR</span></div>
+              <div className={styles.featuredPackageTop}><span>{billing === "project" ? "ONE-TIME PAYMENT" : "MONTHLY SUPPORT"}</span><span className={styles.featuredBadge}>POPULAR</span></div>
               <div className={styles.priceLine}><strong>{billing === "project" ? "$200" : "$650"}</strong><span>/{billing === "project" ? "Project" : "Month"}</span></div>
-              <p className={styles.priceCaption}>{billing === "project" ? "A clear scope, one thoughtful delivery." : "Ongoing design support, month to month."}</p>
+              <p className={styles.priceCaption}>{billing === "project" ? "A clear scope, one thoughtful delivery." : "Sample monthly rate; confirm before launch."}</p>
               <ul className={styles.featureList}>
                 {["Homepage + up to 2 inner pages", "Starter design system", "Basic website setup", "Initial analysis", "Basic SEO setup", "1 month support"].map((feature) => <li key={feature}><span>↗</span>{feature}</li>)}
               </ul>
               <p className={styles.guarantee}>✳ If it doesn’t feel right, we’ll make it right.</p>
-              <a className={styles.packageCta} href="mailto:hello@michael.design?subject=Start%20a%20design%20project">Start a project <span>↗</span></a>
+              <a className={styles.packageCta} href="mailto:michael@example.com?subject=Start%20a%20design%20project">Start a project <span>↗</span></a>
             </article>
           </div>
         </section>
@@ -337,11 +358,11 @@ export default function PortfolioPage() {
 
       <footer className={styles.footer} id="contact">
         <div className={styles.footerTop}>
-          <div className={styles.footerBio}><div className={styles.pill}><i /> HAVE A GOOD ONE IN MIND?</div><h2>Let’s make<br /><span>something matter.</span></h2><p>Focused on crafting clean and intuitive experiences that blend creativity, usability, and functionality to help brands connect better with their users.</p><a className={styles.footerEmail} href="mailto:hello@michael.design">hello@michael.design <span>↗</span></a></div>
+          <div className={styles.footerBio}><div className={styles.pill}><i /> HAVE A GOOD ONE IN MIND?</div><h2>Let’s make<br /><span>something matter.</span></h2><p>Focused on crafting clean and intuitive experiences that blend creativity, usability, and functionality to help brands connect better with their users.</p><a className={styles.footerEmail} href="mailto:michael@example.com">michael@example.com <span>↗</span></a></div>
           <div className={styles.footerSide}>
             <div className={styles.newsletterCard}><span>THE OCCASIONAL GOOD THING</span><h3>Notes on making<br />digital feel better.</h3><form onSubmit={handleNewsletterSubmit}><label className={styles.srOnly} htmlFor="newsletter-email">Your email address</label><input id="newsletter-email" type="email" placeholder="Your email address" required /><button type="submit">Your message <span>↗</span></button></form><p aria-live="polite">{newsletterMessage || "No noise, just useful ideas. Unsubscribe whenever."}</p></div>
             <div className={styles.footerLinks}><div><span>NAVIGATE</span><a href="#about">About</a><a href="#services">Services</a><a href="#projects">Projects</a><a href="#pricing">Pricing</a></div><div><span>ELSEWHERE</span><a href="https://dribbble.com/" target="_blank" rel="noreferrer">Dribbble ↗</a><a href="https://behance.net/" target="_blank" rel="noreferrer">Behance ↗</a><a href="https://linkedin.com/" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://instagram.com/" target="_blank" rel="noreferrer">Instagram ↗</a></div></div>
-            <a className={styles.footerPhone} href="tel:+15550142048">+1 (555) 014-2048 <span>↗</span></a>
+            <a className={styles.footerPhone} href="tel:+12025550148">+1 (202) 555-0148 <span>↗</span></a>
           </div>
         </div>
         <div className={styles.footerWordmark}>Michael<span>®</span></div>

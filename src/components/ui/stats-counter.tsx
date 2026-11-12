@@ -80,12 +80,12 @@ export default function StatsCounter({
     <span
       ref={counterRef}
       className={[styles.counter, className].filter(Boolean).join(" ")}
-      aria-label={`${formattedValue}${suffix}`}
     >
       <span aria-hidden="true">
         {new Intl.NumberFormat(locale).format(count)}
         {suffix}
       </span>
+      <span className={styles.srOnly}>{formattedValue}{suffix}</span>
     </span>
   );
 }
