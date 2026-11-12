@@ -456,7 +456,7 @@
   .primaryButton, .heroSecondary { min-height: 46px; padding: 0 14px; }
   .signalMap { min-height: 680px; }
   .signalNode { width: 42%; }
-  .signalCore { top: 54%; }
+  .signalCore { top: 48%; }
 }
 
 @media (max-width: 680px) {

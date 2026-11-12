@@ -289,45 +289,26 @@ export function usePortfolioMotion<T extends HTMLElement>(
         }
 
         const workflowSection = root.querySelector<HTMLElement>("[data-workflow-section]");
-        const workflowCards = root.querySelectorAll<HTMLElement>("[data-workflow-card]");
-        if (workflowSection && workflowCards.length) {
-          workflowCards.forEach((card, index) => {
-            const art = card.querySelector<HTMLElement>("[data-workflow-art]");
-            gsap.fromTo(
-              card,
-              { autoAlpha: 0, y: 70, rotateZ: (index - 1) * 1.8 },
-              {
-                autoAlpha: 1,
-                y: 0,
-                rotateZ: 0,
-                ease: "power3.out",
-                scrollTrigger: {
-                  trigger: card,
-                  start: "top 88%",
-                  end: "top 56%",
-                  scrub: 0.7,
-                  invalidateOnRefresh: true,
-                },
-              },
+        const signalMap = root.querySelector<HTMLElement>("[data-signal-map]");
+        const signalNodes = root.querySelectorAll<HTMLElement>("[data-signal-node]");
+        const signalCore = root.querySelector<HTMLElement>("[data-signal-core]");
+        const signalRoutes = root.querySelectorAll<SVGPathElement>(".signalRoute");
+        if (workflowSection && signalMap) {
+          gsap.fromTo(signalNodes,
+            { autoAlpha: 0, y: 34, scale: 0.96 },
+            { autoAlpha: 1, y: 0, scale: 1, duration: 0.8, stagger: 0.16, ease: "power3.out", scrollTrigger: { trigger: signalMap, start: "top 78%", once: true } },
+          );
+          if (signalCore) {
+            gsap.fromTo(signalCore,
+              { autoAlpha: 0, scale: 0.72, rotate: -12 },
+              { autoAlpha: 1, scale: 1, rotate: 0, duration: 1.05, ease: "back.out(1.7)", scrollTrigger: { trigger: signalMap, start: "top 78%", once: true } },
             );
-
-            if (art) {
-              gsap.fromTo(
-                art,
-                { scale: 1.08, yPercent: 5 },
-                {
-                  scale: 1,
-                  yPercent: -2,
-                  ease: "none",
-                  scrollTrigger: {
-                    trigger: card,
-                    start: "top bottom",
-                    end: "bottom top",
-                    scrub: 0.9,
-                  },
-                },
-              );
-            }
+          }
+          signalRoutes.forEach((route) => {
+            gsap.fromTo(route, { opacity: 0, strokeDashoffset: 36 }, {
+              opacity: 1, strokeDashoffset: 0, duration: 1.2, ease: "power2.out",
+              scrollTrigger: { trigger: signalMap, start: "top 75%", once: true },
+            });
           });
         }
 
