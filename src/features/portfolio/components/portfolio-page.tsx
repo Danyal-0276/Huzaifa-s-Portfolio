@@ -258,19 +258,28 @@ export default function PortfolioPage() {
           </div>
         </section>
 
-        <section className={styles.servicesSection} id="services">
+        <section className={styles.servicesSection} id="services" data-services-section>
           <div className={styles.servicesIntro} data-reveal>
             <h2>From first search<br />to <span>signed work.</span></h2>
             <p>Practical support for teams that want a clearer path from prospecting to new clients.</p>
           </div>
-          <div className={styles.serviceList}>
+          <div className={styles.serviceList} data-service-list>
             {services.map((service) => (
-              <article className={styles.serviceRow} key={service.number} data-reveal>
-                <span className={styles.serviceNumber}>{service.number}</span>
-                <h3>{service.title}</h3><p>{service.detail}</p><span className={styles.serviceIcon} aria-hidden="true">{service.icon}</span>
+              <article className={styles.serviceRow} key={service.number} data-service-row>
+                <span className={styles.serviceNumber} data-service-number>{service.number}</span>
+                <h3 data-service-copy>{service.title}</h3><p data-service-copy>{service.detail}</p><span className={styles.serviceIcon} data-service-icon aria-hidden="true">{service.icon}</span>
               </article>
             ))}
           </div>
+          <aside className={styles.serviceQuote} data-service-quote>
+            <span className={styles.serviceQuoteMark} aria-hidden="true">“</span>
+            <div>
+              <span className={styles.serviceQuoteLabel}>MY APPROACH</span>
+              <blockquote>Good outreach starts with relevance. Every message should earn the next conversation.</blockquote>
+              <p>— Muhammad Huzaifa Ali</p>
+            </div>
+            <span className={styles.serviceQuoteIndex} aria-hidden="true">01 / 04</span>
+          </aside>
         </section>
 
         <section className={styles.workflowSection} data-workflow-section>

@@ -141,6 +141,59 @@ export function usePortfolioMotion<T extends HTMLElement>(
       gsap.registerPlugin(ScrollTrigger);
       const removeGsapListeners: Array<() => void> = [];
       const gsapContext = gsap.context(() => {
+        const servicesSection = root.querySelector<HTMLElement>("[data-services-section]");
+        const serviceRows = root.querySelectorAll<HTMLElement>("[data-service-row]");
+        const serviceCopies = root.querySelectorAll<HTMLElement>("[data-service-copy]");
+        const serviceNumbers = root.querySelectorAll<HTMLElement>("[data-service-number]");
+        const serviceIcons = root.querySelectorAll<HTMLElement>("[data-service-icon]");
+        const serviceQuote = root.querySelector<HTMLElement>("[data-service-quote]");
+        if (servicesSection && serviceRows.length) {
+          const servicesTimeline = gsap.timeline({
+            scrollTrigger: {
+              trigger: servicesSection,
+              start: "top 78%",
+              end: "bottom 38%",
+              scrub: 0.8,
+              invalidateOnRefresh: true,
+            },
+          });
+
+          servicesTimeline
+            .fromTo(
+              serviceRows,
+              { autoAlpha: 0, y: 48, clipPath: "inset(0 0 100% 0)" },
+              { autoAlpha: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 1, stagger: 0.2, ease: "power3.out" },
+              0,
+            )
+            .fromTo(
+              serviceCopies,
+              { x: -24, autoAlpha: 0 },
+              { x: 0, autoAlpha: 1, duration: 0.5, stagger: 0.07, ease: "power2.out" },
+              0.25,
+            )
+            .fromTo(
+              serviceNumbers,
+              { scale: 0.65, autoAlpha: 0, color: "#8c8b84" },
+              { scale: 1, autoAlpha: 1, color: "#E04E24", duration: 0.45, stagger: 0.18, ease: "back.out(2)" },
+              0.12,
+            )
+            .fromTo(
+              serviceIcons,
+              { rotation: -35, scale: 0.5, autoAlpha: 0 },
+              { rotation: 0, scale: 1, autoAlpha: 1, duration: 0.45, stagger: 0.18, ease: "back.out(2)" },
+              0.2,
+            );
+
+          if (serviceQuote) {
+            servicesTimeline.fromTo(
+              serviceQuote,
+              { y: 60, autoAlpha: 0, clipPath: "inset(0 0 20% 0)" },
+              { y: 0, autoAlpha: 1, clipPath: "inset(0 0 0% 0)", duration: 0.8, ease: "power3.out" },
+              0.92,
+            );
+          }
+        }
+
         const experienceList = root.querySelector<HTMLElement>("[data-experience-timeline]");
         const experienceSection = root.querySelector<HTMLElement>("[data-experience-section]");
         const experienceLine = root.querySelector<HTMLElement>("[data-experience-line]");
