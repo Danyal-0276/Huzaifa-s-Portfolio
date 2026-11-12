@@ -54,8 +54,7 @@ function PipelineArtwork({ kind }: { kind: "research" | "outreach" | "pipeline" 
     return (
       <div className={`${styles.workflowArt} ${styles.researchArt}`} data-card-tilt aria-hidden="true">
         <div className={styles.researchRadar}><i /><i /><i /><b>ICP</b></div>
-        <div className={styles.researchCard}><span>MARKET MAP</span><b>Find the right fit.</b><i /><i /><i /></div>
-        <div className={styles.researchNote}>COMPANY · ROLE · NEED</div>
+        <div className={styles.researchCard}><b>Find the right fit.</b><i /><i /><i /></div>
       </div>
     );
   }
@@ -64,7 +63,7 @@ function PipelineArtwork({ kind }: { kind: "research" | "outreach" | "pipeline" 
     return (
       <div className={`${styles.workflowArt} ${styles.outreachArt}`} data-card-tilt aria-hidden="true">
         <div className={styles.messageCard}>
-          <div className={styles.messageTop}><i /><i /><i /><span>OUTREACH NOTE</span></div>
+          <div className={styles.messageTop}><i /><i /><i /></div>
           <b>A relevant first hello.</b>
           <i /><i /><i />
           <div className={styles.messageReply}>FOLLOW-UP ↗</div>
@@ -77,9 +76,9 @@ function PipelineArtwork({ kind }: { kind: "research" | "outreach" | "pipeline" 
   return (
     <div className={`${styles.workflowArt} ${styles.pipelineArt}`} data-card-tilt aria-hidden="true">
       <div className={styles.pipelineColumns}>
-        <div><span>NEW</span><i /><i /></div>
-        <div><span>IN PROGRESS</span><i /><i /></div>
-        <div><span>QUALIFIED</span><i /></div>
+        <div><i /><i /></div>
+        <div><i /><i /></div>
+        <div><i /></div>
       </div>
       <div className={styles.pipelineLine} />
       <b>Clear next steps.</b>
@@ -150,7 +149,7 @@ export default function PortfolioPage() {
             </a>
           ))}
         </nav>
-        <div className={styles.menuFoot}><a href="mailto:huzaifajutt853@gmail.com">LET'S TALK ↗</a><span>LAHORE, PAKISTAN</span></div>
+        <div className={styles.menuFoot}><a href="mailto:huzaifajutt853@gmail.com">Get in touch ↗</a><span>Lahore, Pakistan</span></div>
       </div>
 
       <main id="main-content">
@@ -313,8 +312,8 @@ export default function PortfolioPage() {
               <a href="mailto:huzaifajutt853@gmail.com"><span>EMAIL</span>Send an email <b>↗</b></a>
             </div>
             <div className={styles.footerLinks}>
-              <div><span>LINKEDIN</span><a href="https://www.linkedin.com/in/muhammad-huzaifa-ali-075a212a2/" target="_blank" rel="noreferrer">Muhammad Huzaifa Ali ↗</a></div>
-              <div><span>ON THIS PAGE</span><a href="#services">Services</a><a href="#experience">Experience</a><a href="#education">Education</a></div>
+              <div><a href="https://www.linkedin.com/in/muhammad-huzaifa-ali-075a212a2/" target="_blank" rel="noreferrer">LinkedIn ↗</a></div>
+              <div><a href="#services">Services</a><a href="#experience">Experience</a><a href="#education">Education</a></div>
             </div>
           </div>
         </div>
