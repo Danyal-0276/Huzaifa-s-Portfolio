@@ -194,6 +194,27 @@ export function usePortfolioMotion<T extends HTMLElement>(
           }
         }
 
+        const educationSection = root.querySelector<HTMLElement>("#education");
+        const educationBackground = root.querySelector<HTMLElement>("[data-education-parallax]");
+        if (educationSection && educationBackground) {
+          gsap.fromTo(
+            educationBackground,
+            { scale: 1.12, yPercent: -5 },
+            {
+              scale: 1.12,
+              yPercent: 5,
+              ease: "none",
+              scrollTrigger: {
+                trigger: educationSection,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: 1,
+                invalidateOnRefresh: true,
+              },
+            },
+          );
+        }
+
         const experienceList = root.querySelector<HTMLElement>("[data-experience-timeline]");
         const experienceSection = root.querySelector<HTMLElement>("[data-experience-section]");
         const experienceLine = root.querySelector<HTMLElement>("[data-experience-line]");

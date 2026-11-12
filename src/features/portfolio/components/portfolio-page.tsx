@@ -357,15 +357,14 @@ export default function PortfolioPage() {
         </section>
 
         <section className={styles.educationSection} id="education">
+          <div className={styles.educationBackdrop} aria-hidden="true" data-education-backdrop>
+            <Image src="/images/giu-building.webp" alt="" fill sizes="100vw" data-education-parallax />
+          </div>
           <div className={styles.educationCopy} data-reveal>
             <h2>Business in practice.<br /><span>Computer science in study.</span></h2>
             <div className={styles.educationDegree}><span>2023 — 2027</span><h3>BS Computer Science</h3><p>Green International University · Lahore, Pakistan</p></div>
             <p className={styles.educationNote}>A four-year, eight-semester degree program that complements my work in research, systems, and digital business.</p>
             <a className={styles.textLink} href="https://giu.edu.pk/course-detail/bs-computer-sciences" target="_blank" rel="noreferrer" data-magnetic>Explore the GIU Computer Science program</a>
-          </div>
-          <div className={styles.educationPhotos} data-reveal>
-            <div className={styles.universityBanner}><Image src="/images/giu-main-banner.webp" alt="Green International University campus in Lahore" fill sizes="(max-width: 800px) 100vw, 48vw" data-image-motion /></div>
-            <div className={styles.universityBuilding}><Image src="/images/giu-building.webp" alt="Green International University building" fill sizes="(max-width: 800px) 45vw, 22vw" data-image-motion /></div>
           </div>
         </section>
       </main>
