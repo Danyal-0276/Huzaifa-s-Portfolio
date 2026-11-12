@@ -292,7 +292,7 @@ export function usePortfolioMotion<T extends HTMLElement>(
         const signalMap = root.querySelector<HTMLElement>("[data-signal-map]");
         const signalNodes = root.querySelectorAll<HTMLElement>("[data-signal-node]");
         const signalCore = root.querySelector<HTMLElement>("[data-signal-core]");
-        const signalRoutes = root.querySelectorAll<SVGPathElement>(".signalRoute");
+        const signalRoutes = root.querySelectorAll<SVGPathElement>("[data-signal-route]");
         if (workflowSection && signalMap) {
           gsap.fromTo(signalNodes,
             { autoAlpha: 0, y: 34, scale: 0.96 },

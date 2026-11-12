@@ -279,9 +279,9 @@ export default function PortfolioPage() {
           </div>
           <div className={styles.signalMap} data-signal-map aria-label="A three-part lead generation approach">
             <svg className={styles.signalRoutes} viewBox="0 0 1200 560" fill="none" aria-hidden="true">
-              <path className={styles.signalRoute} d="M285 157C390 130 462 190 534 256" />
-              <path className={styles.signalRoute} d="M920 160C820 132 742 193 665 257" />
-              <path className={styles.signalRoute} d="M600 465C600 390 600 345 600 307" />
+              <path className={styles.signalRoute} data-signal-route d="M285 157C390 130 462 190 534 256" />
+              <path className={styles.signalRoute} data-signal-route d="M920 160C820 132 742 193 665 257" />
+              <path className={styles.signalRoute} data-signal-route d="M600 465C600 390 600 345 600 307" />
               <circle cx="285" cy="157" r="5" /><circle cx="920" cy="160" r="5" /><circle cx="600" cy="465" r="5" />
             </svg>
             <div className={styles.signalCore} data-signal-core>
