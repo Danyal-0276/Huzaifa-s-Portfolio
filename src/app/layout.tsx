@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import "@/styles/globals.css";
 
 export const metadata: Metadata = {
-  title: "Michael® — Independent UI/UX Designer",
+  title: "Muhammad Huzaifa Ali — Business Development & Lead Generation",
   description:
-    "Michael is an independent UI/UX designer crafting clear, expressive digital experiences for ambitious brands.",
+    "Muhammad Huzaifa Ali is a Lahore-based business development and lead generation specialist supporting B2B prospecting, outreach, and client acquisition.",
   icons: {
-    icon: "/icon.svg",
+    icon: "/icon.png",
   },
 };
 

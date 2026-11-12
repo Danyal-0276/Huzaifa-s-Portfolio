@@ -11,7 +11,7 @@ export default function LightLinesIntro() {
   useEffect(() => {
     let alreadySeen = false;
     try {
-      alreadySeen = sessionStorage.getItem("michael-light-lines-seen") === "1";
+      alreadySeen = sessionStorage.getItem("huzaifa-light-lines-seen") === "1";
     } catch {
       // Keep the intro usable when browser storage is disabled.
     }
@@ -37,8 +37,6 @@ export default function LightLinesIntro() {
     let animationFrame = 0;
     let dismissTimer = 0;
     let dismissed = false;
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
 
     const drawLines = (time: number) => {
       const width = canvas.clientWidth;
@@ -83,12 +81,11 @@ export default function LightLinesIntro() {
       window.cancelAnimationFrame(animationFrame);
       window.clearTimeout(dismissTimer);
       try {
-        sessionStorage.setItem("michael-light-lines-seen", "1");
+        sessionStorage.setItem("huzaifa-light-lines-seen", "1");
       } catch {
         // The intro still dismisses when storage is disabled.
       }
       if (reducedMotion) {
-        document.body.style.overflow = previousOverflow;
         setVisible(false);
         return;
       }
@@ -99,7 +96,6 @@ export default function LightLinesIntro() {
         duration: 620,
         ease: "out(4)",
         onComplete: () => {
-          document.body.style.overflow = previousOverflow;
           setVisible(false);
         },
       });
@@ -116,20 +112,19 @@ export default function LightLinesIntro() {
       window.cancelAnimationFrame(animationFrame);
       window.clearTimeout(dismissTimer);
       skipButton?.removeEventListener("click", skipHandler);
-      document.body.style.overflow = previousOverflow;
     };
   }, []);
 
   if (!visible) return null;
 
   return (
-    <div className={styles.intro} ref={rootRef} role="status" aria-label="Loading Michael's portfolio">
+    <div className={styles.intro} ref={rootRef} role="status" aria-label="Loading Huzaifa Ali's portfolio">
       <canvas className={styles.lines} ref={canvasRef} aria-hidden="true" />
       <div className={styles.introContent}>
         <span className={styles.mark}>M<span>.</span></span>
-        <span className={styles.name}>MICHAEL® — INDEPENDENT DESIGNER</span>
+        <span className={styles.name}>MUHAMMAD HUZAIFA ALI</span>
         <span className={styles.progress}><i /></span>
-        <span className={styles.caption}>DIGITAL DESIGN, MADE HUMAN.</span>
+        <span className={styles.caption}>BUSINESS DEVELOPMENT · LEAD GENERATION</span>
       </div>
       <button className={styles.skip} type="button">SKIP INTRO <span>↗</span></button>
     </div>

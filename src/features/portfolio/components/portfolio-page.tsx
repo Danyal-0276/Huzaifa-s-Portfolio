@@ -1,158 +1,88 @@
 "use client";
 
-import { useEffect, useRef, useState, type FormEvent } from "react";
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 import AsciiRippleText from "@/components/ui/ascii-ripple-text";
 import LightLinesIntro from "@/components/ui/light-lines-intro";
 import StatsCounter from "@/components/ui/stats-counter";
 import { usePortfolioMotion } from "@/hooks/use-portfolio-motion";
 import styles from "./portfolio-page.module.css";
 
-type Project = {
-  name: string;
-  category: string;
-  type: "novu" | "pulse" | "luma" | "nori";
-  description: string;
-};
-
-const projects: Project[] = [
-  {
-    name: "NOVU",
-    category: "Research",
-    type: "novu",
-    description: "A calmer way to organize everyday finances.",
-  },
-  {
-    name: "PULSE",
-    category: "Product design",
-    type: "pulse",
-    description: "A clear view of the metrics that move teams forward.",
-  },
-  {
-    name: "LUMA",
-    category: "Brand + digital",
-    type: "luma",
-    description: "A warmer digital home for modern skincare.",
-  },
-  {
-    name: "NORI",
-    category: "Prototyping",
-    type: "nori",
-    description: "A simple mobile experience for making good food.",
-  },
-];
-
 const services = [
   {
     number: "01",
-    title: "UI design",
-    detail: "Useful, considered interfaces that make complex things feel simple.",
-    icon: "↗",
-  },
-  {
-    number: "02",
-    title: "UX research",
-    detail: "The right questions, thoughtful testing, and clear product direction.",
+    title: "Prospect research",
+    detail: "Define target markets and build focused lists of qualified B2B prospects.",
     icon: "⌕",
   },
   {
+    number: "02",
+    title: "Lead generation",
+    detail: "Find and qualify opportunities through LinkedIn, email, and market research.",
+    icon: "↗",
+  },
+  {
     number: "03",
-    title: "Branding",
-    detail: "Distinct visual systems that help good ideas stand apart.",
+    title: "Outbound campaigns",
+    detail: "Plan tailored outreach and follow-up sequences that start useful conversations.",
     icon: "✳",
   },
   {
     number: "04",
-    title: "Prototyping",
-    detail: "High-fidelity prototypes that make the next decision easier.",
+    title: "Sales pipeline support",
+    detail: "Keep CRM records clear, track conversion activity, and move promising leads forward.",
     icon: "◇",
   },
 ];
 
-const process = [
-  ["01", "Discover", "Listen closely, study the landscape, and find the real problem."],
-  ["02", "Define", "Turn what we learn into a focused plan and shared direction."],
-  ["03", "Design", "Explore, prototype, and refine the experience together."],
-  ["04", "Deliver", "Polish the details and prepare a thoughtful handoff."],
+const tools = [
+  "Apollo",
+  "ZoomInfo",
+  "Crunchbase",
+  "LinkedIn",
+  "Sales Navigator",
+  "Instantly AI",
+  "HubSpot",
+  "Upwork",
+  "Fiverr",
+  "Excel",
+  "Grok AI",
 ];
 
-function PortraitIllustration({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 620 760"
-      role="img"
-      aria-label="Editorial illustration of Michael, a designer with curly hair and glasses"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <defs>
-        <linearGradient id="jacket" x1="0" x2="1" y1="0" y2="1">
-          <stop offset="0" stopColor="#28292b" />
-          <stop offset="1" stopColor="#101112" />
-        </linearGradient>
-        <linearGradient id="skin" x1="0" x2="1" y1="0" y2="1">
-          <stop offset="0" stopColor="#f6c6a1" />
-          <stop offset="1" stopColor="#cf8765" />
-        </linearGradient>
-        <linearGradient id="shirt" x1="0" x2="0" y1="0" y2="1">
-          <stop offset="0" stopColor="#e8e5dc" />
-          <stop offset="1" stopColor="#b5b0a8" />
-        </linearGradient>
-      </defs>
-      <path d="M70 760c16-112 77-178 180-202l60-17 73 3 72 19c91 27 138 91 151 197H70Z" fill="url(#jacket)" />
-      <path d="m246 542 65 88 70-89 45 17-35 202H245l-37-194z" fill="url(#shirt)" />
-      <path d="m265 476 1 101 45 51 69-59-6-105z" fill="url(#skin)" />
-      <path d="m220 615 92 62 77-62 17 145H213z" fill="#e04e24" />
-      <path d="m311 679-21 81h46l-20-81" fill="#18191a" />
-      <path d="M205 286c-28 1-42 24-37 57 5 34 25 54 48 48m205-105c27-1 39 21 34 54-4 30-22 51-43 47" fill="url(#skin)" />
-      <path d="M189 236c2-91 52-151 128-151 86 0 136 63 133 156l-13 111c-7 76-59 139-127 139s-119-57-128-134z" fill="url(#skin)" />
-      <path d="M169 264c-18-63-8-124 26-163 5-32 27-48 51-46 18-37 57-46 87-29 31-22 73-10 87 18 37 3 60 37 49 70 30 45 18 98 2 144l-17 35-18-104c-22-9-42-24-58-48-27 25-69 38-109 39-30 2-61-3-89-14l6 128-17-30Z" fill="#161719" />
-      <g fill="#161719">
-        <circle cx="198" cy="146" r="35" /><circle cx="224" cy="106" r="36" /><circle cx="260" cy="82" r="35" />
-        <circle cx="302" cy="68" r="38" /><circle cx="346" cy="73" r="39" /><circle cx="390" cy="93" r="37" />
-        <circle cx="426" cy="126" r="34" /><circle cx="448" cy="164" r="29" /><circle cx="177" cy="190" r="28" />
-      </g>
-      <path d="M254 318c11-7 26-7 37 0m54 0c12-7 27-7 38 0" fill="none" stroke="#573d34" strokeLinecap="round" strokeWidth="6" />
-      <path d="M309 322c-5 24-13 44-11 52 4 6 12 8 21 4" fill="none" stroke="#a86752" strokeLinecap="round" strokeWidth="5" />
-      <path d="M284 400c19 13 43 14 64-1" fill="none" stroke="#874b42" strokeLinecap="round" strokeWidth="6" />
-      <g fill="#f7f7f5" fillOpacity=".17" stroke="#171819" strokeWidth="9">
-        <rect x="220" y="285" width="88" height="64" rx="18" />
-        <rect x="344" y="285" width="88" height="64" rx="18" />
-      </g>
-      <path d="M308 309c12-10 24-10 36 0" fill="none" stroke="#171819" strokeWidth="8" />
-      <path d="M223 307h-22m233 0h21" stroke="#171819" strokeLinecap="round" strokeWidth="8" />
-      <circle cx="272" cy="316" r="5" fill="#27211e" /><circle cx="396" cy="316" r="5" fill="#27211e" />
-      <path d="M165 757h371" stroke="#e04e24" strokeWidth="7" />
-    </svg>
-  );
-}
+function PipelineArtwork({ kind }: { kind: "research" | "outreach" | "pipeline" }) {
+  if (kind === "research") {
+    return (
+      <div className={`${styles.workflowArt} ${styles.researchArt}`} data-card-tilt aria-hidden="true">
+        <div className={styles.researchRadar}><i /><i /><i /><b>ICP</b></div>
+        <div className={styles.researchCard}><span>MARKET MAP</span><b>Find the right fit.</b><i /><i /><i /></div>
+        <div className={styles.researchNote}>COMPANY · ROLE · NEED</div>
+      </div>
+    );
+  }
 
-function ProjectArtwork({ project }: { project: Project }) {
+  if (kind === "outreach") {
+    return (
+      <div className={`${styles.workflowArt} ${styles.outreachArt}`} data-card-tilt aria-hidden="true">
+        <div className={styles.messageCard}>
+          <div className={styles.messageTop}><i /><i /><i /><span>OUTREACH NOTE</span></div>
+          <b>A relevant first hello.</b>
+          <i /><i /><i />
+          <div className={styles.messageReply}>FOLLOW-UP ↗</div>
+        </div>
+        <div className={styles.outreachOrb} />
+      </div>
+    );
+  }
+
   return (
-    <div
-      className={`${styles.artwork} ${styles[`artwork${project.type}`]}`}
-      role="img"
-      aria-label={`${project.name} project artwork`}
-    >
-      <div className={styles.artChrome}><i /><i /><i /><span>{project.name.toLowerCase()}.studio</span><b>↗</b></div>
-      {project.type === "novu" && (
-        <div className={styles.novuScene}>
-          <div className={styles.novuPhone}><span>good afternoon,</span><strong>Alexandra</strong><div className={styles.novuBalance}><small>AVAILABLE BALANCE</small><b>$12,480<span>.00</span></b><i>↗ 8.4% this month</i></div><div className={styles.novuRows}><i /><i /><i /></div></div>
-          <div className={styles.novuOrb} />
-          <span className={styles.artWord}>money, made<br />more human.</span>
-        </div>
-      )}
-      {project.type === "pulse" && (
-        <div className={styles.pulseScene}>
-          <aside><b>P.</b><i /><i /><i /><i /></aside>
-          <div className={styles.pulseBoard}><div className={styles.pulseBoardHead}><b>Weekly overview</b><span>Last 7 days⌄</span></div><div className={styles.pulseMetric}><span>Active users</span><strong>24,892</strong><i>↗ 12.8%</i></div><div className={styles.pulseChart}><svg viewBox="0 0 420 130" preserveAspectRatio="none"><defs><linearGradient id="pulseFill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stopColor="#5e69e7"/><stop offset="1" stopColor="#5e69e7" stopOpacity="0"/></linearGradient></defs><path d="M0 95 C45 90 45 61 95 72 S150 87 188 46 239 67 275 33 339 60 365 20 399 35 420 12" fill="none" stroke="#5e69e7" strokeWidth="4"/><path d="M0 95 C45 90 45 61 95 72 S150 87 188 46 239 67 275 33 339 60 365 20 399 35 420 12V130H0Z" fill="url(#pulseFill)" opacity=".2"/></svg></div><div className={styles.pulseTiles}><i /><i /><i /></div></div>
-        </div>
-      )}
-      {project.type === "luma" && (
-        <div className={styles.lumaScene}><div className={styles.lumaSun} /><span className={styles.lumaLogo}>luma</span><span className={styles.lumaSmall}>SKINCARE, IN A SOFTER LIGHT</span><div className={styles.lumaBottle}><i /><b>LUMA<br /><small>DAILY GLOW</small></b></div><div className={styles.lumaJar}><b>LUMA</b></div></div>
-      )}
-      {project.type === "nori" && (
-        <div className={styles.noriScene}><span className={styles.noriWord}>nori<span>®</span></span><span className={styles.noriSub}>GOOD FOOD, NO FUSS.</span><div className={styles.noriPlate}><i className={styles.noodle1} /><i className={styles.noodle2} /><i className={styles.noodle3} /><b>✳</b></div><div className={styles.noriSticker}>FRESH<br />IDEAS<br />DAILY</div></div>
-      )}
+    <div className={`${styles.workflowArt} ${styles.pipelineArt}`} data-card-tilt aria-hidden="true">
+      <div className={styles.pipelineColumns}>
+        <div><span>NEW</span><i /><i /></div>
+        <div><span>IN PROGRESS</span><i /><i /></div>
+        <div><span>QUALIFIED</span><i /></div>
+      </div>
+      <div className={styles.pipelineLine} />
+      <b>Clear next steps.</b>
     </div>
   );
 }
@@ -160,8 +90,6 @@ function ProjectArtwork({ project }: { project: Project }) {
 export default function PortfolioPage() {
   const rootRef = useRef<HTMLDivElement | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [billing, setBilling] = useState<"monthly" | "project">("project");
-  const [newsletterMessage, setNewsletterMessage] = useState("");
 
   usePortfolioMotion(rootRef);
 
@@ -181,21 +109,19 @@ export default function PortfolioPage() {
     return () => window.removeEventListener("keydown", closeOnEscape);
   }, [menuOpen]);
 
-  const handleNewsletterSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setNewsletterMessage("Thanks — the mailing list connection will be added before launch.");
-  };
-
   const closeMenu = () => setMenuOpen(false);
 
   return (
     <div className={styles.site} ref={rootRef}>
       <LightLinesIntro />
       <a className={styles.skipLink} href="#main-content">Skip to content</a>
+
       <header className={`${styles.header} ${menuOpen ? styles.headerMenuOpen : ""}`}>
-        <a className={styles.brand} href="#home" aria-label="Michael, home" onClick={closeMenu}>M<span>.</span></a>
+        <a className={styles.brandImage} href="#home" aria-label="Muhammad Huzaifa Ali, home" onClick={closeMenu}>
+          <Image src="/images/huzaifa-wordmark.png" alt="Huzaifa" width={2059} height={239} priority />
+        </a>
         <nav className={styles.desktopNav} aria-label="Main navigation">
-          <a href="#home">Home</a><a href="#about">About</a><a href="#services">Service</a><a href="#contact">Contact</a>
+          <a href="#home">Home</a><a href="#about">About</a><a href="#services">Services</a><a href="#experience">Experience</a><a href="#contact">Contact</a>
         </nav>
         <button
           className={`${styles.menuButton} ${menuOpen ? styles.menuButtonOpen : ""}`}
@@ -210,64 +136,80 @@ export default function PortfolioPage() {
       </header>
 
       <div className={`${styles.menuOverlay} ${menuOpen ? styles.menuOverlayOpen : ""}`} id="full-screen-menu" aria-hidden={!menuOpen}>
-        <p className={styles.menuEyebrow}>TAKE A LOOK AROUND</p>
         <nav aria-label="Full screen navigation">
-          {["Home", "About", "Services", "Projects", "Contact"].map((item, index) => (
-            <a href={`#${["home", "about", "services", "projects", "contact"][index]}`} key={item} onClick={closeMenu}>
-              <span>0{index + 1}</span>{item}<b>↗</b>
+          {[
+            ["Home", "home"],
+            ["About", "about"],
+            ["Services", "services"],
+            ["Experience", "experience"],
+            ["Education", "education"],
+            ["Contact", "contact"],
+          ].map(([label, target], index) => (
+            <a href={`#${target}`} key={target} onClick={closeMenu}>
+              <span>0{index + 1}</span>{label}<b>↗</b>
             </a>
           ))}
         </nav>
-        <div className={styles.menuFoot}><span>INDEPENDENT DESIGNER</span><a href="mailto:michael@example.com">LET'S TALK ↗</a></div>
+        <div className={styles.menuFoot}><a href="mailto:huzaifajutt853@gmail.com">LET'S TALK ↗</a><span>LAHORE, PAKISTAN</span></div>
       </div>
 
       <main id="main-content">
         <section className={styles.hero} id="home" data-hero>
           <div className={styles.heroGrid} aria-hidden="true" />
-          <div className={styles.heroWatermark} data-parallax="watermark" aria-hidden="true">MICHAEL</div>
-          <div className={styles.heroMeta}><span>INDEPENDENT UI/UX DESIGNER</span><span>AVAILABLE FOR SELECT PROJECTS <i /></span></div>
-          <div className={styles.heroSideNote}>DIGITAL DESIGN<br />MADE SIMPLE</div>
-          <div className={styles.heroPortrait} data-parallax="portrait">
-            <PortraitIllustration className={styles.portraitSvg} />
-            <div className={styles.portraitIndex}><span>FIG. 01</span><span>DESIGNER / MAKER</span></div>
+          <div className={styles.heroWatermark} data-parallax="watermark" aria-hidden="true">HUZAIFA</div>
+          <div className={styles.heroPortrait} data-parallax="portrait" aria-label="Portraits of Muhammad Huzaifa Ali">
+            <div className={`${styles.portraitPanel} ${styles.portraitPanelBack}`} data-swing>
+              <Image src="/images/huzaifa-profile-dark.png" alt="Huzaifa in profile against a dark background" fill sizes="(max-width: 680px) 45vw, 28vw" priority />
+            </div>
+            <div className={`${styles.portraitPanel} ${styles.portraitPanelMiddle}`} data-swing>
+              <Image src="/images/huzaifa-profile-light.png" alt="Huzaifa looking ahead in profile" fill sizes="(max-width: 680px) 50vw, 30vw" priority />
+            </div>
+            <div className={`${styles.portraitPanel} ${styles.portraitPanelFront}`} data-swing>
+              <Image src="/images/huzaifa-portrait.png" alt="Muhammad Huzaifa Ali" fill sizes="(max-width: 680px) 68vw, 38vw" priority />
+            </div>
           </div>
           <div className={styles.heroCopy} data-reveal>
-            <p className={styles.heroKicker}><span>THOUGHTFUL BY DESIGN</span><i>✳</i></p>
-            <h1>Make digital<br /><span><AsciiRippleText text="feel human." /></span></h1>
-            <p className={styles.heroText}>Good design does more than look right. It makes the next step feel obvious.</p>
-            <a className={styles.primaryButton} href="#projects">Explore selected work <span>↗</span></a>
+            <h1>Find the right people.<br /><span><AsciiRippleText text="Start real conversations." /></span></h1>
+            <p className={styles.heroRole}>B2B lead generation &amp; business development</p>
+            <p className={styles.heroText}>I help teams research their market, reach qualified prospects, and turn promising conversations into client relationships.</p>
+            <div className={styles.heroActions}>
+              <a className={styles.primaryButton} href="#services">Explore how I work <span>↗</span></a>
+              <a className={styles.heroSecondary} href="mailto:huzaifajutt853@gmail.com">Get in touch</a>
+            </div>
           </div>
-          <a className={styles.heroProject} href="#projects" data-float aria-label="See the Novu project">
-            <ProjectArtwork project={{ name: "ZENTIX", category: "Design", type: "novu", description: "A confident digital identity." }} />
-            <div className={styles.projectFooter}><strong><i /> ZENTIX</strong><span>/Design</span></div>
+          <a className={styles.heroProject} href="#services" data-float aria-label="See the lead generation workflow">
+            <div className={styles.heroProjectVisual}>
+              <div className={styles.projectCardTitle}>Research.<br />Reach. Follow through.</div>
+              <div className={styles.projectCardRows}><span>Market research <b>↗</b></span><span>Qualified prospects <b>↗</b></span><span>Personalized outreach <b>↗</b></span></div>
+            </div>
+            <div className={styles.projectFooter}><strong><i /> HUZAIFA ALI</strong><span>/Business Development</span></div>
           </a>
-          <div className={styles.heroBottom}><span>SCROLL TO EXPLORE <b>↓</b></span><span>BASED IN NEW YORK · WORKING EVERYWHERE</span></div>
         </section>
 
         <section className={styles.aboutSection} id="about">
-          <div className={styles.sectionTop}><span>01 / A LITTLE ABOUT ME</span><span>GOOD THINGS START WITH LISTENING</span></div>
           <div className={styles.aboutGrid}>
             <div className={styles.aboutPortraitWrap} data-reveal>
               <div className={styles.cornerFrame}><span /><span /><span /><span /></div>
-              <div className={styles.aboutPortrait}><PortraitIllustration className={styles.aboutPortraitSvg} /></div>
-              <div className={styles.aboutPortraitLabel}><span>MICHAEL — DESIGNER</span><span>EST. 2018</span></div>
+              <div className={styles.aboutPortrait}>
+                <Image src="/images/huzaifa-profile-light.png" alt="Muhammad Huzaifa Ali" fill sizes="(max-width: 680px) 75vw, 34vw" />
+              </div>
             </div>
             <div className={styles.aboutCopy}>
-              <div className={styles.pill}><i /> A HUMAN-FIRST DESIGN PRACTICE</div>
               <div className={styles.aboutHeadingRow} data-reveal>
-                <h2>Crafting digital<br />experiences through<br /><span>user experience.</span></h2>
+                <h2>Good growth begins with<br /><span>good conversations.</span></h2>
                 <span className={styles.aboutAsterisk} data-spin aria-hidden="true">✳</span>
               </div>
-              <p className={styles.aboutIntro}>HI, I'M MICHAEL, A UI/UX DESIGNER PASSIONATE ABOUT CREATING INTUITIVE AND VISUALLY ENGAGING DIGITAL EXPERIENCES.</p>
-              <p className={styles.aboutBody}>I partner with ambitious people to turn knotty problems into calm, clear products. I care about the tiny details, the big picture, and how it all feels to use.</p>
+              <p className={styles.aboutIntro}>I’m Muhammad Huzaifa Ali, a business development executive and lead generation specialist based in Lahore, Pakistan.</p>
+              <p className={styles.aboutBody}>For the past two years, I’ve helped multiple clients research target markets, build qualified prospect lists, and run LinkedIn and email outreach. I write tailored proposals, manage sales pipelines, and focus on turning a good first conversation into a lasting client relationship.</p>
+              <p className={styles.aboutBody}>My freelance journey also included some video editing work. Today, I’m pursuing a BS in Computer Science at Green International University, bringing a technical perspective to the way I approach business growth.</p>
               <div className={styles.statsGrid}>
                 <article className={styles.statCard} data-reveal>
-                  <div className={styles.statNumber}><StatsCounter value={37} suffix="+" duration={2} /></div>
-                  <h3>Projects completed</h3><p>From early sketches to shipped experiences.</p>
+                  <div className={styles.statNumber}><StatsCounter value={2} suffix="+" duration={1.7} /></div>
+                  <h3>Years in business development</h3><p>Freelance lead generation and client acquisition.</p>
                 </article>
                 <article className={styles.statCard} data-reveal>
-                  <div className={styles.statNumber}><StatsCounter value={72} suffix="+" duration={2.2} /></div>
-                  <h3>Happy clients</h3><p>Good relationships make better work.</p>
+                  <div className={styles.statNumber}><StatsCounter value={2} duration={1.8} /></div>
+                  <h3>Contracts signed</h3><p>Won through freelance outreach and proposals.</p>
                 </article>
               </div>
             </div>
@@ -275,10 +217,9 @@ export default function PortfolioPage() {
         </section>
 
         <section className={styles.servicesSection} id="services">
-          <div className={styles.sectionTop}><span>02 / WHAT I DO</span><span>FROM FIRST THOUGHT TO FINAL PIXEL</span></div>
           <div className={styles.servicesIntro} data-reveal>
-            <div><div className={styles.pill}><i /> OUR SERVICES</div><h2>Powerful design solutions<br />for <span>modern brands.</span></h2></div>
-            <p>Build trust, find clarity, and create digital experiences people want to come back to.</p>
+            <h2>From first search<br />to <span>signed work.</span></h2>
+            <p>Practical support for teams that want a clearer path from prospecting to new clients.</p>
           </div>
           <div className={styles.serviceList}>
             {services.map((service) => (
@@ -290,83 +231,95 @@ export default function PortfolioPage() {
           </div>
         </section>
 
-        <section className={styles.projectsSection} id="projects">
-          <div className={styles.sectionTop}><span>03 / SELECTED WORK</span><span>A FEW RECENT COLLABORATIONS</span></div>
-          <div className={styles.projectsIntro} data-reveal>
-            <div><div className={styles.pill}><i /> THE WORK SPEAKS</div><h2>Thoughtful ideas,<br /><span><AsciiRippleText text="beautifully useful." /></span></h2></div>
-            <p>A small selection of product and brand work, made better with good people.</p>
+        <section className={styles.workflowSection}>
+          <div className={styles.workflowIntro} data-reveal>
+            <h2>Build a pipeline<br /><span>with purpose.</span></h2>
+            <p>Research and outreach work best when every step is focused, relevant, and easy to follow up.</p>
           </div>
-          <div className={styles.projectGrid}>
-            {projects.map((project, index) => (
-              <a className={`${styles.projectCard} ${index % 2 === 1 ? styles.projectOffset : ""}`} href="mailto:michael@example.com?subject=Tell%20me%20about%20your%20work" key={project.name} data-reveal>
-                <div className={styles.projectPanel} data-card-tilt>
-                  <ProjectArtwork project={project} />
-                </div>
-                <div className={styles.projectFooter}><strong><i /> {project.name}</strong><span>/{project.category}</span></div>
-                <p className={styles.projectDescription}>{project.description}</p>
-              </a>
-            ))}
-          </div>
-          <a className={styles.allProjectsButton} href="mailto:michael@example.com?subject=Portfolio%20projects">ALL PROJECTS <span>↗</span></a>
-        </section>
-
-        <section className={styles.processSection}>
-          <div className={styles.pill}><i /> MY DESIGN PROCESS</div>
-          <h2 data-reveal>DESIGN <span>PROCESS</span></h2>
-          <p className={styles.processLead}>Clear steps. Open collaboration. Better outcomes.</p>
-          <div className={styles.processGrid}>
-            {process.map(([number, title, detail]) => (
-              <article className={styles.processCard} key={number} data-reveal>
-                <span className={styles.processNumber}>{number}</span><span className={styles.processSpark} aria-hidden="true">✳</span><h3>{title}</h3><p>{detail}</p>
-              </article>
-            ))}
+          <div className={styles.workflowGrid}>
+            <article className={styles.workflowCard} data-reveal>
+              <PipelineArtwork kind="research" />
+              <h3>Know who to reach</h3><p>Market research, ideal customer profiles, competitor analysis, and carefully built prospect lists.</p>
+            </article>
+            <article className={styles.workflowCard} data-reveal>
+              <PipelineArtwork kind="outreach" />
+              <h3>Make the first message matter</h3><p>Personalized LinkedIn and email outreach with consistent qualification and follow-up.</p>
+            </article>
+            <article className={styles.workflowCard} data-reveal>
+              <PipelineArtwork kind="pipeline" />
+              <h3>Keep good opportunities moving</h3><p>Tailored proposals, clean CRM records, and clear pipeline and conversion tracking.</p>
+            </article>
           </div>
         </section>
 
-        <section className={styles.pricingSection} id="pricing">
-          <div className={styles.sectionTop}><span>04 / INVESTMENT</span><span>GOOD WORK, FAIRLY PRICED</span></div>
-          <div className={styles.pricingIntro} data-reveal>
-            <div><div className={styles.pill}><i /> SIMPLE, BY DESIGN</div><h2>Simple plans<br />for <span>every need.</span></h2></div>
-            <div className={styles.priceToggle} role="group" aria-label="Choose a pricing model">
-              <button type="button" aria-pressed={billing === "monthly"} className={billing === "monthly" ? styles.toggleActive : ""} onClick={() => setBilling("monthly")}>Monthly</button>
-              <button type="button" aria-pressed={billing === "project"} className={billing === "project" ? styles.toggleActive : ""} onClick={() => setBilling("project")}>Project based</button>
-              <span className={`${styles.toggleThumb} ${billing === "project" ? styles.toggleThumbRight : ""}`} aria-hidden="true" />
-            </div>
+        <section className={styles.experienceSection} id="experience">
+          <div className={styles.experienceIntro} data-reveal>
+            <h2>Experience built<br />through <span>real client work.</span></h2>
+            <p>Freelance campaigns, client acquisition, and hands-on business development.</p>
           </div>
-          <div className={styles.pricingGrid}>
-            <article className={styles.packageCard} data-reveal>
-              <div className={styles.packageTag}>COMPLETE PACKAGE</div>
-              <div className={styles.packageTop}><span>THE ESSENTIALS</span><span>01 / 02</span></div>
-              <h3>Basic Design<br />Package</h3>
-              <p className={styles.packageIntro}>A focused foundation for your next digital idea.</p>
-              <div className={styles.packageFacts}><span><small>DELIVERY</small><b>2–3 weeks</b></span><span><small>REVISIONS</small><b>Up to 2</b></span></div>
-              <a className={styles.packageLink} href="mailto:michael@example.com?subject=Basic%20Design%20Package">Let's talk about it <b>↗</b></a>
+          <div className={styles.experienceList}>
+            <article className={styles.experienceItem} data-reveal>
+              <div className={styles.experienceDate}>2024 — PRESENT</div>
+              <div><h3>Freelance Business Development Executive</h3><p className={styles.experienceCompany}>Upwork &amp; LinkedIn · Remote</p>
+                <ul><li>Plan and run outbound lead generation campaigns for multiple clients.</li><li>Research target markets and build qualified prospect lists with LinkedIn Sales Navigator.</li><li>Write tailored proposals and pitches, manage sales pipelines, and track conversion activity.</li><li>Optimize client LinkedIn and Upwork profiles and nurture relationships that lead to repeat work.</li></ul>
+              </div>
+              <span className={styles.experienceArrow} aria-hidden="true">↗</span>
             </article>
-            <article className={`${styles.packageCard} ${styles.featuredPackage}`} data-reveal>
-              <div className={styles.featuredPackageTop}><span>{billing === "project" ? "ONE-TIME PAYMENT" : "MONTHLY SUPPORT"}</span><span className={styles.featuredBadge}>POPULAR</span></div>
-              <div className={styles.priceLine}><strong>{billing === "project" ? "$200" : "$650"}</strong><span>/{billing === "project" ? "Project" : "Month"}</span></div>
-              <p className={styles.priceCaption}>{billing === "project" ? "A clear scope, one thoughtful delivery." : "Sample monthly rate; confirm before launch."}</p>
-              <ul className={styles.featureList}>
-                {["Homepage + up to 2 inner pages", "Starter design system", "Basic website setup", "Initial analysis", "Basic SEO setup", "1 month support"].map((feature) => <li key={feature}><span>↗</span>{feature}</li>)}
-              </ul>
-              <p className={styles.guarantee}>✳ If it doesn’t feel right, we’ll make it right.</p>
-              <a className={styles.packageCta} href="mailto:michael@example.com?subject=Start%20a%20design%20project">Start a project <span>↗</span></a>
+            <article className={styles.experienceItem} data-reveal>
+              <div className={styles.experienceDate}>JULY — SEPTEMBER 2026</div>
+              <div><h3>Business Development Intern</h3><p className={styles.experienceCompany}>Octacer · Digital Services</p>
+                <ul><li>Generated qualified leads through targeted outreach and market analysis.</li><li>Prepared proposals and presentations and supported growth opportunity research.</li><li>Built early relationships with prospects and clients in digital services.</li></ul>
+              </div>
+              <span className={styles.experienceArrow} aria-hidden="true">↗</span>
             </article>
+          </div>
+        </section>
+
+        <section className={styles.toolsSection}>
+          <div className={styles.toolsIntro} data-reveal>
+            <h2>The right tools<br />for <span>the right reach.</span></h2>
+            <p>Platforms I’ve used for prospect research, outreach, client work, and reporting.</p>
+          </div>
+          <div className={styles.toolCloud}>
+            {tools.map((tool) => <span key={tool}>{tool}</span>)}
+          </div>
+        </section>
+
+        <section className={styles.educationSection} id="education">
+          <div className={styles.educationCopy} data-reveal>
+            <h2>Business in practice.<br /><span>Computer science in study.</span></h2>
+            <div className={styles.educationDegree}><span>2023 — 2027</span><h3>BS Computer Science</h3><p>Green International University · Lahore, Pakistan</p></div>
+            <p className={styles.educationNote}>A four-year, eight-semester degree program that complements my work in research, systems, and digital business.</p>
+            <a className={styles.textLink} href="https://giu.edu.pk/course-detail/bs-computer-sciences" target="_blank" rel="noreferrer">Explore the GIU Computer Science program <span>↗</span></a>
+          </div>
+          <div className={styles.educationPhotos} data-reveal>
+            <div className={styles.universityBanner}><Image src="/images/giu-main-banner.webp" alt="Green International University campus in Lahore" fill sizes="(max-width: 800px) 100vw, 48vw" /></div>
+            <div className={styles.universityBuilding}><Image src="/images/giu-building.webp" alt="Green International University building" fill sizes="(max-width: 800px) 45vw, 22vw" /></div>
           </div>
         </section>
       </main>
 
       <footer className={styles.footer} id="contact">
         <div className={styles.footerTop}>
-          <div className={styles.footerBio}><div className={styles.pill}><i /> HAVE A GOOD ONE IN MIND?</div><h2>Let’s make<br /><span>something matter.</span></h2><p>Focused on crafting clean and intuitive experiences that blend creativity, usability, and functionality to help brands connect better with their users.</p><a className={styles.footerEmail} href="mailto:michael@example.com">michael@example.com <span>↗</span></a></div>
+          <div className={styles.footerBio}>
+            <h2>Let’s start<br /><span>a conversation.</span></h2>
+            <p>Available for remote business development and lead generation work with teams looking to build meaningful client relationships.</p>
+            <a className={styles.footerEmail} href="mailto:huzaifajutt853@gmail.com">huzaifajutt853@gmail.com <span>↗</span></a>
+          </div>
           <div className={styles.footerSide}>
-            <div className={styles.newsletterCard}><span>THE OCCASIONAL GOOD THING</span><h3>Notes on making<br />digital feel better.</h3><form onSubmit={handleNewsletterSubmit}><label className={styles.srOnly} htmlFor="newsletter-email">Your email address</label><input id="newsletter-email" type="email" placeholder="Your email address" required /><button type="submit">Your message <span>↗</span></button></form><p aria-live="polite">{newsletterMessage || "No noise, just useful ideas. Unsubscribe whenever."}</p></div>
-            <div className={styles.footerLinks}><div><span>NAVIGATE</span><a href="#about">About</a><a href="#services">Services</a><a href="#projects">Projects</a><a href="#pricing">Pricing</a></div><div><span>ELSEWHERE</span><a href="https://dribbble.com/" target="_blank" rel="noreferrer">Dribbble ↗</a><a href="https://behance.net/" target="_blank" rel="noreferrer">Behance ↗</a><a href="https://linkedin.com/" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://instagram.com/" target="_blank" rel="noreferrer">Instagram ↗</a></div></div>
-            <a className={styles.footerPhone} href="tel:+12025550148">+1 (202) 555-0148 <span>↗</span></a>
+            <div className={styles.contactCard}>
+              <a href="tel:+923323300702"><span>PHONE</span>+92 332 3300702 <b>↗</b></a>
+              <a href="https://www.linkedin.com/in/muhammad-huzaifa-ali-075a212a2/" target="_blank" rel="noreferrer"><span>LINKEDIN</span>Muhammad Huzaifa Ali <b>↗</b></a>
+              <a href="mailto:huzaifajutt853@gmail.com"><span>EMAIL</span>Send an email <b>↗</b></a>
+            </div>
+            <div className={styles.footerLinks}>
+              <div><span>LINKEDIN</span><a href="https://www.linkedin.com/in/muhammad-huzaifa-ali-075a212a2/" target="_blank" rel="noreferrer">Muhammad Huzaifa Ali ↗</a></div>
+              <div><span>ON THIS PAGE</span><a href="#services">Services</a><a href="#experience">Experience</a><a href="#education">Education</a></div>
+            </div>
           </div>
         </div>
-        <div className={styles.footerWordmark}>Michael<span>®</span></div>
-        <div className={styles.footerBar}><span>© {new Date().getFullYear()} MICHAEL — INDEPENDENT DESIGNER</span><a href="#home">BACK TO TOP ↑</a><span>MADE WITH INTENTION.</span></div>
+        <div className={styles.footerWordmark}>Huzaifa<span>®</span></div>
+        <div className={styles.footerBar}><span>© {new Date().getFullYear()} MUHAMMAD HUZAIFA ALI</span><a href="#home">BACK TO TOP ↑</a><span>LAHORE, PAKISTAN</span></div>
       </footer>
     </div>
   );

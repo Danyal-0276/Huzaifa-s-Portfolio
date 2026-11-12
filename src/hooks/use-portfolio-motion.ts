@@ -113,6 +113,19 @@ export function usePortfolioMotion<T extends HTMLElement>(
           });
         }
 
+        root.querySelectorAll<HTMLElement>("[data-swing]").forEach((panel, index) => {
+          const amount = index === 0 ? 4 : index === 1 ? 2.5 : 1.4;
+          animate(panel, {
+            rotate: [amount, -amount],
+            translateY: [0, index === 2 ? -5 : 5],
+            duration: 3600 + index * 370,
+            delay: index * 140,
+            ease: "inOut(2)",
+            alternate: true,
+            loop: true,
+          });
+        });
+
         const asterisk = root.querySelector("[data-spin]");
         if (asterisk) {
           animate(asterisk, {
@@ -148,6 +161,8 @@ export function usePortfolioMotion<T extends HTMLElement>(
         if (hero && watermark && window.innerWidth > 720) {
           gsap.to(watermark, {
             yPercent: -18,
+            scale: 0.76,
+            transformOrigin: "left center",
             ease: "none",
             scrollTrigger: {
               trigger: hero,
