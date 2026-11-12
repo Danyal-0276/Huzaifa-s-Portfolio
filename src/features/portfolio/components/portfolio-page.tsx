@@ -230,13 +230,6 @@ export default function PortfolioPage() {
               <a className={styles.heroSecondary} href="mailto:huzaifajutt853@gmail.com" data-magnetic>Get in touch</a>
             </div>
           </div>
-          <a className={styles.heroProject} href="#services" data-float aria-label="See the lead generation workflow">
-            <div className={styles.heroProjectVisual}>
-              <div className={styles.projectCardTitle}>Research.<br />Reach. Follow through.</div>
-              <div className={styles.projectCardRows}><span>Market research</span><span>Qualified prospects</span><span>Personalized outreach</span></div>
-            </div>
-            <div className={styles.projectFooter}><strong><i /> HUZAIFA ALI</strong></div>
-          </a>
         </section>
 
         <section className={styles.aboutSection} id="about">

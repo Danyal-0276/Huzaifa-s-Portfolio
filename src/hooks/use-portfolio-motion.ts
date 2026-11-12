@@ -101,18 +101,6 @@ export function usePortfolioMotion<T extends HTMLElement>(
         });
         removeAsciiListeners = () => listeners.forEach((remove) => remove());
 
-        const floatCard = root.querySelector("[data-float]");
-        if (floatCard) {
-          animate(floatCard, {
-            translateY: [0, -13],
-            rotate: ["2deg", "-1.5deg"],
-            duration: 2900,
-            ease: "inOut(2)",
-            alternate: true,
-            loop: true,
-          });
-        }
-
         root.querySelectorAll<HTMLElement>("[data-swing]").forEach((panel, index) => {
           const amount = index === 0 ? 4 : index === 1 ? 2.5 : 1.4;
           animate(panel, {

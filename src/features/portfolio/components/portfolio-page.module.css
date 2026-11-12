@@ -226,35 +226,6 @@
 .heroSecondary { display: inline-flex; align-items: center; justify-content: center; min-height: 50px; padding: 0 22px; border: 1px solid rgb(20 20 20 / 32%); border-radius: 999px; background: rgb(255 255 255 / 15%); color: #141414; font-size: 12px; font-weight: 600; transition: transform .25s, background .25s, border-color .25s, box-shadow .25s; }
 .heroSecondary:hover { transform: translateY(-3px); border-color: #fff; background: #fff; box-shadow: 0 12px 24px rgb(20 20 20 / 9%); }
 
-.heroProject {
-  position: absolute;
-  z-index: 5;
-  right: 8%;
-  bottom: 55px;
-  width: clamp(220px, 24vw, 310px);
-  overflow: visible;
-  border-radius: 7px;
-  background: #f7f7f5;
-  box-shadow: 0 22px 55px rgb(51 23 11 / 23%);
-  transform: rotate(2deg);
-  isolation: isolate;
-  will-change: transform;
-}
-
-.heroProject::before, .heroProject::after { content: ""; position: absolute; z-index: -1; inset: 0; border-radius: 7px; background: #f7f7f5; }
-.heroProject::before { transform: rotate(-4deg) translateY(8px); }
-.heroProject::after { background: #d9d7d0; transform: rotate(-2deg) translateY(5px); }
-.heroProject:hover { filter: brightness(1.035); }
-.heroProjectVisual { position: relative; overflow: hidden; min-height: 185px; padding: 17px 18px; border-radius: 7px 7px 0 0; background: linear-gradient(135deg, #f4eee5, #dfc9b4); }
-.heroProjectVisual::after { content: ""; position: absolute; right: -22px; bottom: -58px; width: 160px; height: 160px; border: 1px solid rgb(224 78 36 / 40%); border-radius: 50%; box-shadow: 0 0 0 18px rgb(224 78 36 / 8%), 0 0 0 38px rgb(224 78 36 / 5%); }
-.projectCardTitle { position: relative; z-index: 1; margin-top: 20px; font-size: 23px; line-height: .98; letter-spacing: -.07em; font-weight: 600; }
-.projectCardRows { position: relative; z-index: 1; display: grid; gap: 6px; margin-top: 17px; }
-.projectCardRows span { display: flex; align-items: center; gap: 7px; max-width: 190px; font-size: 10px; color: #67615b; }
-.projectCardRows span::before { content: ""; width: 5px; height: 5px; flex: 0 0 auto; border-radius: 50%; background: var(--color-accent); }
-.projectCardRows b { color: var(--color-accent); font-weight: 500; }
-.projectFooter { min-height: 42px; display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 0 13px; border-radius: 0 0 7px 7px; background: #ecece8; color: #777; font: 10px var(--font-mono); }
-.projectFooter strong { color: #141414; font-weight: 500; white-space: nowrap; }
-.projectFooter strong i { display: inline-block; width: 6px; height: 6px; margin-right: 5px; border-radius: 50%; background: var(--color-accent); }
 .projectFooter span { text-align: right; }
 
 .aboutSection, .servicesSection, .workflowSection, .experienceSection, .toolsSection, .educationSection { padding: clamp(72px, 9vw, 130px) var(--page-gutter); }
@@ -437,7 +408,6 @@
   .heroCopy { width: min(42%, 430px); }
   .heroCopy h1 { font-size: clamp(47px, 6vw, 65px); }
   .heroPortrait { width: min(62vw, 640px); height: 84%; }
-  .heroProject { right: 5%; bottom: 48px; }
   .aboutGrid { gap: 6vw; }
   .aboutPortrait { height: 420px; }
   .experienceItem { grid-template-columns: 135px 1fr; gap: 18px; }
@@ -461,7 +431,6 @@
   .heroText { max-width: 310px; font-size: 14px; }
   .heroActions { gap: 10px; }
   .primaryButton, .heroSecondary { min-height: 46px; padding: 0 14px; }
-  .heroProject { right: 4%; bottom: 35px; width: 220px; }
   .workflowGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .workflowCard:nth-child(2), .workflowCard:nth-child(3) { margin-top: 0; }
   .workflowCard:nth-child(3) { grid-column: 1 / -1; width: min(100%, 480px); justify-self: center; }
@@ -490,12 +459,6 @@
   .heroText { max-width: 300px; font-size: 13px; }
   .heroActions { flex-wrap: wrap; gap: 10px; margin-top: 18px; }
   .primaryButton, .heroSecondary { min-height: 45px; padding: 0 16px; font-size: 12px; }
-  .heroProject { right: 5%; bottom: 54px; width: clamp(178px, 48vw, 230px); }
-  .heroProjectVisual { min-height: 146px; padding: 12px; }
-  .projectCardTitle { margin-top: 13px; font-size: 18px; }
-  .projectCardRows { gap: 4px; margin-top: 10px; }
-  .projectCardRows span { font-size: 8px; }
-  .projectFooter { min-height: 36px; padding: 0 9px; font-size: 8px; }
   .aboutSection, .servicesSection, .workflowSection, .experienceSection, .toolsSection, .educationSection { padding: 72px 7vw; }
   .aboutGrid { grid-template-columns: 1fr; gap: 43px; }
   .aboutCopy { grid-row: 1; }
@@ -581,7 +544,6 @@
 
 @media (max-width: 370px) {
   .heroCopy h1 { font-size: clamp(38px, 12.2vw, 44px); }
-  .heroProject { width: 165px; }
   .footerHeadlineRow { grid-template-columns: minmax(0, 1fr) 54px; gap: 6px; }
   .footerHeadline { font-size: 39px; }
   .footerCircleCta { width: 54px; font-size: 35px; }
@@ -598,6 +560,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .heroProject, .workflowCard { transition: none !important; }
+  .workflowCard { transition: none !important; }
   .toolCard, .toolIcon { transition: none !important; }
 }
