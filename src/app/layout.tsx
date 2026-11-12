@@ -4,6 +4,9 @@ import "@/styles/globals.css";
 export const metadata: Metadata = {
   title: "Huzaifa Ali",
   description: "Personal portfolio",
+  icons: {
+    icon: "/icon.png",
+  },
 };
 
 export default function RootLayout({
