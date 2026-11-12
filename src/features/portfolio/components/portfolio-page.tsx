@@ -35,19 +35,61 @@ const services = [
   },
 ];
 
-const tools = [
-  "Apollo",
-  "ZoomInfo",
-  "Crunchbase",
-  "LinkedIn",
-  "Sales Navigator",
-  "Instantly AI",
-  "HubSpot",
-  "Upwork",
-  "Fiverr",
-  "Excel",
-  "Grok AI",
+type ToolKind = "apollo" | "zoominfo" | "crunchbase" | "linkedin" | "salesnav" | "instantly" | "hubspot" | "upwork" | "fiverr" | "excel" | "grok";
+
+const toolGroups: Array<{
+  number: string;
+  title: string;
+  description: string;
+  tools: Array<{ name: string; kind: ToolKind; focus: string }>;
+}> = [
+  {
+    number: "01",
+    title: "Prospect research",
+    description: "Find the right companies and people to start with.",
+    tools: [
+      { name: "Apollo", kind: "apollo", focus: "Prospecting" },
+      { name: "ZoomInfo", kind: "zoominfo", focus: "Company data" },
+      { name: "Crunchbase", kind: "crunchbase", focus: "Market research" },
+    ],
+  },
+  {
+    number: "02",
+    title: "Outreach & relationships",
+    description: "Build tailored campaigns and keep conversations moving.",
+    tools: [
+      { name: "LinkedIn", kind: "linkedin", focus: "Networking" },
+      { name: "Sales Navigator", kind: "salesnav", focus: "Lead search" },
+      { name: "Instantly AI", kind: "instantly", focus: "Email outreach" },
+      { name: "HubSpot", kind: "hubspot", focus: "CRM" },
+    ],
+  },
+  {
+    number: "03",
+    title: "Freelance & productivity",
+    description: "Support client work, reporting, and day-to-day research.",
+    tools: [
+      { name: "Upwork", kind: "upwork", focus: "Freelance work" },
+      { name: "Fiverr", kind: "fiverr", focus: "Freelance work" },
+      { name: "Excel", kind: "excel", focus: "Reporting" },
+      { name: "Grok AI", kind: "grok", focus: "AI research support" },
+    ],
+  },
 ];
+
+function ToolIcon({ kind }: { kind: ToolKind }) {
+  if (kind === "apollo") return <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="17" fill="none" stroke="currentColor" strokeWidth="3" /><path d="m24 9 3.2 11.8L39 24l-11.8 3.2L24 39l-3.2-11.8L9 24l11.8-3.2L24 9Z" fill="currentColor" /></svg>;
+  if (kind === "zoominfo") return <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 13h22L13 34h27" fill="none" stroke="currentColor" strokeWidth="5" strokeLinecap="square" strokeLinejoin="miter" /><circle cx="37" cy="14" r="3" fill="currentColor" /></svg>;
+  if (kind === "crunchbase") return <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="17" fill="none" stroke="currentColor" strokeWidth="6" strokeDasharray="82 28" transform="rotate(-38 24 24)" /><circle cx="35" cy="13" r="4" fill="currentColor" /></svg>;
+  if (kind === "linkedin") return <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="5" y="5" width="38" height="38" rx="8" fill="currentColor" /><text x="24" y="33" fill="white" fontFamily="Arial,sans-serif" fontSize="25" fontWeight="700" textAnchor="middle">in</text></svg>;
+  if (kind === "salesnav") return <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="17" fill="none" stroke="currentColor" strokeWidth="3" /><path d="m29 18-3.2 9.8L16 31l3.2-9.8L29 18Z" fill="currentColor" /><circle cx="24" cy="24" r="2" fill="white" /></svg>;
+  if (kind === "instantly") return <svg viewBox="0 0 48 48" aria-hidden="true"><path d="m24 5 4.2 13.8L42 23l-13.8 4.2L24 41l-4.2-13.8L6 23l13.8-4.2L24 5Z" fill="currentColor" /><path d="m38 33 1.8 5.2L45 40l-5.2 1.8L38 47l-1.8-5.2L31 40l5.2-1.8L38 33Z" fill="currentColor" /></svg>;
+  if (kind === "hubspot") return <svg viewBox="0 0 48 48" aria-hidden="true"><path d="m17 18 12-7m-10 19 13 7m-13-8V17m13-3v24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" /><circle cx="15" cy="17" r="6" fill="currentColor" /><circle cx="33" cy="9" r="5" fill="currentColor" /><circle cx="33" cy="39" r="5" fill="currentColor" /><circle cx="16" cy="31" r="6" fill="currentColor" /><circle cx="39" cy="23" r="4" fill="currentColor" /></svg>;
+  if (kind === "upwork") return <svg viewBox="0 0 48 48" aria-hidden="true"><text x="24" y="34" fill="currentColor" fontFamily="Arial,sans-serif" fontSize="28" fontWeight="700" letterSpacing="-2" textAnchor="middle">up</text></svg>;
+  if (kind === "fiverr") return <svg viewBox="0 0 48 48" aria-hidden="true"><text x="24" y="34" fill="currentColor" fontFamily="Arial,sans-serif" fontSize="29" fontWeight="700" letterSpacing="-2" textAnchor="middle">fi</text><circle cx="33" cy="13" r="2.5" fill="currentColor" /></svg>;
+  if (kind === "excel") return <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M18 8h22v32H18z" fill="currentColor" opacity=".48" /><path d="M8 13h21v27H8z" fill="currentColor" /><path d="m13 19 11 15m0-15L13 34" stroke="white" strokeWidth="3.5" strokeLinecap="round" /></svg>;
+  return <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="17" fill="none" stroke="currentColor" strokeWidth="3" /><path d="M16 33 32 15" stroke="currentColor" strokeWidth="5" strokeLinecap="round" /></svg>;
+}
 
 function PipelineArtwork({ kind }: { kind: "research" | "outreach" | "pipeline" }) {
   if (kind === "research") {
@@ -306,10 +348,25 @@ export default function PortfolioPage() {
         <section className={styles.toolsSection} id="tools">
           <div className={styles.toolsIntro} data-reveal>
             <h2>The right tools<br />for <span>the right reach.</span></h2>
-            <p>Platforms I’ve used for prospect research, outreach, client work, and reporting.</p>
+            <p>Apps I use for prospect research, outreach, client work, and reporting.</p>
           </div>
-          <div className={styles.toolCloud}>
-            {tools.map((tool) => <span key={tool} data-reveal>{tool}</span>)}
+          <div className={styles.toolGroups}>
+            {toolGroups.map((group) => (
+              <article className={styles.toolGroup} key={group.number} data-reveal>
+                <div className={styles.toolGroupHeading}>
+                  <span>{group.number}</span>
+                  <div><h3>{group.title}</h3><p>{group.description}</p></div>
+                </div>
+                <div className={styles.toolGrid}>
+                  {group.tools.map((tool) => (
+                    <article className={styles.toolCard} key={tool.kind} data-reveal data-magnetic>
+                      <span className={styles.toolIcon} data-tool={tool.kind}><ToolIcon kind={tool.kind} /></span>
+                      <span className={styles.toolCardText}><strong>{tool.name}</strong><span>{tool.focus}</span></span>
+                    </article>
+                  ))}
+                </div>
+              </article>
+            ))}
           </div>
         </section>
 

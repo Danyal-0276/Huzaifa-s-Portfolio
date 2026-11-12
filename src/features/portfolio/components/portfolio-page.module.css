@@ -322,9 +322,31 @@
 
 .toolsSection { background: #f7f7f5; }
 .toolsIntro { margin-bottom: 35px; }
-.toolCloud { display: flex; flex-wrap: wrap; gap: 9px; }
-.toolCloud span { padding: 11px 15px; border: 1px solid #d9d8d2; border-radius: 50px; color: #4e4e49; font-size: 10px; transition: color .22s, border-color .22s, background .22s; }
-.toolCloud span:hover { border-color: var(--color-accent); background: var(--color-accent); color: #141414; }
+.toolGroups { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 13px; }
+.toolGroup { min-width: 0; padding: 22px 18px 18px; border: 1px solid #e3e2dc; border-radius: 12px; background: #efefec; }
+.toolGroupHeading { display: grid; grid-template-columns: 32px 1fr; gap: 12px; min-height: 83px; }
+.toolGroupHeading > span { padding-top: 3px; color: var(--color-accent); font: 10px var(--font-mono); }
+.toolGroupHeading h3 { margin: 0 0 7px; font-size: clamp(17px, 1.8vw, 22px); font-weight: 600; letter-spacing: -.045em; }
+.toolGroupHeading p { max-width: 260px; margin: 0; color: #777; font-size: 10px; line-height: 1.6; }
+.toolGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 18px; }
+.toolCard { min-width: 0; min-height: 68px; display: flex; align-items: center; gap: 9px; padding: 9px; border: 1px solid #e0dfd8; border-radius: 9px; background: #f9f9f7; color: #141414; transition: border-color .25s, background .25s, box-shadow .25s; }
+.toolCard:hover { border-color: rgb(224 78 36 / 55%); background: #fff; box-shadow: 0 10px 24px rgb(20 20 20 / 8%); }
+.toolIcon { width: 39px; height: 39px; flex: 0 0 39px; display: grid; place-items: center; border-radius: 9px; background: #fff; color: #292929; box-shadow: inset 0 0 0 1px rgb(20 20 20 / 7%); transition: transform .3s, background .3s; }
+.toolIcon svg { display: block; width: 25px; height: 25px; }
+.toolCard:hover .toolIcon { transform: rotate(-5deg) scale(1.08); background: #f7f7f5; }
+.toolIcon[data-tool="apollo"] { color: #e85c4a; }
+.toolIcon[data-tool="zoominfo"] { color: #3456a4; }
+.toolIcon[data-tool="crunchbase"] { color: #f36b4f; }
+.toolIcon[data-tool="linkedin"], .toolIcon[data-tool="salesnav"] { color: #0a66c2; }
+.toolIcon[data-tool="instantly"] { color: #6862ed; }
+.toolIcon[data-tool="hubspot"] { color: #f8761f; }
+.toolIcon[data-tool="upwork"] { color: #14a800; }
+.toolIcon[data-tool="fiverr"] { color: #1dbf73; }
+.toolIcon[data-tool="excel"] { color: #217346; }
+.toolIcon[data-tool="grok"] { color: #141414; }
+.toolCardText { min-width: 0; display: grid; gap: 4px; }
+.toolCardText strong { overflow: hidden; font-size: 10px; font-weight: 650; text-overflow: ellipsis; white-space: nowrap; }
+.toolCardText > span { overflow: hidden; color: #82827b; font-size: 8px; text-overflow: ellipsis; white-space: nowrap; }
 
 .educationSection { display: grid; grid-template-columns: .95fr 1.05fr; gap: clamp(35px, 7vw, 95px); align-items: center; background: #e9e6df; }
 .educationCopy h2 { font-size: clamp(40px, 5vw, 67px); }
@@ -390,6 +412,9 @@
   .educationPhotos { min-height: 380px; }
   .universityBanner { height: 270px; }
   .universityBuilding { height: 170px; }
+  .toolGroups { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .toolGroup:last-child { grid-column: 1 / -1; }
+  .toolGroup:last-child .toolGrid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 
 @media (max-width: 680px) {
@@ -457,8 +482,18 @@
   .experienceItem ul { gap: 6px; padding-left: 14px; font-size: 8px; }
   .experienceHeading { align-items: flex-start; gap: 10px; }
   .companyLogo { width: 58px; height: 58px; flex-basis: 58px; border-radius: 9px; }
-  .toolCloud { gap: 7px; }
-  .toolCloud span { padding: 9px 11px; font-size: 8px; }
+  .toolGroups { grid-template-columns: 1fr; gap: 10px; }
+  .toolGroup:last-child { grid-column: auto; }
+  .toolGroup:last-child .toolGrid { grid-template-columns: 1fr 1fr; }
+  .toolGroup { padding: 18px 14px 14px; }
+  .toolGroupHeading { min-height: 74px; }
+  .toolGroupHeading h3 { font-size: 18px; }
+  .toolGroupHeading p { font-size: 9px; }
+  .toolCard { min-height: 64px; gap: 7px; padding: 7px; }
+  .toolIcon { width: 35px; height: 35px; flex-basis: 35px; }
+  .toolIcon svg { width: 22px; height: 22px; }
+  .toolCardText strong { font-size: 9px; }
+  .toolCardText > span { font-size: 7px; }
   .educationSection { grid-template-columns: 1fr; gap: 32px; }
   .educationDegree { margin-top: 26px; }
   .educationPhotos { min-height: 325px; }
@@ -497,5 +532,5 @@
 
 @media (prefers-reduced-motion: reduce) {
   .heroProject, .workflowCard { transition: none !important; }
-  .toolCloud span { transition: none !important; }
+  .toolCard, .toolIcon { transition: none !important; }
 }
