@@ -19,7 +19,7 @@ const services = [
     number: "02",
     title: "Lead generation",
     detail: "Find and qualify opportunities through LinkedIn, email, and market research.",
-    icon: "↗",
+    icon: "•",
   },
   {
     number: "03",
@@ -66,7 +66,7 @@ function PipelineArtwork({ kind }: { kind: "research" | "outreach" | "pipeline" 
           <div className={styles.messageTop}><i /><i /><i /></div>
           <b>A relevant first hello.</b>
           <i /><i /><i />
-          <div className={styles.messageReply}>FOLLOW-UP ↗</div>
+          <div className={styles.messageReply}>FOLLOW-UP</div>
         </div>
         <div className={styles.outreachOrb} />
       </div>
@@ -151,7 +151,7 @@ export default function PortfolioPage() {
           <a href="#tools"><span>04</span>Toolkit</a>
           <a href="#contact"><span>05</span>Contact</a>
         </nav>
-        <a className={styles.headerCta} href="mailto:huzaifajutt853@gmail.com" data-magnetic>Let’s talk <span aria-hidden="true">↗</span></a>
+          <a className={styles.headerCta} href="mailto:huzaifajutt853@gmail.com" data-magnetic>Let’s talk</a>
         <button
           className={`${styles.menuButton} ${menuOpen ? styles.menuButtonOpen : ""}`}
           type="button"
@@ -175,11 +175,11 @@ export default function PortfolioPage() {
             ["Contact", "contact"],
           ].map(([label, target], index) => (
             <a href={`#${target}`} key={target} onClick={closeMenu}>
-              <span>0{index + 1}</span>{label}<b>↗</b>
+              <span>0{index + 1}</span>{label}
             </a>
           ))}
         </nav>
-        <div className={styles.menuFoot}><a href="mailto:huzaifajutt853@gmail.com">Get in touch ↗</a><span>Lahore, Pakistan</span></div>
+        <div className={styles.menuFoot}><a href="mailto:huzaifajutt853@gmail.com">Get in touch</a><span>Lahore, Pakistan</span></div>
       </div>
 
       <main id="main-content">
@@ -202,14 +202,14 @@ export default function PortfolioPage() {
             <p className={styles.heroRole}>B2B lead generation &amp; business development</p>
             <p className={styles.heroText}>I help teams research their market, reach qualified prospects, and turn promising conversations into client relationships.</p>
             <div className={styles.heroActions}>
-              <a className={styles.primaryButton} href="#services" data-magnetic>Explore how I work <span>↗</span></a>
+              <a className={styles.primaryButton} href="#services" data-magnetic>Explore how I work</a>
               <a className={styles.heroSecondary} href="mailto:huzaifajutt853@gmail.com">Get in touch</a>
             </div>
           </div>
           <a className={styles.heroProject} href="#services" data-float aria-label="See the lead generation workflow">
             <div className={styles.heroProjectVisual}>
               <div className={styles.projectCardTitle}>Research.<br />Reach. Follow through.</div>
-              <div className={styles.projectCardRows}><span>Market research <b>↗</b></span><span>Qualified prospects <b>↗</b></span><span>Personalized outreach <b>↗</b></span></div>
+              <div className={styles.projectCardRows}><span>Market research</span><span>Qualified prospects</span><span>Personalized outreach</span></div>
             </div>
             <div className={styles.projectFooter}><strong><i /> HUZAIFA ALI</strong></div>
           </a>
@@ -292,14 +292,12 @@ export default function PortfolioPage() {
               <div><h3>Freelance Business Development Executive</h3><p className={styles.experienceCompany}>Upwork &amp; LinkedIn · Remote</p>
                 <ul><li>Plan and run outbound lead generation campaigns for multiple clients.</li><li>Research target markets and build qualified prospect lists with LinkedIn Sales Navigator.</li><li>Write tailored proposals and pitches, manage sales pipelines, and track conversion activity.</li><li>Optimize client LinkedIn and Upwork profiles and nurture relationships that lead to repeat work.</li></ul>
               </div>
-              <span className={styles.experienceArrow} aria-hidden="true">↗</span>
             </article>
             <article className={styles.experienceItem} data-reveal>
               <div className={styles.experienceDate}>JULY — SEPTEMBER 2026</div>
               <div><h3>Business Development Intern</h3><p className={styles.experienceCompany}>Octacer · Digital Services</p>
                 <ul><li>Generated qualified leads through targeted outreach and market analysis.</li><li>Prepared proposals and presentations and supported growth opportunity research.</li><li>Built early relationships with prospects and clients in digital services.</li></ul>
               </div>
-              <span className={styles.experienceArrow} aria-hidden="true">↗</span>
             </article>
           </div>
         </section>
@@ -319,7 +317,7 @@ export default function PortfolioPage() {
             <h2>Business in practice.<br /><span>Computer science in study.</span></h2>
             <div className={styles.educationDegree}><span>2023 — 2027</span><h3>BS Computer Science</h3><p>Green International University · Lahore, Pakistan</p></div>
             <p className={styles.educationNote}>A four-year, eight-semester degree program that complements my work in research, systems, and digital business.</p>
-            <a className={styles.textLink} href="https://giu.edu.pk/course-detail/bs-computer-sciences" target="_blank" rel="noreferrer">Explore the GIU Computer Science program <span>↗</span></a>
+            <a className={styles.textLink} href="https://giu.edu.pk/course-detail/bs-computer-sciences" target="_blank" rel="noreferrer">Explore the GIU Computer Science program</a>
           </div>
           <div className={styles.educationPhotos} data-reveal>
             <div className={styles.universityBanner}><Image src="/images/giu-main-banner.webp" alt="Green International University campus in Lahore" fill sizes="(max-width: 800px) 100vw, 48vw" data-image-motion /></div>
@@ -338,21 +336,21 @@ export default function PortfolioPage() {
             <div className={styles.contactCard}>
               <a className={styles.contactTile} href="mailto:huzaifajutt853@gmail.com" data-reveal data-magnetic>
                 <span className={styles.contactIcon}><ContactIcon kind="mail" /></span>
-                <span className={styles.contactTileText}><strong>Send an email</strong><span>huzaifajutt853@gmail.com</span></span><b>↗</b>
+                <span className={styles.contactTileText}><strong>Send an email</strong><span>huzaifajutt853@gmail.com</span></span>
               </a>
               <a className={styles.contactTile} href="tel:+923323300702" data-reveal data-magnetic>
                 <span className={styles.contactIcon}><ContactIcon kind="phone" /></span>
-                <span className={styles.contactTileText}><strong>Call Huzaifa</strong><span>+92 332 3300702</span></span><b>↗</b>
+                <span className={styles.contactTileText}><strong>Call Huzaifa</strong><span>+92 332 3300702</span></span>
               </a>
             </div>
             <div className={styles.footerLinks}>
               <nav className={styles.footerNav} aria-label="Footer navigation"><a href="#services">Services</a><a href="#experience">Experience</a><a href="#education">Education</a></nav>
-              <a className={styles.socialIcon} href="https://www.linkedin.com/in/muhammad-huzaifa-ali-075a212a2/" target="_blank" rel="noreferrer" aria-label="Visit Muhammad Huzaifa Ali on LinkedIn"><ContactIcon kind="linkedin" /><span aria-hidden="true">↗</span></a>
+              <a className={styles.socialIcon} href="https://www.linkedin.com/in/muhammad-huzaifa-ali-075a212a2/" target="_blank" rel="noreferrer" aria-label="Visit Muhammad Huzaifa Ali on LinkedIn"><ContactIcon kind="linkedin" /></a>
             </div>
           </div>
         </div>
         <div className={styles.footerWordmark} data-reveal>Huzaifa<span>®</span></div>
-        <div className={styles.footerBar}><span>© {new Date().getFullYear()} MUHAMMAD HUZAIFA ALI</span><a href="#home">BACK TO TOP ↑</a><span>LAHORE, PAKISTAN</span></div>
+        <div className={styles.footerBar}><span>© {new Date().getFullYear()} MUHAMMAD HUZAIFA ALI</span><a href="#home">Back to top</a><span>LAHORE, PAKISTAN</span></div>
       </footer>
     </div>
   );

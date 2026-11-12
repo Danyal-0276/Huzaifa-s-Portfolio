@@ -4,6 +4,9 @@
   color: var(--color-foreground);
 }
 
+.site a { text-decoration: none; }
+.site a:focus-visible, .site button:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 4px; }
+
 .skipLink {
   position: fixed;
   z-index: 1001;
@@ -47,13 +50,13 @@
 .brandImage img { display: block; width: 100%; height: auto; }
 
 .desktopNav { display: flex; justify-content: center; align-items: center; gap: clamp(15px, 2.1vw, 30px); min-height: 58px; padding: 0 23px; border-radius: 999px; background: #f0f1f3; }
-.desktopNav a { display: inline-flex; align-items: baseline; gap: 6px; white-space: nowrap; font-size: 14px; font-weight: 650; transition: color .2s; }
+.desktopNav a { display: inline-flex; align-items: baseline; gap: 6px; white-space: nowrap; color: inherit; font-size: 14px; font-weight: 650; transition: color .2s; }
 .desktopNav a > span { color: #777; font: 9px var(--font-mono); letter-spacing: .04em; }
 .desktopNav a:hover { color: var(--color-accent); }
 
-.headerCta { justify-self: end; display: inline-flex; align-items: center; gap: 22px; min-height: 54px; padding: 0 19px 0 22px; border-radius: 999px; background: var(--color-accent); color: #fff; font-size: 14px; font-weight: 600; transition: transform .2s, background .2s; }
+.headerCta { justify-self: end; display: inline-flex; align-items: center; justify-content: center; min-height: 54px; padding: 0 25px; border-radius: 999px; background: var(--color-accent); color: #fff; font-size: 14px; font-weight: 600; transition: transform .2s, background .2s, box-shadow .2s; }
 .headerCta:hover { transform: translateY(-2px); background: #c9411c; }
-.headerCta span { font-size: 18px; line-height: 1; }
+.headerCta:active, .primaryButton:active, .heroSecondary:active, .textLink:active, .menuButton:active, .socialIcon:active, .skip:active { transform: translateY(1px) scale(.96); }
 
 .menuButton {
   position: relative;
@@ -102,11 +105,11 @@
 
 .menuOverlayOpen { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); }
 .menuOverlay nav { display: grid; max-width: 900px; }
-.menuOverlay nav a { display: grid; grid-template-columns: 58px 1fr 50px; align-items: center; padding: 11px 0; border-bottom: 1px solid rgb(20 20 20 / 27%); font-size: clamp(40px, 8vw, 92px); line-height: 1.1; letter-spacing: -.075em; font-weight: 600; transition: padding 0.25s, color 0.25s; }
+.menuOverlay nav a { display: grid; grid-template-columns: 58px 1fr; align-items: center; padding: 11px 0; color: #141414; font-size: clamp(40px, 8vw, 92px); line-height: 1.1; letter-spacing: -.075em; font-weight: 600; transition: padding 0.25s, color 0.25s; }
 .menuOverlay nav a:hover { padding-left: 15px; color: #f7f7f5; }
 .menuOverlay nav a span, .menuFoot { font: 9px var(--font-mono); letter-spacing: .12em; }
-.menuOverlay nav a b { font-size: 22px; font-weight: 400; text-align: right; }
 .menuFoot { display: flex; justify-content: space-between; padding-top: 16px; border-top: 1px solid rgb(20 20 20 / 27%); }
+.menuFoot a { color: #141414; }
 
 .hero {
   position: relative;
@@ -182,10 +185,10 @@
 .heroRole { margin: 0 0 15px; max-width: 460px; font-size: clamp(15px, 1.6vw, 20px); font-weight: 600; letter-spacing: -.03em; }
 .heroText { max-width: 410px; margin: 0; color: #512516; font-size: 13px; line-height: 1.75; }
 .heroActions { display: flex; align-items: center; gap: 25px; margin-top: 27px; }
-.primaryButton { display: inline-flex; align-items: center; gap: 34px; padding: 15px 17px; border-radius: 4px; background: #141414; color: #f7f7f5; font-size: 10px; font-weight: 600; transition: transform .25s, background .25s; }
-.primaryButton span { color: var(--color-accent); font-size: 17px; }
-.primaryButton:hover { transform: translateY(-3px); background: #302c29; }
-.heroSecondary { padding-bottom: 5px; border-bottom: 1px solid rgb(20 20 20 / 55%); font-size: 10px; }
+.primaryButton { display: inline-flex; align-items: center; justify-content: center; min-height: 50px; padding: 0 24px; border: 1px solid #141414; border-radius: 999px; background: #141414; color: #f7f7f5; font-size: 12px; font-weight: 600; transition: transform .25s, background .25s, box-shadow .25s; }
+.primaryButton:hover { transform: translateY(-3px); background: #302c29; box-shadow: 0 12px 24px rgb(20 20 20 / 18%); }
+.heroSecondary { display: inline-flex; align-items: center; justify-content: center; min-height: 50px; padding: 0 22px; border: 1px solid rgb(20 20 20 / 32%); border-radius: 999px; background: rgb(255 255 255 / 15%); color: #141414; font-size: 12px; font-weight: 600; transition: transform .25s, background .25s, border-color .25s, box-shadow .25s; }
+.heroSecondary:hover { transform: translateY(-3px); border-color: #fff; background: #fff; box-shadow: 0 12px 24px rgb(20 20 20 / 9%); }
 
 .heroProject {
   position: absolute;
@@ -322,8 +325,8 @@
 .educationDegree h3 { margin: 10px 0 4px; font-size: 22px; letter-spacing: -.045em; }
 .educationDegree p { margin: 0; color: #777; font-size: 11px; }
 .educationNote { max-width: 420px; margin: 18px 0; color: #68675f; font-size: 10px; line-height: 1.75; }
-.textLink { display: inline-flex; align-items: center; gap: 13px; padding-bottom: 5px; border-bottom: 1px solid #aaa69d; font-size: 9px; }
-.textLink span { color: var(--color-accent); font-size: 15px; }
+.textLink { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 17px; border: 1px solid #141414; border-radius: 999px; background: #141414; color: #f7f7f5; font-size: 11px; font-weight: 550; transition: transform .2s, background .2s, color .2s; }
+.textLink:hover { transform: translateY(-2px); background: var(--color-accent); border-color: var(--color-accent); color: #141414; }
 .educationPhotos { position: relative; min-height: 440px; }
 .universityBanner { position: absolute; top: 0; right: 0; width: 92%; height: 310px; overflow: hidden; border-radius: 5px; box-shadow: 0 20px 45px #30291d1e; }
 .universityBanner img { object-fit: cover; }
@@ -337,7 +340,7 @@
 .footerBio > p { max-width: 440px; margin: 0 0 22px; color: #b3b3ac; font-size: 11px; line-height: 1.8; }
 .footerSide { padding-top: 6px; }
 .contactCard { display: grid; gap: 10px; }
-.contactTile { display: grid; grid-template-columns: 48px 1fr 20px; align-items: center; gap: 14px; min-height: 78px; padding: 12px 16px; border: 1px solid #41413c; border-radius: 9px; color: inherit; transition: border-color .25s, background .25s, transform .25s; }
+.contactTile { display: grid; grid-template-columns: 48px 1fr; align-items: center; gap: 14px; min-height: 78px; padding: 12px 16px; border: 1px solid #41413c; border-radius: 12px; color: inherit; transition: border-color .25s, background .25s, transform .25s; }
 .contactTile:hover { border-color: var(--color-accent); background: #1d1d1a; }
 .contactIcon { width: 43px; height: 43px; display: grid; place-items: center; border-radius: 50%; background: #252521; color: var(--color-accent); transition: background .25s, color .25s, transform .25s; }
 .contactIcon svg { width: 19px; height: 19px; }
@@ -345,16 +348,13 @@
 .contactTileText { display: grid; gap: 5px; }
 .contactTileText strong { font-size: 13px; font-weight: 550; }
 .contactTileText > span { color: #aaa9a1; font-size: 10px; }
-.contactTile > b { justify-self: end; color: var(--color-accent); font-size: 18px; font-weight: 400; transition: transform .2s; }
-.contactTile:hover > b { transform: translate(2px, -2px); }
 .footerLinks { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-top: 25px; }
 .footerNav { display: flex; flex-wrap: wrap; gap: clamp(12px, 2vw, 24px); }
 .footerLinks a { color: inherit; text-decoration: none; font-size: 10px; transition: color .2s, border-color .2s, background .2s; }
 .footerLinks a:hover { color: var(--color-accent); }
-.socialIcon { width: 44px; height: 44px; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 3px; padding: 0 9px; border: 1px solid #454540; border-radius: 50%; color: #f7f7f5; transition: border-color .25s, color .25s, transform .25s; }
+.socialIcon { width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid #454540; border-radius: 50%; color: #f7f7f5; transition: border-color .25s, color .25s, transform .25s, background .25s; }
 .socialIcon:hover { transform: translateY(-3px); border-color: var(--color-accent); }
 .socialIcon svg { width: 20px; height: 20px; }
-.socialIcon span { align-self: start; color: var(--color-accent); font-size: 9px; }
 .footerWordmark { margin-left: -.05em; padding-bottom: 22px; color: #f7f7f5; font-size: clamp(105px, 25vw, 350px); font-weight: 700; line-height: .72; letter-spacing: -.12em; white-space: nowrap; }
 .footerWordmark span { margin-left: .25em; color: var(--color-accent); font: 400 .15em var(--font-mono); letter-spacing: -.02em; vertical-align: top; }
 .footerBar { min-height: 48px; margin: 0 calc(var(--page-gutter) * -1); padding: 0 var(--page-gutter); display: flex; align-items: center; justify-content: space-between; gap: 12px; background: var(--color-accent); color: #141414; font: 7px var(--font-mono); letter-spacing: .08em; }
@@ -389,7 +389,7 @@
   .headerCta { display: none; }
   .menuButton { display: flex; width: 40px; height: 40px; }
   .menuOverlay { padding: 96px 7vw 26px; }
-  .menuOverlay nav a { grid-template-columns: 40px 1fr 35px; font-size: clamp(39px, 11.5vw, 68px); }
+  .menuOverlay nav a { grid-template-columns: 40px 1fr; font-size: clamp(39px, 11.5vw, 68px); }
   .menuFoot { font-size: 7px; }
   .hero { height: auto; min-height: 850px; max-height: none; display: block; padding: 103px 7vw 75px; }
   .heroWatermark { top: 31%; left: 8%; font-size: clamp(116px, 29vw, 190px); writing-mode: vertical-rl; }
@@ -402,8 +402,7 @@
   .heroRole { max-width: 330px; font-size: 13px; }
   .heroText { max-width: 300px; font-size: 10px; }
   .heroActions { gap: 15px; margin-top: 18px; }
-  .primaryButton { gap: 18px; padding: 12px 13px; font-size: 8px; }
-  .heroSecondary { font-size: 8px; }
+  .primaryButton, .heroSecondary { min-height: 45px; padding: 0 16px; font-size: 10px; }
   .heroProject { right: 5%; bottom: 54px; width: clamp(178px, 48vw, 230px); }
   .heroProjectVisual { min-height: 146px; padding: 12px; }
   .projectCardTitle { margin-top: 13px; font-size: 18px; }
@@ -457,7 +456,7 @@
   .footerTop { grid-template-columns: 1fr; gap: 39px; padding-bottom: 49px; }
   .footerBio h2 { font-size: clamp(53px, 14vw, 80px); }
   .footerBio > p { font-size: 9px; }
-  .contactTile { grid-template-columns: 40px 1fr 16px; gap: 10px; min-height: 70px; padding: 10px 12px; }
+  .contactTile { grid-template-columns: 40px 1fr; gap: 10px; min-height: 70px; padding: 10px 12px; }
   .contactIcon { width: 38px; height: 38px; }
   .contactTileText strong { font-size: 11px; }
   .contactTileText > span { font-size: 8px; }
