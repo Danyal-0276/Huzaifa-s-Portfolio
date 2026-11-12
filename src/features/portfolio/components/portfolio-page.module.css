@@ -279,7 +279,7 @@
 .serviceQuote p { margin: 0; color: #aaa9a1; font-size: 14px; }
 .serviceQuoteIndex { position: relative; z-index: 1; align-self: end; color: #aaa9a1; font: 12px var(--font-mono); }
 
-.workflowSection { background: #f7f7f5; }
+.workflowSection { background: #eee6dc; }
 .workflowIntro { margin-bottom: 44px; }
 .signalMap { position: relative; isolation: isolate; min-height: 620px; overflow: hidden; border: 1px solid #e3e1d9; border-radius: 12px; background: radial-gradient(ellipse at 50% 47%, #fff 0, #fbfaf7 37%, #f1f0eb 100%); }
 .signalMap::before, .signalMap::after { position: absolute; z-index: -1; top: 50%; left: 50%; width: min(50vw, 570px); aspect-ratio: 1; border: 1px solid rgb(224 78 36 / 14%); border-radius: 50%; content: ""; transform: translate(-50%, -50%); }
@@ -309,26 +309,28 @@
 .signalTags b { padding: 5px 8px; border: 1px solid #e8e6df; border-radius: 999px; color: #666; font-size: 9px; font-weight: 500; }
 .signalCoordinates { position: absolute; right: 21px; bottom: 18px; color: #98978f; font: 9px var(--font-mono); letter-spacing: .1em; }
 
-.experienceSection { background: #efefec; }
+.experienceSection { background: #272625; color: #f7f7f5; }
 .experienceIntro { margin-bottom: 48px; }
+.experienceIntro h2 span { color: #c9c4bb; }
+.experienceIntro > p { color: #b8b5ae; }
 .experienceList { position: relative; display: grid; }
-.experienceTrack { position: absolute; z-index: 1; top: 0; bottom: 0; left: 181px; width: 1px; background: #c8c7c0; transform: scaleY(1); transform-origin: top; }
-.experienceItem { position: relative; display: grid; grid-template-columns: 170px 1fr; gap: 25px; padding: 28px 5px; border-top: 1px solid #d8d8d3; }
-.experienceItem:last-child { border-bottom: 1px solid #d8d8d3; }
+.experienceTrack { position: absolute; z-index: 1; top: 0; bottom: 0; left: 181px; width: 1px; background: rgb(255 255 255 / 22%); transform: scaleY(1); transform-origin: top; }
+.experienceItem { position: relative; display: grid; grid-template-columns: 170px 1fr; gap: 25px; padding: 28px 5px; border-top: 1px solid rgb(255 255 255 / 16%); }
+.experienceItem:last-child { border-bottom: 1px solid rgb(255 255 255 / 16%); }
 .experienceList[data-timeline-ready="true"] .experienceItem { opacity: 0; transform: translateY(26px); }
 .experienceList[data-timeline-ready="true"] .experienceTrack { transform: scaleY(0); }
-.experienceMarker { position: absolute; z-index: 2; top: 34px; left: 175px; width: 13px; height: 13px; border: 3px solid #efefec; border-radius: 50%; background: var(--color-accent); box-shadow: 0 0 0 1px var(--color-accent); }
+.experienceMarker { position: absolute; z-index: 2; top: 34px; left: 175px; width: 13px; height: 13px; border: 3px solid #272625; border-radius: 50%; background: var(--color-accent); box-shadow: 0 0 0 1px var(--color-accent); }
 .experienceList[data-timeline-ready="true"] .experienceMarker { opacity: 0; transform: scale(0); }
-.experienceDate { padding-top: 7px; color: #806657; font: 11px var(--font-mono); letter-spacing: .04em; }
+.experienceDate { padding-top: 7px; color: #e7a086; font: 11px var(--font-mono); letter-spacing: .04em; }
 .experienceItem h3 { margin: 0; font-size: clamp(22px, 1.8vw, 26px); font-weight: 600; letter-spacing: -.05em; }
 .experienceHeading { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
 .companyLogo { display: block; width: 78px; height: 78px; flex: 0 0 78px; padding: 2px; border: 1px solid #31312f; border-radius: 11px; background: #242422; object-fit: contain; box-shadow: 0 10px 25px rgb(20 20 20 / 12%); transition: transform .3s, box-shadow .3s; }
 .experienceItem:hover .companyLogo { transform: rotate(-3deg) scale(1.04); box-shadow: 0 14px 30px rgb(20 20 20 / 18%); }
-.experienceCompany { margin: 6px 0 13px; color: #777; font-size: 14px; }
-.experienceItem ul { display: grid; gap: 9px; margin: 0; padding-left: 17px; color: #65655e; font-size: 14px; line-height: 1.7; }
+.experienceCompany { margin: 6px 0 13px; color: #b8b5ae; font-size: 14px; }
+.experienceItem ul { display: grid; gap: 9px; margin: 0; padding-left: 17px; color: #d0cec8; font-size: 14px; line-height: 1.7; }
 .experienceItem li::marker { color: var(--color-accent); }
 
-.toolsSection { background: #f7f7f5; }
+.toolsSection { background: #e8ede9; }
 .toolsIntro { margin-bottom: 35px; }
 .toolGroups { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 13px; }
 .toolGroup { min-width: 0; padding: 22px 18px 18px; border: 1px solid #e3e2dc; border-radius: 12px; background: #efefec; }
@@ -519,7 +521,7 @@
   .signalCoordinates { position: static; text-align: right; }
   .experienceTrack { left: 6px; }
   .experienceItem { grid-template-columns: 1fr; gap: 8px; padding: 22px 3px 22px 30px; }
-  .experienceMarker { top: 27px; left: 0; }
+.experienceMarker { top: 27px; left: 0; border-color: #272625; }
   .experienceDate { grid-column: 1; grid-row: 1; padding: 0 0 4px; font-size: 10px; }
   .experienceItem > div:nth-child(3) { grid-column: 1; grid-row: 2; }
   .experienceItem h3 { font-size: 20px; }
