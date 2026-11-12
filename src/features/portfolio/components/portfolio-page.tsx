@@ -154,6 +154,7 @@ export default function PortfolioPage() {
           <a className={styles.headerCta} href="mailto:huzaifajutt853@gmail.com" data-magnetic>Let’s talk</a>
         <button
           className={`${styles.menuButton} ${menuOpen ? styles.menuButtonOpen : ""}`}
+          data-magnetic
           type="button"
           aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={menuOpen}
@@ -203,7 +204,7 @@ export default function PortfolioPage() {
             <p className={styles.heroText}>I help teams research their market, reach qualified prospects, and turn promising conversations into client relationships.</p>
             <div className={styles.heroActions}>
               <a className={styles.primaryButton} href="#services" data-magnetic>Explore how I work</a>
-              <a className={styles.heroSecondary} href="mailto:huzaifajutt853@gmail.com">Get in touch</a>
+              <a className={styles.heroSecondary} href="mailto:huzaifajutt853@gmail.com" data-magnetic>Get in touch</a>
             </div>
           </div>
           <a className={styles.heroProject} href="#services" data-float aria-label="See the lead generation workflow">
@@ -317,7 +318,7 @@ export default function PortfolioPage() {
             <h2>Business in practice.<br /><span>Computer science in study.</span></h2>
             <div className={styles.educationDegree}><span>2023 — 2027</span><h3>BS Computer Science</h3><p>Green International University · Lahore, Pakistan</p></div>
             <p className={styles.educationNote}>A four-year, eight-semester degree program that complements my work in research, systems, and digital business.</p>
-            <a className={styles.textLink} href="https://giu.edu.pk/course-detail/bs-computer-sciences" target="_blank" rel="noreferrer">Explore the GIU Computer Science program</a>
+            <a className={styles.textLink} href="https://giu.edu.pk/course-detail/bs-computer-sciences" target="_blank" rel="noreferrer" data-magnetic>Explore the GIU Computer Science program</a>
           </div>
           <div className={styles.educationPhotos} data-reveal>
             <div className={styles.universityBanner}><Image src="/images/giu-main-banner.webp" alt="Green International University campus in Lahore" fill sizes="(max-width: 800px) 100vw, 48vw" data-image-motion /></div>
@@ -345,7 +346,7 @@ export default function PortfolioPage() {
             </div>
             <div className={styles.footerLinks}>
               <nav className={styles.footerNav} aria-label="Footer navigation"><a href="#services">Services</a><a href="#experience">Experience</a><a href="#education">Education</a></nav>
-              <a className={styles.socialIcon} href="https://www.linkedin.com/in/muhammad-huzaifa-ali-075a212a2/" target="_blank" rel="noreferrer" aria-label="Visit Muhammad Huzaifa Ali on LinkedIn"><ContactIcon kind="linkedin" /></a>
+              <a className={styles.socialIcon} href="https://www.linkedin.com/in/muhammad-huzaifa-ali-075a212a2/" target="_blank" rel="noreferrer" aria-label="Visit Muhammad Huzaifa Ali on LinkedIn" data-magnetic><ContactIcon kind="linkedin" /></a>
             </div>
           </div>
         </div>

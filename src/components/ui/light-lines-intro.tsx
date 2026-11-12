@@ -125,7 +125,7 @@ export default function LightLinesIntro() {
         <span className={styles.name}>MUHAMMAD HUZAIFA ALI</span>
         <span className={styles.progress}><i /></span>
       </div>
-      <button className={styles.skip} type="button">Skip intro</button>
+      <button className={styles.skip} type="button" data-magnetic>Skip intro</button>
     </div>
   );
 }
