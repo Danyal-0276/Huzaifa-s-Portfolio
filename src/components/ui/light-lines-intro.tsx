@@ -121,12 +121,11 @@ export default function LightLinesIntro() {
     <div className={styles.intro} ref={rootRef} role="status" aria-label="Loading Huzaifa Ali's portfolio">
       <canvas className={styles.lines} ref={canvasRef} aria-hidden="true" />
       <div className={styles.introContent}>
-        <span className={styles.mark}>M<span>.</span></span>
+        <span className={styles.mark}>H</span>
         <span className={styles.name}>MUHAMMAD HUZAIFA ALI</span>
         <span className={styles.progress}><i /></span>
-        <span className={styles.caption}>BUSINESS DEVELOPMENT · LEAD GENERATION</span>
       </div>
-      <button className={styles.skip} type="button">SKIP INTRO <span>↗</span></button>
+      <button className={styles.skip} type="button">Skip intro <span>↗</span></button>
     </div>
   );
 }

@@ -181,7 +181,7 @@ export default function PortfolioPage() {
               <div className={styles.projectCardTitle}>Research.<br />Reach. Follow through.</div>
               <div className={styles.projectCardRows}><span>Market research <b>↗</b></span><span>Qualified prospects <b>↗</b></span><span>Personalized outreach <b>↗</b></span></div>
             </div>
-            <div className={styles.projectFooter}><strong><i /> HUZAIFA ALI</strong><span>/Business Development</span></div>
+            <div className={styles.projectFooter}><strong><i /> HUZAIFA ALI</strong></div>
           </a>
         </section>
 
@@ -307,9 +307,9 @@ export default function PortfolioPage() {
           </div>
           <div className={styles.footerSide}>
             <div className={styles.contactCard}>
-              <a href="tel:+923323300702"><span>PHONE</span>+92 332 3300702 <b>↗</b></a>
+              <a href="tel:+923323300702">+92 332 3300702 <b>↗</b></a>
               <a href="https://www.linkedin.com/in/muhammad-huzaifa-ali-075a212a2/" target="_blank" rel="noreferrer"><span>LINKEDIN</span>Muhammad Huzaifa Ali <b>↗</b></a>
-              <a href="mailto:huzaifajutt853@gmail.com"><span>EMAIL</span>Send an email <b>↗</b></a>
+              <a href="mailto:huzaifajutt853@gmail.com">Send an email <b>↗</b></a>
             </div>
             <div className={styles.footerLinks}>
               <div><a href="https://www.linkedin.com/in/muhammad-huzaifa-ali-075a212a2/" target="_blank" rel="noreferrer">LinkedIn ↗</a></div>

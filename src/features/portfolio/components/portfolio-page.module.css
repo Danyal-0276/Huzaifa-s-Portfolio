@@ -198,8 +198,6 @@
 .heroProject::after { background: #d9d7d0; transform: rotate(-2deg) translateY(5px); }
 .heroProjectVisual { position: relative; overflow: hidden; min-height: 185px; padding: 17px 18px; border-radius: 7px 7px 0 0; background: linear-gradient(135deg, #f4eee5, #dfc9b4); }
 .heroProjectVisual::after { content: ""; position: absolute; right: -22px; bottom: -58px; width: 160px; height: 160px; border: 1px solid rgb(224 78 36 / 40%); border-radius: 50%; box-shadow: 0 0 0 18px rgb(224 78 36 / 8%), 0 0 0 38px rgb(224 78 36 / 5%); }
-.projectCardHeader { position: relative; z-index: 1; display: flex; align-items: center; gap: 8px; font: 8px var(--font-mono); letter-spacing: .08em; }
-.projectDot { width: 7px; height: 7px; border-radius: 50%; background: var(--color-accent); }
 .projectCardTitle { position: relative; z-index: 1; margin-top: 20px; font-size: 23px; line-height: .98; letter-spacing: -.07em; font-weight: 600; }
 .projectCardRows { position: relative; z-index: 1; display: grid; gap: 6px; margin-top: 17px; }
 .projectCardRows span { display: flex; justify-content: space-between; max-width: 190px; border-bottom: 1px solid rgb(20 20 20 / 13%); padding-bottom: 4px; font-size: 7px; color: #67615b; }
@@ -208,8 +206,6 @@
 .projectFooter strong { color: #141414; font-weight: 500; white-space: nowrap; }
 .projectFooter strong i { display: inline-block; width: 6px; height: 6px; margin-right: 5px; border-radius: 50%; background: var(--color-accent); }
 .projectFooter span { text-align: right; }
-.heroBottom { position: absolute; right: var(--page-gutter); bottom: 19px; left: var(--page-gutter); display: flex; justify-content: space-between; font: 8px var(--font-mono); letter-spacing: .09em; }
-.heroBottom b { margin-left: 8px; color: #fff; font-size: 13px; }
 
 .aboutSection, .servicesSection, .workflowSection, .experienceSection, .toolsSection, .educationSection { padding: clamp(72px, 9vw, 130px) var(--page-gutter); }
 .aboutSection { background: #f7f7f5; }
@@ -224,12 +220,11 @@
 .cornerFrame span:nth-child(2) { top: 0; right: 0; border-width: 1px 1px 0 0; }
 .cornerFrame span:nth-child(3) { bottom: 0; left: 0; border-width: 0 0 1px 1px; }
 .cornerFrame span:nth-child(4) { right: 0; bottom: 0; border-width: 0 1px 1px 0; }
-.aboutPortraitLabel { display: flex; justify-content: space-between; margin-top: 16px; color: #777; font: 8px var(--font-mono); letter-spacing: .08em; }
 .aboutHeadingRow { display: flex; align-items: flex-start; gap: 18px; margin: 0 0 25px; }
 .aboutHeadingRow h2, .servicesIntro h2, .workflowIntro h2, .experienceIntro h2, .toolsIntro h2, .educationCopy h2 { margin: 0; font-size: clamp(39px, 5.1vw, 70px); font-weight: 600; line-height: .99; letter-spacing: -.075em; }
 .aboutHeadingRow h2 span, .servicesIntro h2 span, .workflowIntro h2 span, .experienceIntro h2 span, .toolsIntro h2 span, .educationCopy h2 span { color: #85857f; }
 .aboutAsterisk { flex: 0 0 auto; color: var(--color-accent); font-size: 46px; line-height: 1; will-change: transform; }
-.aboutIntro { max-width: 620px; margin: 0 0 14px; font: 600 9px/1.8 var(--font-mono); letter-spacing: .04em; }
+.aboutIntro { max-width: 620px; margin: 0 0 14px; font-size: 13px; line-height: 1.7; font-weight: 500; }
 .aboutBody { max-width: 610px; margin: 0 0 13px; color: #777; font-size: 12px; line-height: 1.8; }
 .statsGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; margin-top: 25px; }
 .statCard { padding: 19px 20px 17px; border: 1px solid #ecece8; border-radius: 7px; background: #fff; box-shadow: 0 12px 35px rgb(20 20 20 / 5%); }
@@ -271,18 +266,15 @@
 .researchRadar i:nth-child(3) { bottom: 23%; left: 45%; width: 5px; height: 5px; background: #917560; }
 .researchRadar b { position: relative; z-index: 2; padding: 9px; border-radius: 50%; background: #f8f4ef; font: 9px var(--font-mono); }
 .researchCard { position: absolute; z-index: 3; right: 4%; bottom: 10%; width: 44%; padding: 13px; border-radius: 5px; background: #f8f7f3; box-shadow: 0 10px 25px #4c362222; transform: rotate(4deg); }
-.researchCard span, .researchNote { color: #777; font: 6px var(--font-mono); letter-spacing: .06em; }
 .researchCard b { display: block; margin: 7px 0; font-size: 11px; letter-spacing: -.04em; }
 .researchCard i { display: block; height: 5px; margin-top: 5px; border-radius: 4px; background: #e4e0d7; }
 .researchCard i:nth-last-child(1) { width: 68%; }
-.researchNote { position: absolute; left: 9%; bottom: 8%; }
 .outreachArt { display: grid; place-items: center; background: linear-gradient(140deg, #dce9e5, #c3d6d1); }
 .messageCard { position: relative; z-index: 2; width: 75%; padding: 14px; border: 1px solid #fff; border-radius: 6px; background: #f8faf7; box-shadow: 0 15px 28px #263c3620; transform: rotate(-3deg); }
-.messageTop { display: flex; align-items: center; gap: 4px; color: #777; font: 6px var(--font-mono); }
+.messageTop { display: flex; align-items: center; gap: 4px; }
 .messageTop i { width: 5px; height: 5px; border-radius: 50%; background: #e28b72; }
 .messageTop i:nth-child(2) { background: #ddc16c; }
 .messageTop i:nth-child(3) { background: #84ad90; }
-.messageTop span { margin-left: 5px; }
 .messageCard b { display: block; margin: 22px 0 12px; font-size: 14px; letter-spacing: -.045em; }
 .messageCard > i { display: block; width: 100%; height: 6px; margin-top: 7px; border-radius: 5px; background: #e3e8e3; }
 .messageCard > i:nth-last-of-type(1) { width: 65%; }
@@ -291,7 +283,6 @@
 .pipelineArt { display: grid; align-items: center; padding: 21px; background: linear-gradient(135deg, #e6e1f0, #ccc4e1); }
 .pipelineColumns { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; }
 .pipelineColumns div { min-height: 107px; padding: 8px 6px; border-radius: 4px; background: #f7f5f8; box-shadow: 0 8px 18px #40345a12; }
-.pipelineColumns span { display: block; margin-bottom: 9px; color: #777; font: 5px var(--font-mono); }
 .pipelineColumns i { display: block; height: 18px; margin: 5px 0; border-radius: 3px; background: #e8e4ef; }
 .pipelineColumns div:nth-child(2) i:first-of-type { background: #e8d6c8; }
 .pipelineColumns div:nth-child(3) i:first-of-type { background: #d2e2d5; }
@@ -395,8 +386,6 @@
   .projectCardRows { gap: 4px; margin-top: 10px; }
   .projectCardRows span { font-size: 6px; }
   .projectFooter { min-height: 32px; padding: 0 9px; font-size: 6px; }
-  .heroBottom { right: 7vw; bottom: 16px; left: 7vw; font-size: 6px; }
-  .heroBottom span { max-width: 130px; text-align: right; }
   .aboutSection, .servicesSection, .workflowSection, .experienceSection, .toolsSection, .educationSection { padding: 72px 7vw; }
   .aboutGrid { grid-template-columns: 1fr; gap: 43px; }
   .aboutCopy { grid-row: 1; }
@@ -405,7 +394,7 @@
   .aboutHeadingRow { gap: 12px; margin-bottom: 18px; }
   .aboutHeadingRow h2, .servicesIntro h2, .workflowIntro h2, .experienceIntro h2, .toolsIntro h2, .educationCopy h2 { font-size: clamp(40px, 10.5vw, 63px); }
   .aboutAsterisk { font-size: 34px; }
-  .aboutIntro { font-size: 8px; }
+  .aboutIntro { font-size: 12px; }
   .aboutBody { font-size: 10px; }
   .statsGrid { gap: 8px; margin-top: 19px; }
   .statCard { padding: 16px 12px 14px; }

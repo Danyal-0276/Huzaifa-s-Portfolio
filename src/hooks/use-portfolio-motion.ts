@@ -36,7 +36,7 @@ export function usePortfolioMotion<T extends HTMLElement>(
               if (!entry.isIntersecting) return;
               observer?.unobserve(entry.target);
               const element = entry.target as HTMLElement;
-              scope.add(() => {
+              scope?.add(() => {
                 animate(element, {
                   opacity: [0, 1],
                   translateY: [28, 0],
@@ -71,7 +71,7 @@ export function usePortfolioMotion<T extends HTMLElement>(
               const delay = (distance / maxDistance) * 260;
               const originalColor = getComputedStyle(character).color;
 
-              scope.add(() => {
+              scope?.add(() => {
                 animate(character, {
                   translateY: [0, -3, 0],
                   rotate: [0, Math.random() * 8 - 4, 0],
