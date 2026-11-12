@@ -281,14 +281,33 @@
 
 .workflowSection { background: #f7f7f5; }
 .workflowIntro { margin-bottom: 44px; }
-.workflowGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; align-items: start; }
-.workflowCard { min-width: 0; padding: 11px 11px 21px; border: 1px solid #e5e4de; border-radius: 8px; background: #fff; box-shadow: 0 14px 40px rgb(20 20 20 / 5%); transform-origin: center; will-change: transform; }
-.workflowCard:nth-child(2) { margin-top: 45px; }
-.workflowCard:nth-child(3) { margin-top: 90px; }
-.workflowCard h3 { margin: 19px 10px 7px; font-size: 17px; font-weight: 600; letter-spacing: -.045em; }
-.workflowCard p { margin: 0 10px; color: #777; font-size: 13px; line-height: 1.7; }
-.workflowArt { position: relative; height: 225px; overflow: hidden; border-radius: 5px; }
-.workflowImage { object-fit: cover; }
+.signalMap { position: relative; isolation: isolate; min-height: 620px; overflow: hidden; border: 1px solid #e3e1d9; border-radius: 12px; background: radial-gradient(ellipse at 50% 47%, #fff 0, #fbfaf7 37%, #f1f0eb 100%); }
+.signalMap::before, .signalMap::after { position: absolute; z-index: -1; top: 50%; left: 50%; width: min(50vw, 570px); aspect-ratio: 1; border: 1px solid rgb(224 78 36 / 14%); border-radius: 50%; content: ""; transform: translate(-50%, -50%); }
+.signalMap::after { width: min(38vw, 430px); border-style: dashed; border-color: rgb(20 20 20 / 11%); }
+.signalRoutes { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.signalRoutes circle { fill: var(--color-accent); }
+.signalRoute { stroke: rgb(224 78 36 / 42%); stroke-width: 1.5; stroke-dasharray: 5 8; }
+.signalCore { position: absolute; z-index: 2; top: 50%; left: 50%; display: flex; width: 232px; height: 232px; flex-direction: column; align-items: center; justify-content: center; border: 1px solid rgb(224 78 36 / 30%); border-radius: 50%; background: #171716; color: #f7f7f5; text-align: center; box-shadow: 0 25px 65px rgb(20 20 20 / 18%), 0 0 0 13px rgb(255 255 255 / 75%); transform: translate(-50%, -50%); }
+.signalCoreOrbit { position: absolute; inset: -14px; border: 1px solid rgb(224 78 36 / 25%); border-radius: 50%; animation: signal-spin 22s linear infinite; }
+.signalCoreOrbit::after { position: absolute; top: 25px; right: 28px; width: 8px; height: 8px; border-radius: 50%; background: var(--color-accent); box-shadow: 0 0 15px rgb(224 78 36 / 65%); content: ""; }
+@keyframes signal-spin { to { rotate: 1turn; } }
+.signalCoreMark { position: relative; display: flex; width: 32px; height: 32px; align-items: center; justify-content: center; gap: 3px; margin-bottom: 11px; }
+.signalCoreMark i { display: block; width: 4px; height: 12px; border-radius: 4px; background: var(--color-accent); transform: rotate(30deg); }
+.signalCoreMark i:nth-child(2) { height: 23px; }
+.signalCoreLabel, .signalNodeMeta { color: #df8468; font: 10px var(--font-mono); letter-spacing: .12em; }
+.signalCore strong { margin-top: 8px; font-size: 24px; line-height: 1.05; letter-spacing: -.06em; }
+.signalCoreMeta { margin-top: 11px; color: #aaa9a1; font-size: 10px; }
+.signalNode { position: absolute; z-index: 3; width: min(31%, 370px); padding: 23px 24px 20px; border: 1px solid #e2e0d9; border-radius: 9px; background: rgb(255 255 255 / 94%); box-shadow: 0 16px 48px rgb(20 20 20 / 7%); }
+.signalResearch { top: 7%; left: 5%; }
+.signalOutreach { top: 8%; right: 5%; }
+.signalMomentum { bottom: 2%; left: 50%; transform: translateX(-50%); }
+.signalNodeMeta { display: flex; align-items: center; gap: 9px; color: #777; font-size: 9px; }
+.signalNodeMeta i { width: 7px; height: 7px; border-radius: 50%; background: var(--color-accent); box-shadow: 0 0 0 4px rgb(224 78 36 / 10%); }
+.signalNode h3 { margin: 15px 0 7px; font-size: 19px; font-weight: 600; letter-spacing: -.05em; }
+.signalNode p { margin: 0; color: #777; font-size: 12px; line-height: 1.65; }
+.signalTags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+.signalTags b { padding: 5px 8px; border: 1px solid #e8e6df; border-radius: 999px; color: #666; font-size: 9px; font-weight: 500; }
+.signalCoordinates { position: absolute; right: 21px; bottom: 18px; color: #98978f; font: 9px var(--font-mono); letter-spacing: .1em; }
 
 .experienceSection { background: #efefec; }
 .experienceIntro { margin-bottom: 48px; }
@@ -415,6 +434,8 @@
   .experienceItem { grid-template-columns: 135px 1fr; gap: 18px; }
   .experienceTrack { left: 144px; }
   .experienceMarker { left: 138px; }
+  .signalNode { width: 34%; padding: 18px; }
+  .signalCore { width: 200px; height: 200px; }
   .toolGroups { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .toolGroup:last-child { grid-column: 1 / -1; }
   .toolGroup:last-child .toolGrid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
@@ -433,10 +454,9 @@
   .heroText { position: static; width: auto; max-width: 310px; font-size: 14px; }
   .heroActions { gap: 10px; }
   .primaryButton, .heroSecondary { min-height: 46px; padding: 0 14px; }
-  .workflowGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .workflowCard:nth-child(2), .workflowCard:nth-child(3) { margin-top: 0; }
-  .workflowCard:nth-child(3) { grid-column: 1 / -1; width: min(100%, 480px); justify-self: center; }
-  .workflowArt { height: 190px; }
+  .signalMap { min-height: 680px; }
+  .signalNode { width: 42%; }
+  .signalCore { top: 54%; }
 }
 
 @media (max-width: 680px) {
@@ -489,12 +509,14 @@
   .serviceQuote blockquote { margin: 11px 0 15px; font-size: clamp(22px, 6vw, 30px); }
   .serviceQuote p { font-size: 12px; }
   .serviceQuoteIndex { display: none; }
-  .workflowGrid { grid-template-columns: 1fr; gap: 13px; }
-  .workflowCard:nth-child(2), .workflowCard:nth-child(3) { margin-top: 0; }
-  .workflowCard { padding: 9px 9px 17px; }
-  .workflowArt { height: 205px; }
-  .workflowCard h3 { margin: 14px 8px 6px; font-size: 16px; }
-  .workflowCard p { margin: 0 8px; font-size: 12px; }
+  .signalMap { min-height: 0; display: grid; grid-template-columns: 1fr; gap: 11px; overflow: visible; border: 0; border-radius: 0; background: none; }
+  .signalMap::before, .signalMap::after, .signalRoutes { display: none; }
+  .signalCore { position: relative; top: auto; left: auto; justify-self: center; width: 174px; height: 174px; margin: 8px 0 17px; transform: none; }
+  .signalCore strong { font-size: 20px; }
+  .signalNode, .signalResearch, .signalOutreach, .signalMomentum { position: relative; inset: auto; width: 100%; padding: 19px; transform: none; }
+  .signalNode h3 { font-size: 17px; }
+  .signalNode p { font-size: 12px; }
+  .signalCoordinates { position: static; text-align: right; }
   .experienceTrack { left: 6px; }
   .experienceItem { grid-template-columns: 1fr; gap: 8px; padding: 22px 3px 22px 30px; }
   .experienceMarker { top: 27px; left: 0; }
@@ -562,6 +584,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .workflowCard { transition: none !important; }
+  .signalCoreOrbit { animation: none; }
   .toolCard, .toolIcon { transition: none !important; }
 }

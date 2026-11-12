@@ -91,20 +91,6 @@ function ToolIcon({ kind }: { kind: ToolKind }) {
   return <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="17" fill="none" stroke="currentColor" strokeWidth="3" /><path d="M16 33 32 15" stroke="currentColor" strokeWidth="5" strokeLinecap="round" /></svg>;
 }
 
-function PipelineArtwork({ kind }: { kind: "research" | "outreach" | "pipeline" }) {
-  const artwork = {
-    research: { src: "/images/workflow-research.svg", alt: "Illustration of prospect research and an ideal customer profile" },
-    outreach: { src: "/images/workflow-outreach.svg", alt: "Illustration of a tailored first outreach message" },
-    pipeline: { src: "/images/workflow-pipeline.svg", alt: "Illustration of leads moving through a sales pipeline" },
-  }[kind];
-
-  return (
-    <div className={styles.workflowArt} data-workflow-art>
-      <Image className={styles.workflowImage} src={artwork.src} alt={artwork.alt} fill sizes="(max-width: 680px) 86vw, 34vw" data-card-tilt />
-    </div>
-  );
-}
-
 function ContactIcon({ kind }: { kind: "phone" | "mail" | "linkedin" }) {
   if (kind === "linkedin") {
     return (
@@ -291,19 +277,39 @@ export default function PortfolioPage() {
             <h2>Build a pipeline<br /><span>with purpose.</span></h2>
             <p>Research and outreach work best when every step is focused, relevant, and easy to follow up.</p>
           </div>
-          <div className={styles.workflowGrid}>
-            <article className={styles.workflowCard} data-workflow-card>
-              <PipelineArtwork kind="research" />
-              <h3>Know who to reach</h3><p>Market research, ideal customer profiles, competitor analysis, and carefully built prospect lists.</p>
+          <div className={styles.signalMap} data-signal-map aria-label="A three-part lead generation approach">
+            <svg className={styles.signalRoutes} viewBox="0 0 1200 560" fill="none" aria-hidden="true">
+              <path className={styles.signalRoute} d="M285 157C390 130 462 190 534 256" />
+              <path className={styles.signalRoute} d="M920 160C820 132 742 193 665 257" />
+              <path className={styles.signalRoute} d="M600 465C600 390 600 345 600 307" />
+              <circle cx="285" cy="157" r="5" /><circle cx="920" cy="160" r="5" /><circle cx="600" cy="465" r="5" />
+            </svg>
+            <div className={styles.signalCore} data-signal-core>
+              <span className={styles.signalCoreOrbit} />
+              <span className={styles.signalCoreMark} aria-hidden="true"><i /><i /><i /></span>
+              <span className={styles.signalCoreLabel}>IDEAL CUSTOMER</span>
+              <strong>Right fit.<br />Right moment.</strong>
+              <span className={styles.signalCoreMeta}>Market · Intent · Timing</span>
+            </div>
+            <article className={`${styles.signalNode} ${styles.signalResearch}`} data-signal-node>
+              <span className={styles.signalNodeMeta}><i /> 01 / RESEARCH</span>
+              <h3>Know who to reach</h3>
+              <p>Market research, ideal customer profiles, competitor analysis, and carefully built prospect lists.</p>
+              <span className={styles.signalTags}><b>ICP</b><b>Market fit</b><b>Prospects</b></span>
             </article>
-            <article className={styles.workflowCard} data-workflow-card>
-              <PipelineArtwork kind="outreach" />
-              <h3>Make the first message matter</h3><p>Personalized LinkedIn and email outreach with consistent qualification and follow-up.</p>
+            <article className={`${styles.signalNode} ${styles.signalOutreach}`} data-signal-node>
+              <span className={styles.signalNodeMeta}><i /> 02 / OUTREACH</span>
+              <h3>Make the first message matter</h3>
+              <p>Personalized LinkedIn and email outreach with consistent qualification and follow-up.</p>
+              <span className={styles.signalTags}><b>LinkedIn</b><b>Email</b><b>Follow-up</b></span>
             </article>
-            <article className={styles.workflowCard} data-workflow-card>
-              <PipelineArtwork kind="pipeline" />
-              <h3>Keep good opportunities moving</h3><p>Tailored proposals, clean CRM records, and clear pipeline and conversion tracking.</p>
+            <article className={`${styles.signalNode} ${styles.signalMomentum}`} data-signal-node>
+              <span className={styles.signalNodeMeta}><i /> 03 / MOMENTUM</span>
+              <h3>Keep good opportunities moving</h3>
+              <p>Tailored proposals, clean CRM records, and clear pipeline and conversion tracking.</p>
+              <span className={styles.signalTags}><b>CRM</b><b>Proposals</b><b>Next step</b></span>
             </article>
+            <span className={styles.signalCoordinates} aria-hidden="true">OUTBOUND SYSTEMS / 01—03</span>
           </div>
         </section>
 
