@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="public/images/huzaifa-wordmark.png" alt="Muhammad Huzaifa Ali" width="420" />
+  <img src="public/images/huzaifa-wordmark-readme.png" alt="Muhammad Huzaifa Ali" width="420" />
   <h1>Muhammad Huzaifa Ali</h1>
   <p><strong>Business Development · B2B Lead Generation · Client Outreach</strong></p>
   <p>Lahore, Pakistan</p>
