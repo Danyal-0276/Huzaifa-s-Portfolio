@@ -1,18 +1,20 @@
 :root {
-  /* Central design tokens; choose the final palette before building UI. */
   color-scheme: light;
-  --color-background: #ffffff;
-  --color-foreground: #171717;
-  --color-muted: #737373;
-  --color-border: #e5e5e5;
-  --color-accent: #555555;
+  --color-background: #f7f7f5;
+  --color-foreground: #141414;
+  --color-muted: #777777;
+  --color-border: #deded9;
+  --color-accent: #e04e24;
+  --color-card: #ffffff;
+  --color-dark: #141414;
+  --color-orange-ink: #491b0c;
 
-  --font-sans: Arial, Helvetica, sans-serif;
-  --font-mono: "Courier New", monospace;
+  --font-sans: "Space Grotesk", "Arial", sans-serif;
+  --font-mono: "IBM Plex Mono", "Courier New", monospace;
 
-  --content-width: 1200px;
-  --page-gutter: clamp(1.25rem, 5vw, 5rem);
-  --radius-small: 0.5rem;
-  --radius-medium: 1rem;
-  --radius-large: 1.5rem;
+  --content-width: 1320px;
+  --page-gutter: clamp(1.25rem, 5.3vw, 5.5rem);
+  --radius-small: 7px;
+  --radius-medium: 10px;
+  --shadow-card: 0 18px 55px rgb(20 20 20 / 10%);
 }

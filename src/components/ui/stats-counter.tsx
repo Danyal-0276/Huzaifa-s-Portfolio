@@ -18,7 +18,7 @@ export default function StatsCounter({
   locale = "en",
   className,
 }: StatsCounterProps) {
-  const counterRef = useRef<HTMLSpanElement>(null);
+  const counterRef = useRef<HTMLSpanElement | null>(null);
   const [count, setCount] = useState(0);
   const formattedValue = new Intl.NumberFormat(locale).format(value);
 
@@ -26,66 +26,60 @@ export default function StatsCounter({
     const element = counterRef.current;
     if (!element) return;
 
-    let frameId = 0;
+    let active = true;
     let observer: IntersectionObserver | undefined;
-    let started = false;
+    let revertScope: (() => void) | undefined;
 
-    const start = () => {
-      if (started) return;
-      started = true;
-      observer?.disconnect();
+    const start = async () => {
+      if (observer) observer.disconnect();
 
-      const prefersReducedMotion = window.matchMedia(
+      const reduceMotion = window.matchMedia(
         "(prefers-reduced-motion: reduce)",
       ).matches;
 
-      if (prefersReducedMotion || duration <= 0) {
+      if (reduceMotion || duration <= 0) {
         setCount(value);
         return;
       }
 
-      const startTime = performance.now();
-      const durationMs = duration * 1000;
+      const { animate, createScope } = await import("animejs");
+      if (!active) return;
 
-      const tick = (now: number) => {
-        const progress = Math.min((now - startTime) / durationMs, 1);
-        const easedProgress = 1 - Math.pow(1 - progress, 3);
-        setCount(Math.round(value * easedProgress));
-
-        if (progress < 1) {
-          frameId = window.requestAnimationFrame(tick);
-        }
-      };
-
-      frameId = window.requestAnimationFrame(tick);
+      const counter = { value: 0 };
+      const scope = createScope({ root: counterRef }).add(() => {
+        animate(counter, {
+          value,
+          duration: duration * 1000,
+          ease: "out(4)",
+          onUpdate: () => setCount(Math.round(counter.value)),
+        });
+      });
+      revertScope = () => scope.revert();
     };
 
     if ("IntersectionObserver" in window) {
       observer = new IntersectionObserver(
         ([entry]) => {
-          if (entry.isIntersecting) start();
+          if (entry.isIntersecting) void start();
         },
-        { threshold: 0.25 },
+        { threshold: 0.35 },
       );
       observer.observe(element);
     } else {
-      start();
+      void start();
     }
 
     return () => {
+      active = false;
       observer?.disconnect();
-      window.cancelAnimationFrame(frameId);
+      revertScope?.();
     };
   }, [duration, value]);
-
-  const combinedClassName = [styles.counter, className]
-    .filter(Boolean)
-    .join(" ");
 
   return (
     <span
       ref={counterRef}
-      className={combinedClassName}
+      className={[styles.counter, className].filter(Boolean).join(" ")}
       aria-label={`${formattedValue}${suffix}`}
     >
       <span aria-hidden="true">

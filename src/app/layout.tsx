@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import "@/styles/globals.css";
 
 export const metadata: Metadata = {
-  title: "Huzaifa Ali",
-  description: "Personal portfolio",
+  title: "Michael® — Independent UI/UX Designer",
+  description:
+    "Michael is an independent UI/UX designer crafting clear, expressive digital experiences for ambitious brands.",
   icons: {
-    icon: "/icon.png",
+    icon: "/icon.svg",
   },
 };
 
