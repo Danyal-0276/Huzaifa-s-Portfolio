@@ -83,7 +83,8 @@ export default function StatsCounter({
       aria-label={`${formattedValue}${suffix}`}
     >
       <span aria-hidden="true">
-        {new Intl.NumberFormat(locale).format(count)}{suffix}
+        {new Intl.NumberFormat(locale).format(count)}
+        {suffix}
       </span>
     </span>
   );
