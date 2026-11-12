@@ -262,53 +262,6 @@ export function usePortfolioMotion<T extends HTMLElement>(
           );
         }
 
-        const footer = root.querySelector<HTMLElement>("#contact");
-        const footerCta = root.querySelector<HTMLElement>("[data-footer-cta]");
-        const footerLines = root.querySelectorAll<HTMLElement>("[data-footer-line]");
-        const footerCircle = root.querySelector<HTMLElement>(".footerCircleCta");
-        const footerContactGrid = root.querySelector<HTMLElement>("[data-footer-contact-grid]");
-        if (footer && footerCta && footerLines.length) {
-          const footerTimeline = gsap.timeline({
-            scrollTrigger: {
-              trigger: footerCta,
-              start: "top 78%",
-              end: "bottom 28%",
-              scrub: 0.7,
-              invalidateOnRefresh: true,
-            },
-          });
-
-          footerTimeline.fromTo(
-            footerLines,
-            { yPercent: 110, autoAlpha: 0, rotateX: -12 },
-            { yPercent: 0, autoAlpha: 1, rotateX: 0, duration: 1, stagger: 0.18, ease: "power3.out" },
-            0,
-          );
-
-          if (footerCircle) {
-            footerTimeline.fromTo(footerCircle, { scale: 0.72, rotation: -35 }, { scale: 1, rotation: 0, duration: 0.8, ease: "back.out(1.8)" }, 0.25);
-          }
-        }
-
-        if (footer && footerContactGrid) {
-          gsap.fromTo(
-            footerContactGrid.children,
-            { y: 48, autoAlpha: 0 },
-            {
-              y: 0,
-              autoAlpha: 1,
-              stagger: 0.15,
-              ease: "power2.out",
-              scrollTrigger: {
-                trigger: footerContactGrid,
-                start: "top 82%",
-                end: "center 58%",
-                scrub: 0.75,
-              },
-            },
-          );
-        }
-
         const experienceList = root.querySelector<HTMLElement>("[data-experience-timeline]");
         const experienceSection = root.querySelector<HTMLElement>("[data-experience-section]");
         const experienceLine = root.querySelector<HTMLElement>("[data-experience-line]");
