@@ -1,0 +1,23 @@
+# Dependencies
+/node_modules/
+
+# Next.js build output
+/.next/
+/out/
+/build/
+
+# Environment variables and secrets
+.env
+.env.*
+
+# TypeScript and tooling cache
+/next-env.d.ts
+*.tsbuildinfo
+.eslintcache
+
+# Deployment and local editor files
+.vercel/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

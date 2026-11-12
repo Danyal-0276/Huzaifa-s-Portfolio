@@ -1,0 +1,18 @@
+:root {
+  /* Central design tokens; choose the final palette before building UI. */
+  color-scheme: light;
+  --color-background: #ffffff;
+  --color-foreground: #171717;
+  --color-muted: #737373;
+  --color-border: #e5e5e5;
+  --color-accent: #555555;
+
+  --font-sans: Arial, Helvetica, sans-serif;
+  --font-mono: "Courier New", monospace;
+
+  --content-width: 1200px;
+  --page-gutter: clamp(1.25rem, 5vw, 5rem);
+  --radius-small: 0.5rem;
+  --radius-medium: 1rem;
+  --radius-large: 1.5rem;
+}
