@@ -498,18 +498,23 @@
   .educationBackdrop img { object-position: 63% center; }
   .educationDegree { margin-top: 26px; }
   .educationNote { font-size: 12px; }
-  .footer { padding: 65px 7vw 0; }
-  .footerTop { grid-template-columns: 1fr; gap: 39px; padding-bottom: 49px; }
-  .footerBio h2 { font-size: clamp(53px, 14vw, 80px); }
-  .footerBio > p { font-size: 12px; }
-  .contactTile { grid-template-columns: 40px 1fr; gap: 10px; min-height: 70px; padding: 10px 12px; }
-  .contactIcon { width: 38px; height: 38px; }
-  .contactTileText strong { font-size: 11px; }
-  .contactTileText > span { font-size: 10px; }
-  .footerLinks { margin-top: 23px; }
-  .footerNav { gap: 12px; }
-  .footerLinks a { font-size: 10px; }
-  .socialIcon { width: 40px; height: 40px; }
+  .footer { padding: 68px 7vw 0; }
+  .footerEyebrow { font-size: 10px; }
+  .footerHeadlineRow { grid-template-columns: minmax(0, 1fr) 66px; gap: 10px; margin: 30px 0 18px; }
+  .footerHeadline { font-size: clamp(41px, 10.7vw, 70px); }
+  .footerCircleCta { width: 66px; font-size: 42px; }
+  .footerLead { max-width: 420px; margin-top: 21px; font-size: 14px; }
+  .footerContactGrid { grid-template-columns: 1fr; gap: 42px; padding: 42px 0 58px; }
+  .footerEmail { font-size: clamp(20px, 6vw, 27px); }
+  .footerPhone { font-size: 14px; }
+  .footerNav { gap: 17px; }
+  .footerNav a, .footerSocialText { font-size: 13px; }
+  .footerForm { gap: 24px; }
+  .footerFields { gap: 17px; }
+  .footerForm label { font-size: 13px; }
+  .footerForm input, .footerForm textarea { font-size: 15px; }
+  .footerSubmitRow { align-items: flex-start; flex-direction: column; }
+  .footerSubmit { min-height: 48px; font-size: 14px; }
   .footerWordmark { font-size: clamp(85px, 24vw, 150px); padding-bottom: 17px; }
   .footerBar { min-height: 42px; font-size: 8px; }
   .footerBar span:last-child { display: none; }
@@ -518,6 +523,10 @@
 @media (max-width: 370px) {
   .heroCopy h1 { font-size: 49px; }
   .heroProject { width: 165px; }
+  .footerHeadlineRow { grid-template-columns: minmax(0, 1fr) 54px; gap: 6px; }
+  .footerHeadline { font-size: 39px; }
+  .footerCircleCta { width: 54px; font-size: 35px; }
+  .footerFields { grid-template-columns: 1fr; }
   .aboutHeadingRow h2, .servicesIntro h2, .workflowIntro h2, .experienceIntro h2, .toolsIntro h2, .educationCopy h2 { font-size: 38px; }
   .statsGrid { grid-template-columns: 1fr; }
   .statCard { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 0 10px; }

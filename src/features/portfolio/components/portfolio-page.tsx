@@ -381,15 +381,15 @@ export default function PortfolioPage() {
       </main>
 
       <footer className={styles.footer} id="contact">
-        <div className={styles.footerCta}>
+        <div className={styles.footerCta} data-footer-cta>
           <div className={styles.footerEyebrow}><span>07 /</span> LET’S MAKE SOMETHING MOVE</div>
           <div className={styles.footerHeadlineRow}>
-            <h2 className={styles.footerHeadline} data-footer-heading><span>READY FOR</span><span>BETTER OUTREACH?</span></h2>
+            <h2 className={styles.footerHeadline} data-footer-heading><span data-footer-line>READY FOR</span><span data-footer-line>BETTER OUTREACH?</span></h2>
             <a className={styles.footerCircleCta} href="mailto:huzaifajutt853@gmail.com" aria-label="Start a conversation by email" data-magnetic><span aria-hidden="true">↗</span></a>
           </div>
           <p className={styles.footerLead}>Open to remote lead generation, business development roles, and new client conversations.</p>
         </div>
-        <div className={styles.footerContactGrid}>
+        <div className={styles.footerContactGrid} data-footer-contact-grid>
           <div className={styles.footerContactInfo}>
             <p className={styles.footerMicro}>START WITH HELLO</p>
             <a className={styles.footerEmail} href="mailto:huzaifajutt853@gmail.com">huzaifajutt853@gmail.com <span aria-hidden="true">↗</span></a>
