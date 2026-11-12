@@ -83,7 +83,7 @@
   .desktopNav {
     gap: clamp(12px, 1.5vw, 22px);
     min-height: 58px;
-    background: #fff;
+    background: #f0f1f3;
     box-shadow: 0 10px 28px rgb(20 20 20 / 8%);
   }
 
@@ -109,6 +109,8 @@
 }
 
 .desktopNav {
+  position: relative;
+  isolation: isolate;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -118,15 +120,32 @@
   border-radius: 999px;
   background: #f0f1f3;
 }
+.activeNavIndicator {
+  position: absolute;
+  z-index: 0;
+  top: 6px;
+  bottom: 6px;
+  left: 0;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 3px 12px rgb(20 20 20 / 9%);
+  pointer-events: none;
+  transition: transform .48s cubic-bezier(.2,.8,.2,1), width .32s cubic-bezier(.2,.8,.2,1), opacity .18s;
+}
 .desktopNav a {
+  position: relative;
+  z-index: 1;
   display: inline-flex;
   align-items: baseline;
   gap: 6px;
+  min-height: 42px;
+  padding: 0 9px;
+  border-radius: 999px;
   white-space: nowrap;
   color: inherit;
   font-size: 14px;
   font-weight: 650;
-  transition: color 0.2s;
+  transition: color .24s;
 }
 .desktopNav a > span {
   color: #777;
@@ -136,6 +155,8 @@
 .desktopNav a:hover {
   color: var(--color-accent);
 }
+.desktopNav a[aria-current="location"] { color: var(--color-accent); }
+.desktopNav a[aria-current="location"] > span { color: var(--color-accent); }
 
 .headerCta {
   justify-self: end;
@@ -269,6 +290,7 @@
   padding-left: 15px;
   color: #f7f7f5;
 }
+.menuOverlay nav a[aria-current="location"] { color: #fff; }
 .menuOverlay nav a span,
 .menuFoot {
   font: 9px var(--font-mono);

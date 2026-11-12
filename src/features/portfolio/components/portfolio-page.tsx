@@ -326,9 +326,65 @@ function handleContactSubmit(event: FormEvent<HTMLFormElement>) {
 
 export default function PortfolioPage() {
   const rootRef = useRef<HTMLDivElement | null>(null);
+  const desktopNavRef = useRef<HTMLElement | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
+  const [activeIndicator, setActiveIndicator] = useState<{ left: number; width: number } | null>(null);
 
   usePortfolioMotion(rootRef);
+
+  useEffect(() => {
+    const sectionIds = ["about", "services", "experience", "tools", "contact"];
+    let frame = 0;
+    const updateActiveSection = () => {
+      const focusLine = window.innerHeight * 0.32;
+      let nextSection = "";
+      sectionIds.forEach((id) => {
+        const section = document.getElementById(id);
+        if (section && section.getBoundingClientRect().top <= focusLine) nextSection = id;
+      });
+      setActiveSection((current) => current === nextSection ? current : nextSection);
+    };
+    const onScroll = () => {
+      if (frame) return;
+      frame = window.requestAnimationFrame(() => {
+        frame = 0;
+        updateActiveSection();
+      });
+    };
+    updateActiveSection();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", updateActiveSection);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", updateActiveSection);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
+  }, []);
+
+  useEffect(() => {
+    const nav = desktopNavRef.current;
+    if (!nav || !activeSection) {
+      setActiveIndicator(null);
+      return;
+    }
+    const measureActiveLink = () => {
+      const link = nav.querySelector<HTMLElement>(`[data-nav-target="${activeSection}"]`);
+      if (!link || nav.offsetWidth === 0) {
+        setActiveIndicator(null);
+        return;
+      }
+      setActiveIndicator({ left: link.offsetLeft, width: link.offsetWidth });
+    };
+    measureActiveLink();
+    const resizeObserver = new ResizeObserver(measureActiveLink);
+    resizeObserver.observe(nav);
+    window.addEventListener("resize", measureActiveLink);
+    return () => {
+      resizeObserver.disconnect();
+      window.removeEventListener("resize", measureActiveLink);
+    };
+  }, [activeSection]);
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
@@ -373,20 +429,29 @@ export default function PortfolioPage() {
             priority
           />
         </a>
-        <nav className={styles.desktopNav} aria-label="Main navigation">
-          <a href="#about">
+        <nav className={styles.desktopNav} aria-label="Main navigation" ref={desktopNavRef}>
+          <span
+            className={styles.activeNavIndicator}
+            aria-hidden="true"
+            style={{
+              width: activeIndicator?.width ?? 0,
+              transform: `translateX(${activeIndicator?.left ?? 0}px)`,
+              opacity: activeIndicator ? 1 : 0,
+            }}
+          />
+          <a href="#about" data-nav-target="about" aria-current={activeSection === "about" ? "location" : undefined}>
             <span>01</span>About
           </a>
-          <a href="#experience">
+          <a href="#experience" data-nav-target="experience" aria-current={activeSection === "experience" ? "location" : undefined}>
             <span>02</span>Work
           </a>
-          <a href="#services">
+          <a href="#services" data-nav-target="services" aria-current={activeSection === "services" ? "location" : undefined}>
             <span>03</span>Services
           </a>
-          <a href="#tools">
+          <a href="#tools" data-nav-target="tools" aria-current={activeSection === "tools" ? "location" : undefined}>
             <span>04</span>Toolkit
           </a>
-          <a href="#contact">
+          <a href="#contact" data-nav-target="contact" aria-current={activeSection === "contact" ? "location" : undefined}>
             <span>05</span>Contact
           </a>
         </nav>
@@ -427,7 +492,7 @@ export default function PortfolioPage() {
             ["Education", "education"],
             ["Contact", "contact"],
           ].map(([label, target], index) => (
-            <a href={`#${target}`} key={target} onClick={closeMenu}>
+            <a href={`#${target}`} key={target} onClick={closeMenu} aria-current={activeSection === target ? "location" : undefined}>
               <span>0{index + 1}</span>
               {label}
             </a>
