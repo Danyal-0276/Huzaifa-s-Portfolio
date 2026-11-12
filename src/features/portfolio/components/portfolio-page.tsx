@@ -170,7 +170,7 @@ export default function PortfolioPage() {
       <LightLinesIntro />
       <a className={styles.skipLink} href="#main-content">Skip to content</a>
 
-      <header className={`${styles.header} ${menuOpen ? styles.headerMenuOpen : ""}`}>
+      <header className={`${styles.header} ${menuOpen ? styles.headerMenuOpen : ""}`} data-site-header>
         <a className={styles.brandImage} href="#home" aria-label="Muhammad Huzaifa Ali, home" onClick={closeMenu}>
           <Image src="/images/huzaifa-wordmark.png" alt="Huzaifa" width={2059} height={239} priority />
         </a>
@@ -222,7 +222,7 @@ export default function PortfolioPage() {
             <Image src="/images/huzaifa-hero-headphones.png" alt="Muhammad Huzaifa Ali wearing headphones" fill sizes="(max-width: 680px) 84vw, 52vw" priority data-image-motion />
           </div>
           <div className={styles.heroCopy} data-reveal>
-            <h1 data-hero-heading>Find the right people.<br /><span><AsciiRippleText text="Start real conversations." /></span></h1>
+            <h1 data-hero-heading>Find the right people.<br /><span><AsciiRippleText text="Start real" /> <br className={styles.heroMobileBreak} /><span>conversations.</span></span></h1>
             <p className={styles.heroRole}>B2B lead generation &amp; business development</p>
             <p className={styles.heroText}>I help teams research their market, reach qualified prospects, and turn promising conversations into client relationships.</p>
             <div className={styles.heroActions}>

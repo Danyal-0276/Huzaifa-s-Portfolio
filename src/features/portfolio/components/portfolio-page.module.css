@@ -23,7 +23,7 @@
 .skipLink:focus { transform: translateY(0); }
 
 .header {
-  position: absolute;
+  position: fixed;
   z-index: 40;
   top: 16px;
   left: var(--page-gutter);
@@ -37,8 +37,10 @@
   border-radius: 18px;
   background: #fff;
   color: #141414;
-  transition: background .3s, border-color .3s;
+  transition: top .3s, height .3s, padding .3s, background .3s, border-color .3s, box-shadow .3s;
 }
+
+.header[data-scrolled="true"] { top: 10px; height: 64px; box-shadow: 0 12px 34px rgb(20 20 20 / 12%); }
 
 .brandImage {
   display: inline-flex;
@@ -171,7 +173,7 @@
   bottom: 0;
   width: min(54vw, 730px);
   height: 88%;
-  translate: -50% 0;
+  transform: translateX(-50%);
   will-change: transform;
 }
 .heroPortrait::before { content: ""; position: absolute; z-index: 0; left: 7%; bottom: 5%; width: 86%; height: 70%; border-radius: 50%; background: radial-gradient(ellipse, rgb(247 247 245 / 25%), rgb(247 247 245 / 9%) 42%, transparent 72%); }
@@ -180,6 +182,7 @@
 .heroCopy { position: absolute; z-index: 4; bottom: clamp(36px, 5.5vh, 66px); left: var(--page-gutter); width: min(39%, 505px); margin: 0; padding: 0; }
 .heroCopy h1 { margin: 0 0 18px; font-size: clamp(49px, 5.8vw, 82px); font-weight: 650; line-height: .94; letter-spacing: -.085em; }
 .heroCopy h1 > span { color: #f7f7f5; }
+.heroMobileBreak { display: none; }
 .heroRole { margin: 0 0 15px; max-width: 460px; font-size: clamp(15px, 1.6vw, 20px); font-weight: 600; letter-spacing: -.03em; }
 .heroText { max-width: 410px; margin: 0; color: #512516; font-size: 15px; line-height: 1.75; }
 .heroActions { display: flex; align-items: center; gap: 25px; margin-top: 27px; }
@@ -410,8 +413,28 @@
   .toolGroup:last-child .toolGrid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 
+@media (max-width: 860px) {
+  .header { grid-template-columns: minmax(0, 1fr) auto auto; gap: 14px; }
+  .brandImage { width: clamp(150px, 22vw, 185px); }
+  .desktopNav { display: none; }
+  .menuButton { display: flex; }
+  .hero { min-height: 740px; }
+  .heroPortrait { left: auto; right: -2%; width: 53vw; height: 82%; transform: none; }
+  .heroCopy { left: 5vw; bottom: 38px; width: min(43%, 340px); }
+  .heroCopy h1 { font-size: clamp(43px, 6vw, 56px); }
+  .heroRole { font-size: 15px; }
+  .heroText { max-width: 310px; font-size: 14px; }
+  .heroActions { gap: 10px; }
+  .primaryButton, .heroSecondary { min-height: 46px; padding: 0 14px; }
+  .heroProject { right: 4%; bottom: 35px; width: 220px; }
+  .workflowGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .workflowCard:nth-child(2), .workflowCard:nth-child(3) { margin-top: 0; }
+  .workflowCard:nth-child(3) { grid-column: 1 / -1; width: min(100%, 480px); justify-self: center; }
+  .workflowArt { height: 190px; }
+}
+
 @media (max-width: 680px) {
-  .header { top: 10px; left: 4vw; width: 92vw; height: 64px; grid-template-columns: 1fr auto; padding: 0 14px; border-radius: 14px; }
+  .header { top: 10px; left: 4vw; width: 92vw; height: 64px; grid-template-columns: minmax(0, 1fr) auto; padding: 0 14px; border-radius: 14px; }
   .brandImage { width: 190px; height: 35px; }
   .desktopNav { display: none; }
   .headerCta { display: none; }
@@ -420,13 +443,14 @@
   .menuOverlay nav a { grid-template-columns: 40px 1fr; font-size: clamp(39px, 11.5vw, 68px); }
   .menuFoot { font-size: 10px; }
   .hero { height: auto; min-height: 850px; max-height: none; display: block; padding: 103px 7vw 75px; }
-  .heroWatermark { top: 35%; left: 0; right: 0; font-size: clamp(100px, 24vw, 170px); writing-mode: horizontal-tb; }
+  .heroWatermark { top: 35%; left: 0; right: 0; color: rgb(255 255 255 / 7%); font-size: clamp(100px, 24vw, 170px); writing-mode: horizontal-tb; }
   .heroRings { top: 21%; }
   .heroRings::before { width: 94vw; }
   .heroRings::after { width: 72vw; }
-  .heroPortrait { left: 50%; right: auto; bottom: 0; width: 86vw; height: 57%; }
-  .heroCopy { position: absolute; z-index: 4; top: 15%; bottom: auto; left: 7vw; width: 86%; padding: 0; }
+  .heroPortrait { left: 50%; right: auto; bottom: 0; width: 82vw; height: 42%; transform: translateX(-50%); }
+  .heroCopy { position: absolute; z-index: 4; top: 13%; bottom: auto; left: 7vw; width: 86%; padding: 0; }
   .heroCopy h1 { max-width: 500px; font-size: clamp(48px, 12vw, 72px); }
+  .heroMobileBreak { display: block; }
   .heroRole { max-width: 330px; font-size: 15px; }
   .heroText { max-width: 300px; font-size: 13px; }
   .heroActions { flex-wrap: wrap; gap: 10px; margin-top: 18px; }
@@ -475,7 +499,7 @@
   .experienceItem { grid-template-columns: 1fr; gap: 8px; padding: 22px 3px 22px 30px; }
   .experienceMarker { top: 27px; left: 0; }
   .experienceDate { grid-column: 1; grid-row: 1; padding: 0 0 4px; font-size: 10px; }
-  .experienceItem > div:nth-child(2) { grid-column: 1; grid-row: 2; }
+  .experienceItem > div:nth-child(3) { grid-column: 1; grid-row: 2; }
   .experienceItem h3 { font-size: 20px; }
   .experienceCompany { font-size: 12px; }
   .experienceItem ul { gap: 8px; padding-left: 14px; font-size: 12px; }
@@ -521,11 +545,12 @@
 }
 
 @media (max-width: 370px) {
-  .heroCopy h1 { font-size: 49px; }
+  .heroCopy h1 { font-size: clamp(38px, 12.2vw, 44px); }
   .heroProject { width: 165px; }
   .footerHeadlineRow { grid-template-columns: minmax(0, 1fr) 54px; gap: 6px; }
   .footerHeadline { font-size: 39px; }
   .footerCircleCta { width: 54px; font-size: 35px; }
+  .footerEmail { gap: 8px; font-size: 16px; }
   .footerFields { grid-template-columns: 1fr; }
   .aboutHeadingRow h2, .servicesIntro h2, .workflowIntro h2, .experienceIntro h2, .toolsIntro h2, .educationCopy h2 { font-size: 38px; }
   .statsGrid { grid-template-columns: 1fr; }

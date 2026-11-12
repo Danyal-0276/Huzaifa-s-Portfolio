@@ -141,55 +141,69 @@ export function usePortfolioMotion<T extends HTMLElement>(
       gsap.registerPlugin(ScrollTrigger);
       const removeGsapListeners: Array<() => void> = [];
       const gsapContext = gsap.context(() => {
+        const siteHeader = root.querySelector<HTMLElement>("[data-site-header]");
+        if (siteHeader) {
+          siteHeader.dataset.scrolled = String(window.scrollY > 64);
+          ScrollTrigger.create({
+            start: 64,
+            onEnter: () => { siteHeader.dataset.scrolled = "true"; },
+            onLeaveBack: () => { siteHeader.dataset.scrolled = "false"; },
+          });
+        }
+
         const servicesSection = root.querySelector<HTMLElement>("[data-services-section]");
         const serviceRows = root.querySelectorAll<HTMLElement>("[data-service-row]");
-        const serviceCopies = root.querySelectorAll<HTMLElement>("[data-service-copy]");
-        const serviceNumbers = root.querySelectorAll<HTMLElement>("[data-service-number]");
-        const serviceIcons = root.querySelectorAll<HTMLElement>("[data-service-icon]");
         const serviceQuote = root.querySelector<HTMLElement>("[data-service-quote]");
         if (servicesSection && serviceRows.length) {
-          const servicesTimeline = gsap.timeline({
-            scrollTrigger: {
-              trigger: servicesSection,
-              start: "top 78%",
-              end: "bottom 38%",
-              scrub: 0.8,
-              invalidateOnRefresh: true,
-            },
+          serviceRows.forEach((row, index) => {
+            const copy = row.querySelectorAll<HTMLElement>("[data-service-copy]");
+            const number = row.querySelector<HTMLElement>("[data-service-number]");
+            const icon = row.querySelector<HTMLElement>("[data-service-icon]");
+            const rowTimeline = gsap.timeline({
+              scrollTrigger: {
+                trigger: row,
+                start: "top 96%",
+                end: "top 60%",
+                scrub: 0.55,
+                invalidateOnRefresh: true,
+              },
+            });
+
+            rowTimeline
+              .fromTo(
+                row,
+                { autoAlpha: 0, y: 34, clipPath: "inset(0 0 100% 0)" },
+                { autoAlpha: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.8, ease: "power3.out" },
+                0,
+              )
+              .fromTo(copy, { x: -20, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.45, stagger: 0.08, ease: "power2.out" }, 0.16);
+
+            if (number) {
+              rowTimeline.fromTo(number, { scale: 0.65, autoAlpha: 0, color: "#8c8b84" }, { scale: 1, autoAlpha: 1, color: "#E04E24", duration: 0.42, ease: "back.out(2)" }, 0.12);
+            }
+
+            if (icon) {
+              rowTimeline.fromTo(icon, { rotation: -35, scale: 0.5, autoAlpha: 0 }, { rotation: 0, scale: 1, autoAlpha: 1, duration: 0.42, ease: "back.out(2)" }, 0.2 + index * 0.015);
+            }
           });
 
-          servicesTimeline
-            .fromTo(
-              serviceRows,
-              { autoAlpha: 0, y: 48, clipPath: "inset(0 0 100% 0)" },
-              { autoAlpha: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 1, stagger: 0.2, ease: "power3.out" },
-              0,
-            )
-            .fromTo(
-              serviceCopies,
-              { x: -24, autoAlpha: 0 },
-              { x: 0, autoAlpha: 1, duration: 0.5, stagger: 0.07, ease: "power2.out" },
-              0.25,
-            )
-            .fromTo(
-              serviceNumbers,
-              { scale: 0.65, autoAlpha: 0, color: "#8c8b84" },
-              { scale: 1, autoAlpha: 1, color: "#E04E24", duration: 0.45, stagger: 0.18, ease: "back.out(2)" },
-              0.12,
-            )
-            .fromTo(
-              serviceIcons,
-              { rotation: -35, scale: 0.5, autoAlpha: 0 },
-              { rotation: 0, scale: 1, autoAlpha: 1, duration: 0.45, stagger: 0.18, ease: "back.out(2)" },
-              0.2,
-            );
-
           if (serviceQuote) {
-            servicesTimeline.fromTo(
+            gsap.fromTo(
               serviceQuote,
               { y: 60, autoAlpha: 0, clipPath: "inset(0 0 20% 0)" },
-              { y: 0, autoAlpha: 1, clipPath: "inset(0 0 0% 0)", duration: 0.8, ease: "power3.out" },
-              0.92,
+              {
+                y: 0,
+                autoAlpha: 1,
+                clipPath: "inset(0 0 0% 0)",
+                duration: 0.8,
+                ease: "power3.out",
+                scrollTrigger: {
+                  trigger: serviceQuote,
+                  start: "top 94%",
+                  end: "top 62%",
+                  scrub: 0.6,
+                },
+              },
             );
           }
         }
@@ -288,31 +302,45 @@ export function usePortfolioMotion<T extends HTMLElement>(
 
         const workflowSection = root.querySelector<HTMLElement>("[data-workflow-section]");
         const workflowCards = root.querySelectorAll<HTMLElement>("[data-workflow-card]");
-        const workflowArt = root.querySelectorAll<HTMLElement>("[data-workflow-art]");
         if (workflowSection && workflowCards.length) {
-          const workflowTimeline = gsap.timeline({
-            scrollTrigger: {
-              trigger: workflowSection,
-              start: "top 78%",
-              end: "bottom 38%",
-              scrub: 0.9,
-              invalidateOnRefresh: true,
-            },
-          });
-
-          workflowTimeline
-            .fromTo(
-              workflowCards,
-              { autoAlpha: 0, y: 92, rotateZ: (index) => (index - 1) * 2.5 },
-              { autoAlpha: 1, y: 0, rotateZ: 0, duration: 0.9, stagger: 0.22, ease: "power3.out" },
-              0,
-            )
-            .fromTo(
-              workflowArt,
-              { scale: 1.1, yPercent: 7 },
-              { scale: 1, yPercent: -3, duration: 1.15, stagger: 0.18, ease: "none" },
-              0.12,
+          workflowCards.forEach((card, index) => {
+            const art = card.querySelector<HTMLElement>("[data-workflow-art]");
+            gsap.fromTo(
+              card,
+              { autoAlpha: 0, y: 70, rotateZ: (index - 1) * 1.8 },
+              {
+                autoAlpha: 1,
+                y: 0,
+                rotateZ: 0,
+                ease: "power3.out",
+                scrollTrigger: {
+                  trigger: card,
+                  start: "top 88%",
+                  end: "top 56%",
+                  scrub: 0.7,
+                  invalidateOnRefresh: true,
+                },
+              },
             );
+
+            if (art) {
+              gsap.fromTo(
+                art,
+                { scale: 1.08, yPercent: 5 },
+                {
+                  scale: 1,
+                  yPercent: -2,
+                  ease: "none",
+                  scrollTrigger: {
+                    trigger: card,
+                    start: "top bottom",
+                    end: "bottom top",
+                    scrub: 0.9,
+                  },
+                },
+              );
+            }
+          });
         }
 
         const hero = root.querySelector("[data-hero]");
