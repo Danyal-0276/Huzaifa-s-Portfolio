@@ -15,10 +15,11 @@ export function usePortfolioMotion<T extends HTMLElement>(
     let revertAnime: (() => void) | undefined;
     let revertGsap: (() => void) | undefined;
     let observer: IntersectionObserver | undefined;
+    let timelineObserver: IntersectionObserver | undefined;
     let removeAsciiListeners: (() => void) | undefined;
 
     const setup = async () => {
-      const [{ animate, createScope }, { gsap }, { ScrollTrigger }] =
+      const [{ animate, createScope, createTimeline, stagger }, { gsap }, { ScrollTrigger }] =
         await Promise.all([
           import("animejs"),
           import("gsap"),
@@ -51,6 +52,51 @@ export function usePortfolioMotion<T extends HTMLElement>(
         );
 
         reveals.forEach((element) => observer?.observe(element));
+
+        const experienceList = root.querySelector<HTMLElement>("[data-experience-timeline]");
+        const experienceSection = root.querySelector<HTMLElement>("[data-experience-section]");
+        const experienceLine = root.querySelector("[data-experience-line]");
+        const experienceMarkers = [...root.querySelectorAll<HTMLElement>("[data-experience-marker]")];
+        const experienceEntries = [...root.querySelectorAll<HTMLElement>("[data-experience-entry]")];
+
+        if (experienceList && experienceSection && experienceLine && experienceEntries.length) {
+          const timeline = createTimeline({ autoplay: false });
+          timeline
+            .add(experienceLine, {
+              scaleY: [0, 1],
+              duration: 1400,
+              ease: "out(3)",
+            }, 0)
+            .add(experienceMarkers, {
+              scale: [0, 1],
+              opacity: [0, 1],
+              duration: 480,
+              delay: stagger(150),
+              ease: "out(4)",
+            }, 240)
+            .add(experienceEntries, {
+              opacity: [0, 1],
+              translateY: [26, 0],
+              duration: 760,
+              delay: stagger(180),
+              ease: "out(3)",
+            }, 380);
+
+          experienceList.dataset.timelineReady = "true";
+          if ("IntersectionObserver" in window) {
+            timelineObserver = new IntersectionObserver(
+              ([entry]) => {
+                if (!entry.isIntersecting) return;
+                timelineObserver?.disconnect();
+                timeline.play();
+              },
+              { threshold: 0.18 },
+            );
+            timelineObserver.observe(experienceSection);
+          } else {
+            timeline.play();
+          }
+        }
 
         const glitchTargets = [...root.querySelectorAll<HTMLElement>("[data-ascii-ripple]")];
         const glitchCharacters = "!<>/\\|{}[]*+=~^_?:;";
@@ -254,6 +300,7 @@ export function usePortfolioMotion<T extends HTMLElement>(
     return () => {
       cancelled = true;
       observer?.disconnect();
+      timelineObserver?.disconnect();
       removeAsciiListeners?.();
       revertAnime?.();
       revertGsap?.();

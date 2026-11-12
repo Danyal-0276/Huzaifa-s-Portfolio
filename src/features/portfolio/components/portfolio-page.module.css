@@ -305,10 +305,19 @@
 
 .experienceSection { background: #efefec; }
 .experienceIntro { margin-bottom: 48px; }
-.experienceList { border-top: 1px solid #d8d8d3; }
-.experienceItem { display: grid; grid-template-columns: 170px 1fr; gap: 25px; padding: 28px 5px; border-bottom: 1px solid #d8d8d3; }
+.experienceList { position: relative; display: grid; }
+.experienceTrack { position: absolute; z-index: 1; top: 0; bottom: 0; left: 181px; width: 1px; background: #c8c7c0; transform: scaleY(1); transform-origin: top; }
+.experienceItem { position: relative; display: grid; grid-template-columns: 170px 1fr; gap: 25px; padding: 28px 5px; border-top: 1px solid #d8d8d3; }
+.experienceItem:last-child { border-bottom: 1px solid #d8d8d3; }
+.experienceList[data-timeline-ready="true"] .experienceItem { opacity: 0; transform: translateY(26px); }
+.experienceList[data-timeline-ready="true"] .experienceTrack { transform: scaleY(0); }
+.experienceMarker { position: absolute; z-index: 2; top: 34px; left: 175px; width: 13px; height: 13px; border: 3px solid #efefec; border-radius: 50%; background: var(--color-accent); box-shadow: 0 0 0 1px var(--color-accent); }
+.experienceList[data-timeline-ready="true"] .experienceMarker { opacity: 0; transform: scale(0); }
 .experienceDate { padding-top: 7px; color: #806657; font: 8px var(--font-mono); letter-spacing: .04em; }
 .experienceItem h3 { margin: 0; font-size: 21px; font-weight: 600; letter-spacing: -.05em; }
+.experienceHeading { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.companyLogo { display: block; width: 78px; height: 78px; flex: 0 0 78px; padding: 2px; border: 1px solid #31312f; border-radius: 11px; background: #242422; object-fit: contain; box-shadow: 0 10px 25px rgb(20 20 20 / 12%); transition: transform .3s, box-shadow .3s; }
+.experienceItem:hover .companyLogo { transform: rotate(-3deg) scale(1.04); box-shadow: 0 14px 30px rgb(20 20 20 / 18%); }
 .experienceCompany { margin: 6px 0 13px; color: #777; font-size: 10px; }
 .experienceItem ul { display: grid; gap: 7px; margin: 0; padding-left: 17px; color: #65655e; font-size: 10px; line-height: 1.65; }
 .experienceItem li::marker { color: var(--color-accent); }
@@ -378,6 +387,8 @@
   .aboutGrid { gap: 6vw; }
   .aboutPortrait { height: 420px; }
   .experienceItem { grid-template-columns: 135px 1fr; gap: 18px; }
+  .experienceTrack { left: 144px; }
+  .experienceMarker { left: 138px; }
   .educationPhotos { min-height: 380px; }
   .universityBanner { height: 270px; }
   .universityBuilding { height: 170px; }
@@ -438,12 +449,16 @@
   .workflowArt { height: 205px; }
   .workflowCard h3 { margin: 14px 8px 6px; font-size: 16px; }
   .workflowCard p { margin: 0 8px; font-size: 9px; }
-  .experienceItem { grid-template-columns: 1fr; gap: 8px; padding: 22px 3px; }
+  .experienceTrack { left: 6px; }
+  .experienceItem { grid-template-columns: 1fr; gap: 8px; padding: 22px 3px 22px 30px; }
+  .experienceMarker { top: 27px; left: 0; }
   .experienceDate { grid-column: 1; grid-row: 1; padding: 0 0 4px; font-size: 7px; }
   .experienceItem > div:nth-child(2) { grid-column: 1; grid-row: 2; }
   .experienceItem h3 { font-size: 17px; }
   .experienceCompany { font-size: 9px; }
   .experienceItem ul { gap: 6px; padding-left: 14px; font-size: 8px; }
+  .experienceHeading { align-items: flex-start; gap: 10px; }
+  .companyLogo { width: 58px; height: 58px; flex-basis: 58px; border-radius: 9px; }
   .toolCloud { gap: 7px; }
   .toolCloud span { padding: 9px 11px; font-size: 8px; }
   .educationSection { grid-template-columns: 1fr; gap: 32px; }

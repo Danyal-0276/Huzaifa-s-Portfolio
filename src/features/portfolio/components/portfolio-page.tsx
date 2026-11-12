@@ -282,21 +282,28 @@ export default function PortfolioPage() {
           </div>
         </section>
 
-        <section className={styles.experienceSection} id="experience">
+        <section className={styles.experienceSection} id="experience" data-experience-section>
           <div className={styles.experienceIntro} data-reveal>
             <h2>Experience built<br />through <span>real client work.</span></h2>
             <p>Freelance campaigns, client acquisition, and hands-on business development.</p>
           </div>
-          <div className={styles.experienceList}>
-            <article className={styles.experienceItem} data-reveal>
+          <div className={styles.experienceList} data-experience-timeline>
+            <span className={styles.experienceTrack} data-experience-line aria-hidden="true" />
+            <article className={styles.experienceItem} data-experience-entry>
+              <span className={styles.experienceMarker} data-experience-marker aria-hidden="true" />
               <div className={styles.experienceDate}>2024 — PRESENT</div>
               <div><h3>Freelance Business Development Executive</h3><p className={styles.experienceCompany}>Upwork &amp; LinkedIn · Remote</p>
                 <ul><li>Plan and run outbound lead generation campaigns for multiple clients.</li><li>Research target markets and build qualified prospect lists with LinkedIn Sales Navigator.</li><li>Write tailored proposals and pitches, manage sales pipelines, and track conversion activity.</li><li>Optimize client LinkedIn and Upwork profiles and nurture relationships that lead to repeat work.</li></ul>
               </div>
             </article>
-            <article className={styles.experienceItem} data-reveal>
+            <article className={styles.experienceItem} data-experience-entry>
+              <span className={styles.experienceMarker} data-experience-marker aria-hidden="true" />
               <div className={styles.experienceDate}>JULY — SEPTEMBER 2026</div>
-              <div><h3>Business Development Intern</h3><p className={styles.experienceCompany}>Octacer · Digital Services</p>
+              <div>
+                <div className={styles.experienceHeading}>
+                  <div><h3>Business Development Intern</h3><p className={styles.experienceCompany}>Octacer · Digital Services</p></div>
+                  <Image className={styles.companyLogo} src="/images/octacer-logo.png" alt="Octacer logo" width={447} height={447} />
+                </div>
                 <ul><li>Generated qualified leads through targeted outreach and market analysis.</li><li>Prepared proposals and presentations and supported growth opportunity research.</li><li>Built early relationships with prospects and clients in digital services.</li></ul>
               </div>
             </article>
