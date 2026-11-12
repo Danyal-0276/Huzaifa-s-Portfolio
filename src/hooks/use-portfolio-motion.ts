@@ -209,7 +209,7 @@ export function usePortfolioMotion<T extends HTMLElement>(
           gsap.to(watermark, {
             yPercent: -18,
             scale: 0.76,
-            transformOrigin: "left center",
+            transformOrigin: "center center",
             ease: "none",
             scrollTrigger: {
               trigger: hero,

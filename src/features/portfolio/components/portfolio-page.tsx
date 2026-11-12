@@ -186,17 +186,10 @@ export default function PortfolioPage() {
       <main id="main-content">
         <section className={styles.hero} id="home" data-hero>
           <div className={styles.heroGrid} aria-hidden="true" />
+          <div className={styles.heroRings} aria-hidden="true"><span /><span /><span /></div>
           <div className={styles.heroWatermark} data-parallax="watermark" aria-hidden="true">HUZAIFA</div>
-          <div className={styles.heroPortrait} data-parallax="portrait" aria-label="Portraits of Muhammad Huzaifa Ali">
-            <div className={`${styles.portraitPanel} ${styles.portraitPanelBack}`} data-swing>
-              <Image src="/images/huzaifa-profile-dark.png" alt="Huzaifa in profile against a dark background" fill sizes="(max-width: 680px) 45vw, 28vw" priority data-image-motion />
-            </div>
-            <div className={`${styles.portraitPanel} ${styles.portraitPanelMiddle}`} data-swing>
-              <Image src="/images/huzaifa-profile-light.png" alt="Huzaifa looking ahead in profile" fill sizes="(max-width: 680px) 50vw, 30vw" priority data-image-motion />
-            </div>
-            <div className={`${styles.portraitPanel} ${styles.portraitPanelFront}`} data-swing>
-              <Image src="/images/huzaifa-portrait.png" alt="Muhammad Huzaifa Ali" fill sizes="(max-width: 680px) 68vw, 38vw" priority data-image-motion />
-            </div>
+          <div className={styles.heroPortrait} data-parallax="portrait">
+            <Image src="/images/huzaifa-hero-headphones.png" alt="Muhammad Huzaifa Ali wearing headphones" fill sizes="(max-width: 680px) 84vw, 52vw" priority data-image-motion />
           </div>
           <div className={styles.heroCopy} data-reveal>
             <h1 data-hero-heading>Find the right people.<br /><span><AsciiRippleText text="Start real conversations." /></span></h1>

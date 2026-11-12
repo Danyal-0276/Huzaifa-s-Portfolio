@@ -135,52 +135,50 @@
   pointer-events: none;
 }
 
+.heroRings { position: absolute; z-index: 0; inset: 0; overflow: hidden; pointer-events: none; }
+.heroRings::before, .heroRings::after { content: ""; position: absolute; top: 47%; left: 50%; aspect-ratio: 1; border-radius: 50%; transform: translate(-50%, -50%); }
+.heroRings::before { width: min(72vw, 930px); border: 1px solid rgb(255 255 255 / 24%); animation: orbit-turn 34s linear infinite; }
+.heroRings::after { width: min(55vw, 700px); border: 1px dashed rgb(20 20 20 / 18%); animation: orbit-turn 48s linear infinite reverse; }
+.heroRings span { position: absolute; top: 50%; left: 50%; width: 9px; height: 9px; border-radius: 50%; background: #f7f7f5; box-shadow: 0 0 22px rgb(255 255 255 / 58%); }
+.heroRings span:nth-child(1) { margin: -31vh 0 0 23vw; animation: particle-drift 4.4s ease-in-out infinite; }
+.heroRings span:nth-child(2) { width: 6px; height: 6px; margin: 19vh 0 0 -26vw; background: #491b0c; box-shadow: 0 0 20px rgb(73 27 12 / 40%); animation: particle-drift 5s ease-in-out infinite reverse; }
+.heroRings span:nth-child(3) { width: 5px; height: 5px; margin: -6vh 0 0 -33vw; background: #f7f7f5; animation: particle-drift 3.8s ease-in-out infinite; }
+@keyframes orbit-turn { to { rotate: 1turn; } }
+@keyframes particle-drift { 50% { translate: 0 -12px; } }
+
 .heroWatermark {
   position: absolute;
   z-index: -1;
-  left: 12%;
-  top: 29%;
-  color: rgb(255 255 255 / 12%);
-  font-size: clamp(150px, 25vw, 365px);
+  top: 21%;
+  right: 0;
+  left: 0;
+  color: rgb(255 255 255 / 20%);
+  text-align: center;
+  font-size: clamp(165px, 30vw, 440px);
   font-weight: 700;
   line-height: .78;
   letter-spacing: -.13em;
   white-space: nowrap;
-  transform-origin: left center;
+  transform-origin: center center;
   pointer-events: none;
   will-change: transform;
 }
 
 .heroPortrait {
   position: absolute;
-  z-index: 1;
-  right: 4%;
+  z-index: 2;
+  left: 50%;
   bottom: 0;
-  width: min(55vw, 700px);
-  height: 82%;
+  width: min(54vw, 730px);
+  height: 88%;
+  translate: -50% 0;
   will-change: transform;
 }
+.heroPortrait::before { content: ""; position: absolute; z-index: 0; left: 7%; bottom: 5%; width: 86%; height: 70%; border-radius: 50%; background: radial-gradient(ellipse, rgb(247 247 245 / 25%), rgb(247 247 245 / 9%) 42%, transparent 72%); }
+.heroPortrait img { z-index: 1; object-fit: contain; object-position: bottom center; filter: drop-shadow(0 22px 30px rgb(39 20 13 / 26%)); transform-origin: center bottom; }
 
-.portraitPanel {
-  position: absolute;
-  overflow: hidden;
-  border: 7px solid #f7f7f5;
-  border-radius: 4px;
-  background: #f7f7f5;
-  box-shadow: 0 25px 48px rgb(39 20 13 / 25%);
-  transform-origin: 50% 5%;
-  will-change: transform;
-}
-
-.portraitPanel img { object-fit: cover; }
-.portraitPanelBack { top: 10%; right: 5%; width: 47%; height: 57%; transform: rotate(8deg); background: #1b1b1b; }
-.portraitPanelBack img { filter: saturate(.78); }
-.portraitPanelMiddle { top: 19%; left: 6%; width: 52%; height: 58%; transform: rotate(-8deg); }
-.portraitPanelFront { z-index: 3; bottom: -1%; left: 26%; width: 62%; height: 94%; overflow: visible; border: 0; background: transparent; box-shadow: none; transform: rotate(-1deg); }
-.portraitPanelFront img { object-fit: contain; object-position: bottom center; filter: drop-shadow(0 16px 24px rgb(28 16 10 / 22%)); }
-
-.heroCopy { position: relative; z-index: 4; width: min(57%, 680px); margin-right: auto; padding-bottom: 20px; }
-.heroCopy h1 { margin: 0 0 22px; font-size: clamp(55px, 6.7vw, 96px); font-weight: 650; line-height: .94; letter-spacing: -.085em; }
+.heroCopy { position: absolute; z-index: 4; bottom: clamp(36px, 5.5vh, 66px); left: var(--page-gutter); width: min(39%, 505px); margin: 0; padding: 0; }
+.heroCopy h1 { margin: 0 0 18px; font-size: clamp(49px, 5.8vw, 82px); font-weight: 650; line-height: .94; letter-spacing: -.085em; }
 .heroCopy h1 > span { color: #f7f7f5; }
 .heroRole { margin: 0 0 15px; max-width: 460px; font-size: clamp(15px, 1.6vw, 20px); font-weight: 600; letter-spacing: -.03em; }
 .heroText { max-width: 410px; margin: 0; color: #512516; font-size: 13px; line-height: 1.75; }
@@ -380,9 +378,9 @@
   .desktopNav a > span { font-size: 8px; }
   .headerCta { min-height: 48px; gap: 12px; padding: 0 14px 0 17px; font-size: 12px; }
   .hero { min-height: 680px; }
-  .heroCopy { width: 55%; }
-  .heroCopy h1 { font-size: clamp(55px, 7.5vw, 76px); }
-  .heroPortrait { right: -2%; width: 56vw; }
+  .heroCopy { width: min(42%, 430px); }
+  .heroCopy h1 { font-size: clamp(47px, 6vw, 65px); }
+  .heroPortrait { width: min(62vw, 640px); height: 84%; }
   .heroProject { right: 5%; bottom: 48px; }
   .aboutGrid { gap: 6vw; }
   .aboutPortrait { height: 420px; }
@@ -404,16 +402,16 @@
   .menuOverlay nav a { grid-template-columns: 40px 1fr; font-size: clamp(39px, 11.5vw, 68px); }
   .menuFoot { font-size: 7px; }
   .hero { height: auto; min-height: 850px; max-height: none; display: block; padding: 103px 7vw 75px; }
-  .heroWatermark { top: 31%; left: 8%; font-size: clamp(116px, 29vw, 190px); writing-mode: vertical-rl; }
-  .heroPortrait { right: -7%; bottom: 0; width: 79vw; height: 54%; }
-  .portraitPanelBack { top: 10%; right: 6%; width: 47%; height: 54%; }
-  .portraitPanelMiddle { top: 17%; left: 2%; width: 52%; height: 56%; }
-  .portraitPanelFront { left: 22%; width: 69%; height: 98%; }
-  .heroCopy { position: absolute; z-index: 4; top: 16%; left: 7vw; width: 89%; padding: 0; }
-  .heroCopy h1 { max-width: 500px; font-size: clamp(53px, 13vw, 78px); }
+  .heroWatermark { top: 35%; left: 0; right: 0; font-size: clamp(100px, 24vw, 170px); writing-mode: horizontal-tb; }
+  .heroRings { top: 21%; }
+  .heroRings::before { width: 94vw; }
+  .heroRings::after { width: 72vw; }
+  .heroPortrait { left: 50%; right: auto; bottom: 0; width: 86vw; height: 57%; }
+  .heroCopy { position: absolute; z-index: 4; top: 15%; bottom: auto; left: 7vw; width: 86%; padding: 0; }
+  .heroCopy h1 { max-width: 500px; font-size: clamp(48px, 12vw, 72px); }
   .heroRole { max-width: 330px; font-size: 13px; }
   .heroText { max-width: 300px; font-size: 10px; }
-  .heroActions { gap: 15px; margin-top: 18px; }
+  .heroActions { flex-wrap: wrap; gap: 10px; margin-top: 18px; }
   .primaryButton, .heroSecondary { min-height: 45px; padding: 0 16px; font-size: 10px; }
   .heroProject { right: 5%; bottom: 54px; width: clamp(178px, 48vw, 230px); }
   .heroProjectVisual { min-height: 146px; padding: 12px; }
@@ -494,6 +492,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .heroProject, .portraitPanel, .workflowCard { transition: none !important; }
+  .heroRings::before, .heroRings::after, .heroRings span { animation: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroProject, .workflowCard { transition: none !important; }
   .toolCloud span { transition: none !important; }
 }
