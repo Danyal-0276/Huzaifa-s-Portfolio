@@ -86,6 +86,31 @@ function PipelineArtwork({ kind }: { kind: "research" | "outreach" | "pipeline" 
   );
 }
 
+function ContactIcon({ kind }: { kind: "phone" | "mail" | "linkedin" }) {
+  if (kind === "linkedin") {
+    return (
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2ZM8.34 18H5.67V9.4h2.67ZM7 8.23a1.55 1.55 0 1 1 .02-3.1A1.55 1.55 0 0 1 7 8.23ZM18.34 18h-2.67v-4.18c0-1-.02-2.28-1.39-2.28s-1.6 1.08-1.6 2.2V18h-2.67V9.4h2.56v1.17h.04a2.8 2.8 0 0 1 2.52-1.39c2.7 0 3.2 1.78 3.2 4.09Z" />
+      </svg>
+    );
+  }
+
+  if (kind === "phone") {
+    return (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M5 3h3l2 5-2.2 1.6a15 15 0 0 0 6.6 6.6L16 14l5 2v3a2 2 0 0 1-2.2 2A18 18 0 0 1 3 5.2 2 2 0 0 1 5 3Z" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <rect x="3" y="5" width="18" height="14" rx="2" />
+      <path d="m3 7 9 6 9-6" />
+    </svg>
+  );
+}
+
 export default function PortfolioPage() {
   const rootRef = useRef<HTMLDivElement | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -120,8 +145,13 @@ export default function PortfolioPage() {
           <Image src="/images/huzaifa-wordmark.png" alt="Huzaifa" width={2059} height={239} priority />
         </a>
         <nav className={styles.desktopNav} aria-label="Main navigation">
-          <a href="#home">Home</a><a href="#about">About</a><a href="#services">Services</a><a href="#experience">Experience</a><a href="#contact">Contact</a>
+          <a href="#about"><span>01</span>About</a>
+          <a href="#experience"><span>02</span>Work</a>
+          <a href="#services"><span>03</span>Services</a>
+          <a href="#tools"><span>04</span>Toolkit</a>
+          <a href="#contact"><span>05</span>Contact</a>
         </nav>
+        <a className={styles.headerCta} href="mailto:huzaifajutt853@gmail.com" data-magnetic>Let’s talk <span aria-hidden="true">↗</span></a>
         <button
           className={`${styles.menuButton} ${menuOpen ? styles.menuButtonOpen : ""}`}
           type="button"
@@ -158,21 +188,21 @@ export default function PortfolioPage() {
           <div className={styles.heroWatermark} data-parallax="watermark" aria-hidden="true">HUZAIFA</div>
           <div className={styles.heroPortrait} data-parallax="portrait" aria-label="Portraits of Muhammad Huzaifa Ali">
             <div className={`${styles.portraitPanel} ${styles.portraitPanelBack}`} data-swing>
-              <Image src="/images/huzaifa-profile-dark.png" alt="Huzaifa in profile against a dark background" fill sizes="(max-width: 680px) 45vw, 28vw" priority />
+              <Image src="/images/huzaifa-profile-dark.png" alt="Huzaifa in profile against a dark background" fill sizes="(max-width: 680px) 45vw, 28vw" priority data-image-motion />
             </div>
             <div className={`${styles.portraitPanel} ${styles.portraitPanelMiddle}`} data-swing>
-              <Image src="/images/huzaifa-profile-light.png" alt="Huzaifa looking ahead in profile" fill sizes="(max-width: 680px) 50vw, 30vw" priority />
+              <Image src="/images/huzaifa-profile-light.png" alt="Huzaifa looking ahead in profile" fill sizes="(max-width: 680px) 50vw, 30vw" priority data-image-motion />
             </div>
             <div className={`${styles.portraitPanel} ${styles.portraitPanelFront}`} data-swing>
-              <Image src="/images/huzaifa-portrait.png" alt="Muhammad Huzaifa Ali" fill sizes="(max-width: 680px) 68vw, 38vw" priority />
+              <Image src="/images/huzaifa-portrait.png" alt="Muhammad Huzaifa Ali" fill sizes="(max-width: 680px) 68vw, 38vw" priority data-image-motion />
             </div>
           </div>
           <div className={styles.heroCopy} data-reveal>
-            <h1>Find the right people.<br /><span><AsciiRippleText text="Start real conversations." /></span></h1>
+            <h1 data-hero-heading>Find the right people.<br /><span><AsciiRippleText text="Start real conversations." /></span></h1>
             <p className={styles.heroRole}>B2B lead generation &amp; business development</p>
             <p className={styles.heroText}>I help teams research their market, reach qualified prospects, and turn promising conversations into client relationships.</p>
             <div className={styles.heroActions}>
-              <a className={styles.primaryButton} href="#services">Explore how I work <span>↗</span></a>
+              <a className={styles.primaryButton} href="#services" data-magnetic>Explore how I work <span>↗</span></a>
               <a className={styles.heroSecondary} href="mailto:huzaifajutt853@gmail.com">Get in touch</a>
             </div>
           </div>
@@ -199,16 +229,16 @@ export default function PortfolioPage() {
                 <span className={styles.aboutAsterisk} data-spin aria-hidden="true">✳</span>
               </div>
               <p className={styles.aboutIntro}>I’m Muhammad Huzaifa Ali, a business development executive and lead generation specialist based in Lahore, Pakistan.</p>
-              <p className={styles.aboutBody}>For the past two years, I’ve helped multiple clients research target markets, build qualified prospect lists, and run LinkedIn and email outreach. I write tailored proposals, manage sales pipelines, and focus on turning a good first conversation into a lasting client relationship.</p>
-              <p className={styles.aboutBody}>My freelance journey also included some video editing work. Today, I’m pursuing a BS in Computer Science at Green International University, bringing a technical perspective to the way I approach business growth.</p>
+              <p className={styles.aboutBody}>For the past two years, I’ve worked with clients on target-market research, qualified prospect lists, LinkedIn and email outreach, tailored proposals, and sales pipeline support.</p>
+              <p className={styles.aboutBody}>Alongside business development, my freelance work has included video editing. I’m currently pursuing a BS in Computer Science at Green International University.</p>
               <div className={styles.statsGrid}>
                 <article className={styles.statCard} data-reveal>
-                  <div className={styles.statNumber}><StatsCounter value={2} suffix="+" duration={1.7} /></div>
-                  <h3>Years in business development</h3><p>Freelance lead generation and client acquisition.</p>
+                  <div className={styles.statNumber}><StatsCounter value={20} prefix="15–" startValue={15} duration={1.7} /></div>
+                  <h3>Freelance clients closed</h3><p>Across his freelance services and client work.</p>
                 </article>
                 <article className={styles.statCard} data-reveal>
-                  <div className={styles.statNumber}><StatsCounter value={2} duration={1.8} /></div>
-                  <h3>Contracts signed</h3><p>Won through freelance outreach and proposals.</p>
+                  <div className={styles.statNumber}><StatsCounter value={50} suffix="+" duration={1.8} /></div>
+                  <h3>Freelance leads</h3><p>Generated independently across freelance work.</p>
                 </article>
               </div>
             </div>
@@ -274,13 +304,13 @@ export default function PortfolioPage() {
           </div>
         </section>
 
-        <section className={styles.toolsSection}>
+        <section className={styles.toolsSection} id="tools">
           <div className={styles.toolsIntro} data-reveal>
             <h2>The right tools<br />for <span>the right reach.</span></h2>
             <p>Platforms I’ve used for prospect research, outreach, client work, and reporting.</p>
           </div>
           <div className={styles.toolCloud}>
-            {tools.map((tool) => <span key={tool}>{tool}</span>)}
+            {tools.map((tool) => <span key={tool} data-reveal>{tool}</span>)}
           </div>
         </section>
 
@@ -292,32 +322,36 @@ export default function PortfolioPage() {
             <a className={styles.textLink} href="https://giu.edu.pk/course-detail/bs-computer-sciences" target="_blank" rel="noreferrer">Explore the GIU Computer Science program <span>↗</span></a>
           </div>
           <div className={styles.educationPhotos} data-reveal>
-            <div className={styles.universityBanner}><Image src="/images/giu-main-banner.webp" alt="Green International University campus in Lahore" fill sizes="(max-width: 800px) 100vw, 48vw" /></div>
-            <div className={styles.universityBuilding}><Image src="/images/giu-building.webp" alt="Green International University building" fill sizes="(max-width: 800px) 45vw, 22vw" /></div>
+            <div className={styles.universityBanner}><Image src="/images/giu-main-banner.webp" alt="Green International University campus in Lahore" fill sizes="(max-width: 800px) 100vw, 48vw" data-image-motion /></div>
+            <div className={styles.universityBuilding}><Image src="/images/giu-building.webp" alt="Green International University building" fill sizes="(max-width: 800px) 45vw, 22vw" data-image-motion /></div>
           </div>
         </section>
       </main>
 
       <footer className={styles.footer} id="contact">
         <div className={styles.footerTop}>
-          <div className={styles.footerBio}>
-            <h2>Let’s start<br /><span>a conversation.</span></h2>
+          <div className={styles.footerBio} data-reveal>
+            <h2><AsciiRippleText text="Let’s start" /><br /><span>a conversation.</span></h2>
             <p>Available for remote business development and lead generation work with teams looking to build meaningful client relationships.</p>
-            <a className={styles.footerEmail} href="mailto:huzaifajutt853@gmail.com">huzaifajutt853@gmail.com <span>↗</span></a>
           </div>
           <div className={styles.footerSide}>
             <div className={styles.contactCard}>
-              <a href="tel:+923323300702">+92 332 3300702 <b>↗</b></a>
-              <a href="https://www.linkedin.com/in/muhammad-huzaifa-ali-075a212a2/" target="_blank" rel="noreferrer"><span>LINKEDIN</span>Muhammad Huzaifa Ali <b>↗</b></a>
-              <a href="mailto:huzaifajutt853@gmail.com">Send an email <b>↗</b></a>
+              <a className={styles.contactTile} href="mailto:huzaifajutt853@gmail.com" data-reveal data-magnetic>
+                <span className={styles.contactIcon}><ContactIcon kind="mail" /></span>
+                <span className={styles.contactTileText}><strong>Send an email</strong><span>huzaifajutt853@gmail.com</span></span><b>↗</b>
+              </a>
+              <a className={styles.contactTile} href="tel:+923323300702" data-reveal data-magnetic>
+                <span className={styles.contactIcon}><ContactIcon kind="phone" /></span>
+                <span className={styles.contactTileText}><strong>Call Huzaifa</strong><span>+92 332 3300702</span></span><b>↗</b>
+              </a>
             </div>
             <div className={styles.footerLinks}>
-              <div><a href="https://www.linkedin.com/in/muhammad-huzaifa-ali-075a212a2/" target="_blank" rel="noreferrer">LinkedIn ↗</a></div>
-              <div><a href="#services">Services</a><a href="#experience">Experience</a><a href="#education">Education</a></div>
+              <nav className={styles.footerNav} aria-label="Footer navigation"><a href="#services">Services</a><a href="#experience">Experience</a><a href="#education">Education</a></nav>
+              <a className={styles.socialIcon} href="https://www.linkedin.com/in/muhammad-huzaifa-ali-075a212a2/" target="_blank" rel="noreferrer" aria-label="Visit Muhammad Huzaifa Ali on LinkedIn"><ContactIcon kind="linkedin" /><span aria-hidden="true">↗</span></a>
             </div>
           </div>
         </div>
-        <div className={styles.footerWordmark}>Huzaifa<span>®</span></div>
+        <div className={styles.footerWordmark} data-reveal>Huzaifa<span>®</span></div>
         <div className={styles.footerBar}><span>© {new Date().getFullYear()} MUHAMMAD HUZAIFA ALI</span><a href="#home">BACK TO TOP ↑</a><span>LAHORE, PAKISTAN</span></div>
       </footer>
     </div>

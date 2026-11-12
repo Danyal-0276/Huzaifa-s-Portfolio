@@ -5,7 +5,9 @@ import styles from "./stats-counter.module.css";
 
 export type StatsCounterProps = {
   value: number;
+  prefix?: string;
   suffix?: string;
+  startValue?: number;
   duration?: number;
   locale?: string;
   className?: string;
@@ -13,13 +15,15 @@ export type StatsCounterProps = {
 
 export default function StatsCounter({
   value,
+  prefix = "",
   suffix = "",
+  startValue = 0,
   duration = 2,
   locale = "en",
   className,
 }: StatsCounterProps) {
   const counterRef = useRef<HTMLSpanElement | null>(null);
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(startValue);
   const formattedValue = new Intl.NumberFormat(locale).format(value);
 
   useEffect(() => {
@@ -45,7 +49,8 @@ export default function StatsCounter({
       const { animate, createScope } = await import("animejs");
       if (!active) return;
 
-      const counter = { value: 0 };
+      setCount(startValue);
+      const counter = { value: startValue };
       const scope = createScope({ root: counterRef }).add(() => {
         animate(counter, {
           value,
@@ -74,7 +79,7 @@ export default function StatsCounter({
       observer?.disconnect();
       revertScope?.();
     };
-  }, [duration, value]);
+  }, [duration, startValue, value]);
 
   return (
     <span
@@ -82,10 +87,10 @@ export default function StatsCounter({
       className={[styles.counter, className].filter(Boolean).join(" ")}
     >
       <span aria-hidden="true">
-        {new Intl.NumberFormat(locale).format(count)}
+        {prefix}{new Intl.NumberFormat(locale).format(count)}
         {suffix}
       </span>
-      <span className={styles.srOnly}>{formattedValue}{suffix}</span>
+      <span className={styles.srOnly}>{prefix}{formattedValue}{suffix}</span>
     </span>
   );
 }

@@ -139,6 +139,7 @@ export function usePortfolioMotion<T extends HTMLElement>(
       revertAnime = () => animeScope.revert();
 
       gsap.registerPlugin(ScrollTrigger);
+      const removeGsapListeners: Array<() => void> = [];
       const gsapContext = gsap.context(() => {
         const hero = root.querySelector("[data-hero]");
         const portrait = root.querySelector("[data-parallax='portrait']");
@@ -173,6 +174,15 @@ export function usePortfolioMotion<T extends HTMLElement>(
           });
         }
 
+        const heroHeading = root.querySelector("[data-hero-heading]");
+        if (heroHeading) {
+          gsap.fromTo(
+            heroHeading,
+            { y: 22, clipPath: "inset(0 0 100% 0)" },
+            { y: 0, clipPath: "inset(0 0 0% 0)", duration: 1.15, delay: 0.2, ease: "power3.out" },
+          );
+        }
+
         if (window.innerWidth > 720) {
           root.querySelectorAll("[data-card-tilt]").forEach((panel, index) => {
             gsap.fromTo(
@@ -192,8 +202,51 @@ export function usePortfolioMotion<T extends HTMLElement>(
             );
           });
         }
+
+        root.querySelectorAll<HTMLElement>("[data-image-motion]").forEach((image) => {
+          const trigger = image.closest("[data-reveal]") ?? image.parentElement ?? image;
+          gsap.fromTo(
+            image,
+            { scale: 1.08, yPercent: 3 },
+            {
+              scale: 1,
+              yPercent: -3,
+              ease: "none",
+              scrollTrigger: {
+                trigger,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: 1,
+              },
+            },
+          );
+        });
+
+        root.querySelectorAll<HTMLElement>("[data-magnetic]").forEach((element) => {
+          const moveX = gsap.quickTo(element, "x", { duration: 0.35, ease: "power3.out" });
+          const moveY = gsap.quickTo(element, "y", { duration: 0.35, ease: "power3.out" });
+          const onMove = (event: PointerEvent) => {
+            if (event.pointerType === "touch") return;
+            const bounds = element.getBoundingClientRect();
+            moveX((event.clientX - bounds.left - bounds.width / 2) * 0.12);
+            moveY((event.clientY - bounds.top - bounds.height / 2) * 0.14);
+          };
+          const onLeave = () => {
+            moveX(0);
+            moveY(0);
+          };
+          element.addEventListener("pointermove", onMove);
+          element.addEventListener("pointerleave", onLeave);
+          removeGsapListeners.push(() => {
+            element.removeEventListener("pointermove", onMove);
+            element.removeEventListener("pointerleave", onLeave);
+          });
+        });
       }, root);
-      revertGsap = () => gsapContext.revert();
+      revertGsap = () => {
+        removeGsapListeners.forEach((remove) => remove());
+        gsapContext.revert();
+      };
     };
 
     void setup();
