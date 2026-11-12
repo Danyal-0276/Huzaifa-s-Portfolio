@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import AsciiRippleText from "@/components/ui/ascii-ripple-text";
 import LightLinesIntro from "@/components/ui/light-lines-intro";
 import StatsCounter from "@/components/ui/stats-counter";
@@ -128,6 +128,17 @@ function ContactIcon({ kind }: { kind: "phone" | "mail" | "linkedin" }) {
       <path d="m3 7 9 6 9-6" />
     </svg>
   );
+}
+
+function handleContactSubmit(event: FormEvent<HTMLFormElement>) {
+  event.preventDefault();
+  const formData = new FormData(event.currentTarget);
+  const name = String(formData.get("name") ?? "").trim();
+  const email = String(formData.get("email") ?? "").trim();
+  const message = String(formData.get("message") ?? "").trim();
+  const subject = encodeURIComponent(`Portfolio inquiry from ${name}`);
+  const body = encodeURIComponent(`${message}\n\nFrom: ${name}\nEmail: ${email}`);
+  window.location.href = `mailto:huzaifajutt853@gmail.com?subject=${subject}&body=${body}`;
 }
 
 export default function PortfolioPage() {
@@ -370,27 +381,39 @@ export default function PortfolioPage() {
       </main>
 
       <footer className={styles.footer} id="contact">
-        <div className={styles.footerTop}>
-          <div className={styles.footerBio} data-reveal>
-            <h2><AsciiRippleText text="Let’s start" /><br /><span>a conversation.</span></h2>
-            <p>Available for remote business development and lead generation work with teams looking to build meaningful client relationships.</p>
+        <div className={styles.footerCta}>
+          <div className={styles.footerEyebrow}><span>07 /</span> LET’S MAKE SOMETHING MOVE</div>
+          <div className={styles.footerHeadlineRow}>
+            <h2 className={styles.footerHeadline} data-footer-heading><span>READY FOR</span><span>BETTER OUTREACH?</span></h2>
+            <a className={styles.footerCircleCta} href="mailto:huzaifajutt853@gmail.com" aria-label="Start a conversation by email" data-magnetic><span aria-hidden="true">↗</span></a>
           </div>
-          <div className={styles.footerSide}>
-            <div className={styles.contactCard}>
-              <a className={styles.contactTile} href="mailto:huzaifajutt853@gmail.com" data-reveal data-magnetic>
-                <span className={styles.contactIcon}><ContactIcon kind="mail" /></span>
-                <span className={styles.contactTileText}><strong>Send an email</strong><span>huzaifajutt853@gmail.com</span></span>
-              </a>
-              <a className={styles.contactTile} href="tel:+923323300702" data-reveal data-magnetic>
-                <span className={styles.contactIcon}><ContactIcon kind="phone" /></span>
-                <span className={styles.contactTileText}><strong>Call Huzaifa</strong><span>+92 332 3300702</span></span>
-              </a>
+          <p className={styles.footerLead}>Open to remote lead generation, business development roles, and new client conversations.</p>
+        </div>
+        <div className={styles.footerContactGrid}>
+          <div className={styles.footerContactInfo}>
+            <p className={styles.footerMicro}>START WITH HELLO</p>
+            <a className={styles.footerEmail} href="mailto:huzaifajutt853@gmail.com">huzaifajutt853@gmail.com <span aria-hidden="true">↗</span></a>
+            <a className={styles.footerPhone} href="tel:+923323300702">+92 332 3300702</a>
+            <div className={styles.footerSocials}>
+              <a className={styles.footerSocial} href="https://www.linkedin.com/in/muhammad-huzaifa-ali-075a212a2/" target="_blank" rel="noreferrer" aria-label="Muhammad Huzaifa Ali on LinkedIn"><ContactIcon kind="linkedin" /></a>
+              <a className={styles.footerSocialText} href="https://www.linkedin.com/in/muhammad-huzaifa-ali-075a212a2/" target="_blank" rel="noreferrer">LinkedIn</a>
             </div>
-            <div className={styles.footerLinks}>
+            <div className={styles.footerNavBlock}>
+              <p className={styles.footerMicro}>EXPLORE</p>
               <nav className={styles.footerNav} aria-label="Footer navigation"><a href="#services">Services</a><a href="#experience">Experience</a><a href="#education">Education</a></nav>
-              <a className={styles.socialIcon} href="https://www.linkedin.com/in/muhammad-huzaifa-ali-075a212a2/" target="_blank" rel="noreferrer" aria-label="Visit Muhammad Huzaifa Ali on LinkedIn" data-magnetic><ContactIcon kind="linkedin" /></a>
             </div>
           </div>
+          <form className={styles.footerForm} onSubmit={handleContactSubmit}>
+            <div className={styles.footerFields}>
+              <label>Your name<input name="name" autoComplete="name" placeholder="Name" required /></label>
+              <label>Email address<input name="email" type="email" autoComplete="email" placeholder="you@example.com" required /></label>
+            </div>
+            <label className={styles.footerMessageField}>What are you thinking?<textarea name="message" rows={3} placeholder="A role, a project, or an interesting problem…" required /></label>
+            <div className={styles.footerSubmitRow}>
+              <p>Good conversations start here.</p>
+              <button className={styles.footerSubmit} type="submit">Send a message</button>
+            </div>
+          </form>
         </div>
         <div className={styles.footerWordmark} data-reveal>Huzaifa<span>®</span></div>
         <div className={styles.footerBar}><span>© {new Date().getFullYear()} MUHAMMAD HUZAIFA ALI</span><a href="#home">Back to top</a><span>LAHORE, PAKISTAN</span></div>
