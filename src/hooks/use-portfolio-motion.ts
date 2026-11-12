@@ -2,7 +2,7 @@
 
 import { useEffect, type RefObject } from "react";
 
-export function usePortfolioMotion(rootRef: RefObject<HTMLElement | null>) {
+export function usePortfolioMotion(rootRef: RefObject<Element | null>) {
   useEffect(() => {
     const root = rootRef.current;
     if (!root || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
