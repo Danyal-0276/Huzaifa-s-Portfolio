@@ -14,3 +14,4 @@
 .priceToggle button{flex:1}
 .projectCard .artwork>:not(.artChrome){transition:transform .65s cubic-bezier(.2,.75,.2,1)}.projectCard:hover .artwork>:not(.artChrome){transform:scale(1.045)}
 .header{z-index:40}.headerMenuOpen .desktopNav{visibility:hidden}
+.heroProject{isolation:isolate;overflow:visible;box-shadow:0 22px 60px rgb(59 22 8 / 24%)}.heroProject::before,.heroProject::after{content:"";position:absolute;z-index:-1;inset:0;border-radius:7px;background:#f7f7f5}.heroProject::before{transform:rotate(-3.5deg) translateY(8px)}.heroProject::after{background:#deddd7;transform:rotate(-1.8deg) translateY(5px)}.heroProject .artwork{border-radius:7px 7px 0 0}.heroProject .projectFooter{border-radius:0 0 7px 7px}.projectPanel{transform-origin:center;will-change:transform}.heroCopy h1 [data-ascii-ripple]:focus-visible{outline:1px solid #f7f7f5;outline-offset:5px}
