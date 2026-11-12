@@ -165,6 +165,35 @@ export function usePortfolioMotion<T extends HTMLElement>(
             .fromTo(experienceCopy, { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.42, stagger: 0.045, ease: "power2.out" }, 0.38);
         }
 
+        const workflowSection = root.querySelector<HTMLElement>("[data-workflow-section]");
+        const workflowCards = root.querySelectorAll<HTMLElement>("[data-workflow-card]");
+        const workflowArt = root.querySelectorAll<HTMLElement>("[data-workflow-art]");
+        if (workflowSection && workflowCards.length) {
+          const workflowTimeline = gsap.timeline({
+            scrollTrigger: {
+              trigger: workflowSection,
+              start: "top 78%",
+              end: "bottom 38%",
+              scrub: 0.9,
+              invalidateOnRefresh: true,
+            },
+          });
+
+          workflowTimeline
+            .fromTo(
+              workflowCards,
+              { autoAlpha: 0, y: 92, rotateZ: (index) => (index - 1) * 2.5 },
+              { autoAlpha: 1, y: 0, rotateZ: 0, duration: 0.9, stagger: 0.22, ease: "power3.out" },
+              0,
+            )
+            .fromTo(
+              workflowArt,
+              { scale: 1.1, yPercent: 7 },
+              { scale: 1, yPercent: -3, duration: 1.15, stagger: 0.18, ease: "none" },
+              0.12,
+            );
+        }
+
         const hero = root.querySelector("[data-hero]");
         const portrait = root.querySelector("[data-parallax='portrait']");
         const watermark = root.querySelector("[data-parallax='watermark']");

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="45" y1="24" x2="652" y2="406" gradientUnits="userSpaceOnUse"><stop stop-color="#E7DCD0"/><stop offset="1" stop-color="#F4EEE7"/></linearGradient>
+    <filter id="shadow" x="349" y="154" width="335" height="221" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feGaussianBlur stdDeviation="12"/></filter>
+  </defs>
+  <path fill="url(#bg)" d="M0 0h720v420H0z"/>
+  <circle cx="299" cy="219" r="155" stroke="#C99B7D" stroke-opacity=".48" stroke-width="2"/>
+  <circle cx="299" cy="219" r="119" stroke="#C99B7D" stroke-opacity=".32" stroke-width="2"/>
+  <circle cx="299" cy="219" r="82" stroke="#C99B7D" stroke-opacity=".25" stroke-width="2"/>
+  <circle cx="299" cy="219" r="44" fill="#F8F4EF" stroke="#C99B7D" stroke-opacity=".32"/>
+  <path d="M144 219h310M299 64v310" stroke="#C99B7D" stroke-opacity=".28"/>
+  <circle cx="224" cy="163" r="9" fill="#E04E24"/><circle cx="367" cy="155" r="6" fill="#52625C"/><circle cx="347" cy="292" r="7" fill="#A28B76"/>
+  <circle cx="299" cy="219" r="27" fill="#FFFDF9"/><text x="299" y="224" fill="#34302C" font-family="Arial,sans-serif" font-size="12" text-anchor="middle">ICP</text>
+  <g filter="url(#shadow)" opacity=".14"><path fill="#4A382E" d="M380 157h277v173H380z"/></g>
+  <g transform="rotate(3 517 244)"><rect x="385" y="160" width="270" height="166" rx="10" fill="#FAF9F5"/><circle cx="405" cy="183" r="4" fill="#E04E24"/><text x="405" y="221" fill="#24211F" font-family="Arial,sans-serif" font-size="19" font-weight="700">Find the right fit.</text><rect x="405" y="240" width="223" height="10" rx="5" fill="#E5E0D7"/><rect x="405" y="260" width="210" height="10" rx="5" fill="#E5E0D7"/><rect x="405" y="280" width="164" height="10" rx="5" fill="#E5E0D7"/></g>
+</svg>

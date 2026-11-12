@@ -92,38 +92,15 @@ function ToolIcon({ kind }: { kind: ToolKind }) {
 }
 
 function PipelineArtwork({ kind }: { kind: "research" | "outreach" | "pipeline" }) {
-  if (kind === "research") {
-    return (
-      <div className={`${styles.workflowArt} ${styles.researchArt}`} data-card-tilt aria-hidden="true">
-        <div className={styles.researchRadar}><i /><i /><i /><b>ICP</b></div>
-        <div className={styles.researchCard}><b>Find the right fit.</b><i /><i /><i /></div>
-      </div>
-    );
-  }
-
-  if (kind === "outreach") {
-    return (
-      <div className={`${styles.workflowArt} ${styles.outreachArt}`} data-card-tilt aria-hidden="true">
-        <div className={styles.messageCard}>
-          <div className={styles.messageTop}><i /><i /><i /></div>
-          <b>A relevant first hello.</b>
-          <i /><i /><i />
-          <div className={styles.messageReply}>FOLLOW-UP</div>
-        </div>
-        <div className={styles.outreachOrb} />
-      </div>
-    );
-  }
+  const artwork = {
+    research: { src: "/images/workflow-research.svg", alt: "Illustration of prospect research and an ideal customer profile" },
+    outreach: { src: "/images/workflow-outreach.svg", alt: "Illustration of a tailored first outreach message" },
+    pipeline: { src: "/images/workflow-pipeline.svg", alt: "Illustration of leads moving through a sales pipeline" },
+  }[kind];
 
   return (
-    <div className={`${styles.workflowArt} ${styles.pipelineArt}`} data-card-tilt aria-hidden="true">
-      <div className={styles.pipelineColumns}>
-        <div><i /><i /></div>
-        <div><i /><i /></div>
-        <div><i /></div>
-      </div>
-      <div className={styles.pipelineLine} />
-      <b>Clear next steps.</b>
+    <div className={styles.workflowArt} data-workflow-art>
+      <Image className={styles.workflowImage} src={artwork.src} alt={artwork.alt} fill sizes="(max-width: 680px) 86vw, 34vw" data-card-tilt />
     </div>
   );
 }
@@ -296,21 +273,21 @@ export default function PortfolioPage() {
           </div>
         </section>
 
-        <section className={styles.workflowSection}>
+        <section className={styles.workflowSection} data-workflow-section>
           <div className={styles.workflowIntro} data-reveal>
             <h2>Build a pipeline<br /><span>with purpose.</span></h2>
             <p>Research and outreach work best when every step is focused, relevant, and easy to follow up.</p>
           </div>
           <div className={styles.workflowGrid}>
-            <article className={styles.workflowCard} data-reveal>
+            <article className={styles.workflowCard} data-workflow-card>
               <PipelineArtwork kind="research" />
               <h3>Know who to reach</h3><p>Market research, ideal customer profiles, competitor analysis, and carefully built prospect lists.</p>
             </article>
-            <article className={styles.workflowCard} data-reveal>
+            <article className={styles.workflowCard} data-workflow-card>
               <PipelineArtwork kind="outreach" />
               <h3>Make the first message matter</h3><p>Personalized LinkedIn and email outreach with consistent qualification and follow-up.</p>
             </article>
-            <article className={styles.workflowCard} data-reveal>
+            <article className={styles.workflowCard} data-workflow-card>
               <PipelineArtwork kind="pipeline" />
               <h3>Keep good opportunities moving</h3><p>Tailored proposals, clean CRM records, and clear pipeline and conversion tracking.</p>
             </article>
