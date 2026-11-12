@@ -187,11 +187,11 @@
   position: absolute;
   z-index: -1;
   top: 21%;
-  right: 0;
-  left: 0;
-  color: rgb(255 255 255 / 20%);
-  text-align: center;
-  font-size: clamp(165px, 30vw, 440px);
+  right: -8%;
+  left: 42%;
+  color: rgb(255 255 255 / 15%);
+  text-align: left;
+  font-size: clamp(165px, 25vw, 380px);
   font-weight: 700;
   line-height: .78;
   letter-spacing: -.13em;
@@ -214,12 +214,12 @@
 .heroPortrait::before { content: ""; position: absolute; z-index: 0; left: 7%; bottom: 5%; width: 86%; height: 70%; border-radius: 50%; background: radial-gradient(ellipse, rgb(247 247 245 / 25%), rgb(247 247 245 / 9%) 42%, transparent 72%); }
 .heroPortrait img { z-index: 1; object-fit: contain; object-position: bottom center; filter: drop-shadow(0 22px 30px rgb(39 20 13 / 26%)); transform-origin: center bottom; }
 
-.heroCopy { position: absolute; z-index: 4; bottom: clamp(36px, 5.5vh, 66px); left: var(--page-gutter); width: min(39%, 505px); margin: 0; padding: 0; }
-.heroCopy h1 { margin: 0 0 18px; font-size: clamp(49px, 5.8vw, 82px); font-weight: 650; line-height: .94; letter-spacing: -.085em; }
+.heroCopy { position: absolute; z-index: 4; bottom: clamp(36px, 5.5vh, 66px); left: var(--page-gutter); width: calc(100% - var(--page-gutter) * 2); margin: 0; padding: 0; }
+.heroCopy h1 { max-width: min(39vw, 680px); margin: 0 0 18px; font-size: clamp(49px, 5.8vw, 82px); font-weight: 650; line-height: .94; letter-spacing: -.085em; }
 .heroCopy h1 > span { color: #f7f7f5; }
 .heroMobileBreak { display: none; }
 .heroRole { margin: 0 0 15px; max-width: 460px; font-size: clamp(15px, 1.6vw, 20px); font-weight: 600; letter-spacing: -.03em; }
-.heroText { max-width: 410px; margin: 0; color: #512516; font-size: 15px; line-height: 1.75; }
+.heroText { position: absolute; right: 0; bottom: 112px; width: min(27vw, 390px); margin: 0; color: #512516; font-size: 16px; line-height: 1.75; }
 .heroActions { display: flex; align-items: center; gap: 25px; margin-top: 27px; }
 .primaryButton { display: inline-flex; align-items: center; justify-content: center; min-height: 50px; padding: 0 24px; border: 1px solid #141414; border-radius: 999px; background: #141414; color: #f7f7f5; font-size: 12px; font-weight: 600; transition: transform .25s, background .25s, box-shadow .25s; }
 .primaryButton:hover { transform: translateY(-3px); background: #302c29; box-shadow: 0 12px 24px rgb(20 20 20 / 18%); }
@@ -405,7 +405,9 @@
   .desktopNav a > span { font-size: 8px; }
   .headerCta { min-height: 48px; gap: 12px; padding: 0 14px 0 17px; font-size: 12px; }
   .hero { min-height: 680px; }
-  .heroCopy { width: min(42%, 430px); }
+  .heroCopy { left: 5vw; width: 90vw; }
+  .heroCopy h1 { max-width: min(47vw, 520px); }
+  .heroText { right: 0; bottom: 112px; width: 27vw; font-size: 14px; }
   .heroCopy h1 { font-size: clamp(47px, 6vw, 65px); }
   .heroPortrait { width: min(62vw, 640px); height: 84%; }
   .aboutGrid { gap: 6vw; }
@@ -428,7 +430,7 @@
   .heroCopy { left: 5vw; bottom: 38px; width: min(43%, 340px); }
   .heroCopy h1 { font-size: clamp(43px, 6vw, 56px); }
   .heroRole { font-size: 15px; }
-  .heroText { max-width: 310px; font-size: 14px; }
+  .heroText { position: static; width: auto; max-width: 310px; font-size: 14px; }
   .heroActions { gap: 10px; }
   .primaryButton, .heroSecondary { min-height: 46px; padding: 0 14px; }
   .workflowGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
