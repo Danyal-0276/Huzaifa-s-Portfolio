@@ -50,6 +50,18 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) in a browser. Use `npm run build` to create a production build.
 
+## SEO configuration
+
+The app generates `/sitemap.xml`, `/robots.txt`, `/manifest.webmanifest`, and social sharing images through the Next.js Metadata API. Its canonical production URL defaults to `https://huzaifa-portfolio-silk.vercel.app`.
+
+Set these deployment environment variables when needed:
+
+- `NEXT_PUBLIC_SITE_URL` — replace the default when connecting a custom production domain.
+- `GOOGLE_SITE_VERIFICATION` — optional Google Search Console verification token.
+- `BING_SITE_VERIFICATION` — optional Bing Webmaster Tools verification token.
+
+After deployment, submit `/sitemap.xml` in Google Search Console and Bing Webmaster Tools.
+
 ## Repository structure
 
 ```text

@@ -10,8 +10,8 @@
   --color-dark: #141414;
   --color-orange-ink: #491b0c;
 
-  --font-sans: "Space Grotesk", "Arial", sans-serif;
-  --font-mono: "IBM Plex Mono", "Courier New", monospace;
+  --font-sans: var(--font-space-grotesk), "Arial", sans-serif;
+  --font-mono: var(--font-ibm-plex-mono), "Courier New", monospace;
 
   --content-width: 1320px;
   --page-gutter: clamp(1.25rem, 5.3vw, 5.5rem);

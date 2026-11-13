@@ -1,13 +1,40 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+import { IBM_Plex_Mono, Space_Grotesk } from "next/font/google";
+import { siteConfig } from "@/config/site";
 import "@/styles/globals.css";
 
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-space-grotesk",
+  display: "swap",
+});
+
+const ibmPlexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-ibm-plex-mono",
+  display: "swap",
+});
+
+const googleVerification = process.env.GOOGLE_SITE_VERIFICATION?.trim();
+const bingVerification = process.env.BING_SITE_VERIFICATION?.trim();
+
 export const metadata: Metadata = {
-  title: "Muhammad Huzaifa Ali - Business Development & Lead Generation",
-  description:
-    "Muhammad Huzaifa Ali is a Lahore-based business development and lead generation specialist supporting B2B prospecting, outreach, and client acquisition.",
-  icons: {
-    icon: "/icon.png",
-  },
+  metadataBase: new URL(siteConfig.url),
+  verification:
+    googleVerification || bingVerification
+      ? {
+          ...(googleVerification ? { google: googleVerification } : {}),
+          ...(bingVerification
+            ? { other: { "msvalidate.01": bingVerification } }
+            : {}),
+        }
+      : undefined,
+};
+
+export const viewport: Viewport = {
+  colorScheme: "light",
+  themeColor: "#f7f7f5",
 };
 
 export default function RootLayout({
@@ -16,7 +43,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html
+      lang={siteConfig.language}
+      className={`${spaceGrotesk.variable} ${ibmPlexMono.variable}`}
+    >
       <body>{children}</body>
     </html>
   );
