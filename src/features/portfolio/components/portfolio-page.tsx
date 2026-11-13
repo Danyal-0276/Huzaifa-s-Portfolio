@@ -442,11 +442,11 @@ export default function PortfolioPage() {
           <a href="#about" data-nav-target="about" aria-current={activeSection === "about" ? "location" : undefined}>
             <span>01</span>About
           </a>
-          <a href="#experience" data-nav-target="experience" aria-current={activeSection === "experience" ? "location" : undefined}>
-            <span>02</span>Work
-          </a>
           <a href="#services" data-nav-target="services" aria-current={activeSection === "services" ? "location" : undefined}>
-            <span>03</span>Services
+            <span>02</span>Services
+          </a>
+          <a href="#experience" data-nav-target="experience" aria-current={activeSection === "experience" ? "location" : undefined}>
+            <span>03</span>Work
           </a>
           <a href="#tools" data-nav-target="tools" aria-current={activeSection === "tools" ? "location" : undefined}>
             <span>04</span>Toolkit
