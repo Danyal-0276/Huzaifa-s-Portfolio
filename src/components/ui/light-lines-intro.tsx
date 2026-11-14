@@ -17,16 +17,16 @@ export default function LightLinesIntro() {
     }
 
     if (alreadySeen) {
-      setVisible(false);
-      return;
+      const hideFrame = window.requestAnimationFrame(() => setVisible(false));
+      return () => window.cancelAnimationFrame(hideFrame);
     }
 
     const canvas = canvasRef.current;
     const context = canvas?.getContext("2d");
     const root = rootRef.current;
     if (!canvas || !context || !root) {
-      setVisible(false);
-      return;
+      const hideFrame = window.requestAnimationFrame(() => setVisible(false));
+      return () => window.cancelAnimationFrame(hideFrame);
     }
 
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;

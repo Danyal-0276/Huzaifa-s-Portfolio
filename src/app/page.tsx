@@ -80,6 +80,7 @@ const profilePageJsonLd = {
     jobTitle: [
       "Business Development Executive",
       "B2B Lead Generation Specialist",
+      "Freelance Video Editor",
     ],
     sameAs: [siteConfig.linkedIn],
     homeLocation: {
@@ -103,6 +104,9 @@ const profilePageJsonLd = {
       "LinkedIn outreach",
       "Email outreach",
       "Sales pipeline management",
+      "Short-form video editing",
+      "Social media video editing",
+      "Long-form video editing",
     ],
   },
 };

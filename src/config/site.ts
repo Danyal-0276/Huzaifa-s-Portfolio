@@ -23,7 +23,7 @@ export const siteConfig = {
     "https://www.linkedin.com/in/muhammad-huzaifa-ali-075a212a2/",
   profileImage: "/images/huzaifa-profile-light.png",
   created: "2026-11-12T12:09:48+05:00",
-  lastModified: "2026-11-13T00:31:32+05:00",
+  lastModified: "2026-11-14T00:00:00+05:00",
   keywords: [
     "Muhammad Huzaifa Ali",
     "B2B lead generation specialist",
@@ -34,6 +34,9 @@ export const siteConfig = {
     "sales pipeline support",
     "lead generation Lahore",
     "remote business development",
+    "video editor Lahore",
+    "short-form video editing",
+    "social media video editor",
   ],
 } as const;
 

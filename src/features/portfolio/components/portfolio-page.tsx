@@ -7,6 +7,7 @@ import LightLinesIntro from "@/components/ui/light-lines-intro";
 import StatsCounter from "@/components/ui/stats-counter";
 import { usePortfolioMotion } from "@/hooks/use-portfolio-motion";
 import styles from "./portfolio-page.module.css";
+import VideoShowcase from "./video-showcase";
 
 const services = [
   {
@@ -334,7 +335,14 @@ export default function PortfolioPage() {
   usePortfolioMotion(rootRef);
 
   useEffect(() => {
-    const sectionIds = ["about", "services", "experience", "tools", "contact"];
+    const sectionIds = [
+      "about",
+      "services",
+      "experience",
+      "video-work",
+      "tools",
+      "contact",
+    ];
     let frame = 0;
     const updateActiveSection = () => {
       const focusLine = window.innerHeight * 0.32;
@@ -445,7 +453,7 @@ export default function PortfolioPage() {
           <a href="#services" data-nav-target="services" aria-current={activeSection === "services" ? "location" : undefined}>
             <span>02</span>Services
           </a>
-          <a href="#experience" data-nav-target="experience" aria-current={activeSection === "experience" ? "location" : undefined}>
+          <a href="#video-work" data-nav-target="video-work" aria-current={activeSection === "video-work" ? "location" : undefined}>
             <span>03</span>Work
           </a>
           <a href="#tools" data-nav-target="tools" aria-current={activeSection === "tools" ? "location" : undefined}>
@@ -488,8 +496,8 @@ export default function PortfolioPage() {
             ["Home", "home"],
             ["About", "about"],
             ["Services", "services"],
+            ["Video work", "video-work"],
             ["Experience", "experience"],
-            ["Education", "education"],
             ["Contact", "contact"],
           ].map(([label, target], index) => (
             <a href={`#${target}`} key={target} onClick={closeMenu} aria-current={activeSection === target ? "location" : undefined}>
@@ -917,6 +925,8 @@ export default function PortfolioPage() {
           </div>
         </section>
 
+        <VideoShowcase />
+
         <section className={styles.toolsSection} id="tools">
           <div className={styles.toolsIntro} data-reveal>
             <h2>
@@ -1067,6 +1077,7 @@ export default function PortfolioPage() {
               <p className={styles.footerMicro}>EXPLORE</p>
               <nav className={styles.footerNav} aria-label="Footer navigation">
                 <a href="#services">Services</a>
+                <a href="#video-work">Video work</a>
                 <a href="#experience">Experience</a>
                 <a href="#education">Education</a>
               </nav>
@@ -1105,7 +1116,11 @@ export default function PortfolioPage() {
             </label>
             <div className={styles.footerSubmitRow}>
               <p>Good conversations start here.</p>
-              <button className={styles.footerSubmit} type="submit">
+              <button
+                className={styles.footerSubmit}
+                type="submit"
+                data-magnetic
+              >
                 Send a message
               </button>
             </div>

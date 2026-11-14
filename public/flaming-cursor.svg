@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="flame" x1="15" y1="54" x2="42" y2="9" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#A92D18"/>
+      <stop offset=".48" stop-color="#E94B20"/>
+      <stop offset="1" stop-color="#FF9A55"/>
+    </linearGradient>
+    <linearGradient id="core" x1="20" y1="48" x2="38" y2="17" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F5B17B"/>
+      <stop offset="1" stop-color="#FFF4E8"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2.2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Outer flame-shaped pointer -->
+  <g stroke="#171311" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M8 5.5 54.5 35.2 34.2 38.1 24.5 56.2 8 5.5Z" fill="url(#flame)"/>
+  </g>
+
+  <!-- Animated flame tongues trailing the pointer -->
+  <g filter="url(#glow)" opacity=".96">
+    <path d="M17.2 39.5C10.1 35.4 11.5 28.7 15.8 24.6C15.4 30.2 20.7 30.1 21.1 34.5C23.6 31.5 23.7 27.8 22.8 24.5C30.1 30.5 27.2 39.7 20.8 43.1Z" fill="#F04B20">
+      <animateTransform attributeName="transform" type="translate" values="0 0;1.2 -1.4;-.8 .7;0 0" dur=".55s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values=".82;1;.88;.82" dur=".55s" repeatCount="indefinite"/>
+    </path>
+    <path d="M19.3 42.1C16.1 38.9 18.2 35.4 20.1 33.8C19.8 37.1 23.4 37.5 23.2 40.1C25.1 38.6 25.6 36.7 25.2 34.9C29 39 26.6 44.4 22.8 45.5Z" fill="#FFC078">
+      <animateTransform attributeName="transform" type="translate" values="0 0;-.7 -1;1 .4;0 0" dur=".42s" repeatCount="indefinite"/>
+    </path>
+  </g>
+
+  <!-- Warm highlight inside the pointer -->
+  <path d="M13.1 12.1 45.7 33 32.2 34.9 24.8 48.6 13.1 12.1Z" fill="url(#core)" opacity=".96"/>
+  <path d="M13.1 12.1 45.7 33 32.2 34.9 24.8 48.6 13.1 12.1Z" stroke="#FFF8F0" stroke-width="1.1" stroke-linejoin="round" opacity=".8"/>
+
+  <!-- Tiny ember -->
+  <circle cx="9" cy="48" r="1.5" fill="#FF9A55">
+    <animate attributeName="opacity" values=".2;1;.2" dur=".8s" repeatCount="indefinite"/>
+  </circle>
+</svg>

@@ -1,0 +1,109 @@
+.effects,
+.cursor {
+  position: fixed;
+  z-index: 99998;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+.effects {
+  width: 100vw;
+  height: 100vh;
+}
+
+.cursor {
+  z-index: 99999;
+  width: 48px;
+  height: 48px;
+  opacity: 0;
+  contain: layout paint style;
+  transform: translate3d(-100px, -100px, 0);
+  transition: opacity 120ms ease;
+  will-change: transform;
+}
+
+.cursor::before {
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  width: 18px;
+  height: 18px;
+  border: 1px solid rgb(255 244 232 / 78%);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 4px rgb(233 75 32 / 13%),
+    0 0 18px rgb(233 75 32 / 45%);
+  content: "";
+  opacity: 0;
+  transform: scale(0.45);
+  transform-origin: center;
+  transition:
+    opacity 180ms ease,
+    transform 260ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.cursor[data-visible="true"] {
+  opacity: 1;
+}
+
+.cursor[data-interactive="true"]::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.flame {
+  position: absolute;
+  inset: 0;
+  display: block;
+  background: url("/flaming-cursor.svg") center / contain no-repeat;
+  filter: drop-shadow(0 3px 5px rgb(117 32 10 / 26%));
+  transform-origin: 12.5% 10.5%;
+  animation: flame-cursor-breathe 1.15s ease-in-out infinite alternate;
+  will-change: transform, filter;
+}
+
+.cursor[data-interactive="true"] .flame {
+  filter: drop-shadow(0 4px 8px rgb(142 39 11 / 42%));
+  transform: scale(1.06);
+}
+
+.cursor[data-burst="true"] .flame {
+  animation: flame-cursor-burst 190ms cubic-bezier(0.2, 0.9, 0.2, 1);
+}
+
+@keyframes flame-cursor-breathe {
+  from {
+    transform: rotate(-0.8deg) scale(0.985);
+  }
+
+  to {
+    transform: rotate(0.9deg) scale(1.02);
+  }
+}
+
+@keyframes flame-cursor-burst {
+  45% {
+    transform: rotate(-3deg) scale(0.88);
+    filter: drop-shadow(0 2px 4px rgb(117 32 10 / 22%));
+  }
+
+  100% {
+    transform: rotate(1deg) scale(1.09);
+    filter: drop-shadow(0 5px 11px rgb(142 39 11 / 48%));
+  }
+}
+
+:global(html.flame-cursor-active),
+:global(html.flame-cursor-active body),
+:global(html.flame-cursor-active body *) {
+  cursor: none !important;
+}
+
+@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .effects,
+  .cursor {
+    display: none;
+  }
+}

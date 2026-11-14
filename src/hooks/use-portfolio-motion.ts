@@ -431,6 +431,64 @@ export function usePortfolioMotion<T extends HTMLElement>(
             );
         }
 
+        const videoWorkSection = root.querySelector<HTMLElement>(
+          "[data-video-work-section]",
+        );
+        const videoCards = root.querySelectorAll<HTMLElement>(
+          "[data-video-card]",
+        );
+        if (videoWorkSection && videoCards.length) {
+          gsap.fromTo(
+            videoCards,
+            {
+              autoAlpha: 0,
+              y: 58,
+              clipPath: "inset(0 0 14% 0 round 14px)",
+            },
+            {
+              autoAlpha: 1,
+              y: 0,
+              clipPath: "inset(0 0 0% 0 round 14px)",
+              duration: 0.95,
+              stagger: 0.14,
+              ease: "power3.out",
+              clearProps: "transform,opacity,visibility,clipPath",
+              scrollTrigger: {
+                trigger: videoWorkSection,
+                start: "top 72%",
+                once: true,
+              },
+            },
+          );
+        }
+
+        const videoGallerySection = root.querySelector<HTMLElement>(
+          "[data-video-gallery-section]",
+        );
+        const videoTiles = root.querySelectorAll<HTMLElement>(
+          "[data-video-tile]",
+        );
+        if (videoGallerySection && videoTiles.length) {
+          gsap.fromTo(
+            videoTiles,
+            { autoAlpha: 0, y: 42, scale: 0.97 },
+            {
+              autoAlpha: 1,
+              y: 0,
+              scale: 1,
+              duration: 0.8,
+              stagger: 0.1,
+              ease: "power3.out",
+              clearProps: "transform,opacity,visibility",
+              scrollTrigger: {
+                trigger: videoGallerySection,
+                start: "top 74%",
+                once: true,
+              },
+            },
+          );
+        }
+
         const workflowSection = root.querySelector<HTMLElement>(
           "[data-workflow-section]",
         );
