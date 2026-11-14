@@ -1355,6 +1355,10 @@
   object-fit: cover;
 }
 
+.videoMediaPortrait {
+  background-color: #0d0d0d;
+}
+
 .videoCaseMedia:hover img,
 .videoCaseMedia:focus-visible img,
 .videoTileMedia:hover img,
