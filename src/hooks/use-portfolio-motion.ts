@@ -43,7 +43,6 @@ export function usePortfolioMotion<T extends HTMLElement>(
                 animate(element, {
                   opacity: [0, 1],
                   translateY: [28, 0],
-                  filter: ["blur(12px)", "blur(0px)"],
                   duration: 1000,
                   ease: "out(4)",
                 });

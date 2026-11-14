@@ -41,11 +41,41 @@ export default function VideoShowcase() {
   const [activeProject, setActiveProject] = useState<VideoProject | null>(null);
   const dialogRef = useRef<HTMLDivElement | null>(null);
   const lastTriggerRef = useRef<HTMLButtonElement | null>(null);
+  const activePreviewRef = useRef<HTMLVideoElement | null>(null);
+
+  const stopPreview = (video: HTMLVideoElement | null) => {
+    if (!video) return;
+    video.pause();
+    if (video.readyState > 0) video.currentTime = 0;
+    if (activePreviewRef.current === video) activePreviewRef.current = null;
+  };
+
+  const stopCurrentPreview = () => stopPreview(activePreviewRef.current);
+
+  const startPreview = (button: HTMLButtonElement) => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const video = button.querySelector<HTMLVideoElement>("[data-video-preview]");
+    if (!video) return;
+
+    if (activePreviewRef.current !== video) stopCurrentPreview();
+    activePreviewRef.current = video;
+    void video.play().catch(() => {
+      if (activePreviewRef.current === video) activePreviewRef.current = null;
+    });
+  };
+
+  const stopButtonPreview = (button: HTMLButtonElement) => {
+    stopPreview(
+      button.querySelector<HTMLVideoElement>("[data-video-preview]"),
+    );
+  };
 
   const openProject = (
     project: VideoProject,
     event: ReactMouseEvent<HTMLButtonElement>,
   ) => {
+    stopCurrentPreview();
     lastTriggerRef.current = event.currentTarget;
     setActiveProject(project);
   };
@@ -54,6 +84,11 @@ export default function VideoShowcase() {
     setActiveProject(null);
     window.requestAnimationFrame(() => lastTriggerRef.current?.focus());
   };
+
+  useEffect(() => {
+    const previewRef = activePreviewRef;
+    return () => previewRef.current?.pause();
+  }, []);
 
   useEffect(() => {
     if (!activeProject) return;
@@ -125,13 +160,7 @@ export default function VideoShowcase() {
         <div className={styles.videoCaseGrid}>
           {videoCaseStudies.map((project, index) => (
             <article
-              className={`${styles.videoCaseCard} ${
-                index === 0
-                  ? styles.videoCaseLead
-                  : index === 1
-                    ? styles.videoCaseProduct
-                    : styles.videoCaseWide
-              }`}
+              className={styles.videoCaseCard}
               data-video-card
               key={project.id}
             >
@@ -144,20 +173,38 @@ export default function VideoShowcase() {
                 type="button"
                 aria-label={`Play ${project.category}: ${project.title}`}
                 onClick={(event) => openProject(project, event)}
+                onMouseEnter={(event) => startPreview(event.currentTarget)}
+                onMouseLeave={(event) => stopButtonPreview(event.currentTarget)}
+                onFocus={(event) => startPreview(event.currentTarget)}
+                onBlur={(event) => stopButtonPreview(event.currentTarget)}
               >
                 <Image
                   src={project.poster}
                   alt={project.posterAlt}
                   fill
-                  sizes={
-                    project.orientation === "landscape"
-                      ? "(max-width: 680px) 86vw, 62vw"
-                      : "(max-width: 680px) 86vw, 34vw"
-                  }
+                  sizes="(max-width: 680px) 86vw, (max-width: 860px) 43vw, 29vw"
                 />
+                <video
+                  className={styles.videoPreview}
+                  data-video-preview
+                  width={project.width}
+                  height={project.height}
+                  poster={project.poster}
+                  muted
+                  loop
+                  playsInline
+                  preload="none"
+                  aria-hidden="true"
+                  tabIndex={-1}
+                >
+                  <source src={project.source} type="video/mp4" />
+                </video>
                 <span className={styles.videoMediaShade} aria-hidden="true" />
                 <span className={styles.videoPlayButton} aria-hidden="true">
                   <PlayIcon />
+                </span>
+                <span className={styles.videoPreviewStatus} aria-hidden="true">
+                  <i /> Preview
                 </span>
                 <span className={styles.videoMediaMeta} aria-hidden="true">
                   <span>{project.duration}</span>
@@ -219,6 +266,10 @@ export default function VideoShowcase() {
                 type="button"
                 aria-label={`Play ${project.title}`}
                 onClick={(event) => openProject(project, event)}
+                onMouseEnter={(event) => startPreview(event.currentTarget)}
+                onMouseLeave={(event) => stopButtonPreview(event.currentTarget)}
+                onFocus={(event) => startPreview(event.currentTarget)}
+                onBlur={(event) => stopButtonPreview(event.currentTarget)}
               >
                 <Image
                   src={project.poster}
@@ -226,12 +277,30 @@ export default function VideoShowcase() {
                   fill
                   sizes="(max-width: 680px) 72vw, (max-width: 980px) 42vw, 23vw"
                 />
+                <video
+                  className={styles.videoPreview}
+                  data-video-preview
+                  width={project.width}
+                  height={project.height}
+                  poster={project.poster}
+                  muted
+                  loop
+                  playsInline
+                  preload="none"
+                  aria-hidden="true"
+                  tabIndex={-1}
+                >
+                  <source src={project.source} type="video/mp4" />
+                </video>
                 <span className={styles.videoTileShade} aria-hidden="true" />
                 <span className={styles.videoTileIndex} aria-hidden="true">
                   0{index + 1}
                 </span>
                 <span className={styles.videoTilePlay} aria-hidden="true">
                   <PlayIcon />
+                </span>
+                <span className={styles.videoPreviewStatus} aria-hidden="true">
+                  <i /> Preview
                 </span>
                 <span className={styles.videoTileDuration} aria-hidden="true">
                   {project.duration}
@@ -294,7 +363,7 @@ export default function VideoShowcase() {
                 controls
                 autoPlay
                 playsInline
-                preload="metadata"
+                preload="none"
                 aria-label={`${activeProject.category}: ${activeProject.title}`}
               >
                 <source src={activeProject.source} type="video/mp4" />

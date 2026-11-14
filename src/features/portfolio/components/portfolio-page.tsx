@@ -38,6 +38,13 @@ const services = [
       "Keep CRM records clear, track conversion activity, and move promising leads forward.",
     icon: "◇",
   },
+  {
+    number: "05",
+    title: "Video editing",
+    detail:
+      "Shape short-form, product-led, and long-form footage with clear pacing, captions, and polished visuals.",
+    icon: "▶",
+  },
 ];
 
 type ToolKind =
@@ -548,7 +555,7 @@ export default function PortfolioPage() {
               </span>
             </h1>
             <p className={styles.heroRole}>
-              B2B lead generation &amp; business development
+              B2B lead generation, business development &amp; video editing
             </p>
             <p className={styles.heroText}>
               I help teams research their market, reach qualified prospects, and
@@ -696,7 +703,7 @@ export default function PortfolioPage() {
               <p>— Muhammad Huzaifa Ali</p>
             </div>
             <span className={styles.serviceQuoteIndex} aria-hidden="true">
-              01 / 04
+              01 / 05
             </span>
           </aside>
         </section>
@@ -832,8 +839,8 @@ export default function PortfolioPage() {
               through <span>real client work.</span>
             </h2>
             <p>
-              Freelance campaigns, client acquisition, and hands-on business
-              development.
+              Freelance campaigns, client acquisition, video editing, and
+              hands-on business development.
             </p>
           </div>
           <div className={styles.experienceList} data-experience-timeline>
@@ -874,6 +881,36 @@ export default function PortfolioPage() {
                   <li data-experience-copy>
                     Optimize client LinkedIn and Upwork profiles and nurture
                     relationships that lead to repeat work.
+                  </li>
+                </ul>
+              </div>
+            </article>
+            <article className={styles.experienceItem} data-experience-entry>
+              <span
+                className={styles.experienceMarker}
+                data-experience-marker
+                aria-hidden="true"
+              />
+              <div className={styles.experienceDate} data-experience-copy>
+                JANUARY — APRIL 2025
+              </div>
+              <div>
+                <h3 data-experience-copy>Freelance Video Editor</h3>
+                <p className={styles.experienceCompany} data-experience-copy>
+                  Independent Client Work · Remote
+                </p>
+                <ul>
+                  <li data-experience-copy>
+                    Edited short-form social stories, product-led content,
+                    finance explainers, and creator-focused videos.
+                  </li>
+                  <li data-experience-copy>
+                    Used caption hierarchy, B-roll, kinetic typography, and
+                    visual callouts to keep each story clear and engaging.
+                  </li>
+                  <li data-experience-copy>
+                    Delivered polished 9:16 social edits and 16:9 long-form
+                    content with purposeful pacing and clean structure.
                   </li>
                 </ul>
               </div>
@@ -1038,8 +1075,8 @@ export default function PortfolioPage() {
             </a>
           </div>
           <p className={styles.footerLead}>
-            Open to remote lead generation, business development roles, and new
-            client conversations.
+            Open to remote lead generation, business development, video
+            editing roles, and new client conversations.
           </p>
         </div>
         <div className={styles.footerContactGrid} data-footer-contact-grid>

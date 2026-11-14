@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { IBM_Plex_Mono, Space_Grotesk } from "next/font/google";
-import FlameCursor from "@/components/ui/flame-cursor";
 import { siteConfig } from "@/config/site";
 import "@/styles/globals.css";
 
@@ -48,10 +47,7 @@ export default function RootLayout({
       lang={siteConfig.language}
       className={`${spaceGrotesk.variable} ${ibmPlexMono.variable}`}
     >
-      <body>
-        {children}
-        <FlameCursor />
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

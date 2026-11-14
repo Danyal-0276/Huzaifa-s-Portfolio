@@ -1269,13 +1269,16 @@
 
 .videoCaseGrid {
   display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: 14px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(13px, 1.5vw, 22px);
   align-items: stretch;
 }
 
 .videoCaseCard {
+  display: flex;
   min-width: 0;
+  height: 100%;
+  flex-direction: column;
   overflow: hidden;
   border: 1px solid rgb(20 20 20 / 10%);
   border-radius: 14px;
@@ -1289,24 +1292,6 @@
 .videoCaseCard:hover {
   border-color: rgb(224 78 36 / 35%);
   box-shadow: 0 24px 70px rgb(48 36 27 / 11%);
-}
-
-.videoCaseLead {
-  grid-column: span 7;
-  display: grid;
-  grid-template-columns: minmax(230px, 0.82fr) minmax(280px, 1.18fr);
-}
-
-.videoCaseProduct {
-  grid-column: span 5;
-  display: grid;
-  grid-template-rows: minmax(440px, 1fr) auto;
-}
-
-.videoCaseWide {
-  grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: minmax(0, 1.5fr) minmax(310px, 0.5fr);
 }
 
 .videoCaseMedia,
@@ -1329,16 +1314,8 @@
   isolation: isolate;
 }
 
-.videoCaseLead .videoCaseMedia {
-  min-height: 620px;
-}
-
-.videoCaseProduct .videoCaseMedia {
-  min-height: 440px;
-}
-
-.videoCaseWide .videoCaseMedia {
-  aspect-ratio: 16 / 9;
+.videoCaseMedia {
+  aspect-ratio: 3 / 4;
 }
 
 .videoCaseMedia img,
@@ -1348,15 +1325,42 @@
   transform: scale(1.002);
   transition:
     transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1),
-    filter 0.45s;
+    filter 0.45s,
+    opacity 0.25s;
 }
 
 .videoMediaLandscape img {
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .videoMediaPortrait {
   background-color: #0d0d0d;
+}
+
+.videoPreview {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #0d0d0d;
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+
+.videoTileMedia .videoPreview {
+  object-fit: cover;
+}
+
+.videoCaseMedia:hover .videoPreview,
+.videoCaseMedia:focus-visible .videoPreview,
+.videoTileMedia:hover .videoPreview,
+.videoTileMedia:focus-visible .videoPreview {
+  opacity: 1;
 }
 
 .videoCaseMedia:hover img,
@@ -1398,7 +1402,8 @@
   transition:
     transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
     background 0.25s,
-    color 0.25s;
+    color 0.25s,
+    opacity 0.2s;
   pointer-events: none;
 }
 
@@ -1413,9 +1418,49 @@
 .videoCaseMedia:focus-visible .videoPlayButton,
 .videoTileMedia:hover .videoTilePlay,
 .videoTileMedia:focus-visible .videoTilePlay {
-  background: var(--color-accent);
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.84);
+}
+
+.videoPreviewStatus {
+  position: absolute;
+  z-index: 3;
+  top: 14px;
+  left: 50%;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 9px;
+  border: 1px solid rgb(255 255 255 / 24%);
+  border-radius: 999px;
+  background: rgb(0 0 0 / 52%);
   color: #fff;
-  transform: translate(-50%, -50%) scale(1.09);
+  font: 8px var(--font-mono);
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translate(-50%, -5px);
+  transition:
+    opacity 0.2s,
+    transform 0.25s;
+  backdrop-filter: blur(8px);
+  pointer-events: none;
+}
+
+.videoPreviewStatus i {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 0 3px rgb(224 78 36 / 20%);
+}
+
+.videoCaseMedia:hover .videoPreviewStatus,
+.videoCaseMedia:focus-visible .videoPreviewStatus,
+.videoTileMedia:hover .videoPreviewStatus,
+.videoTileMedia:focus-visible .videoPreviewStatus {
+  opacity: 1;
+  transform: translate(-50%, 0);
 }
 
 .videoMediaMeta {
@@ -1437,9 +1482,10 @@
 .videoCaseCopy {
   display: flex;
   min-width: 0;
+  flex: 1;
   flex-direction: column;
   align-items: flex-start;
-  padding: clamp(27px, 3.8vw, 48px);
+  padding: clamp(22px, 2.3vw, 32px);
 }
 
 .videoCaseKicker {
@@ -1457,18 +1503,12 @@
 }
 
 .videoCaseCopy h3 {
-  max-width: 510px;
-  margin: clamp(24px, 4vw, 48px) 0 16px;
-  font-size: clamp(30px, 3.6vw, 52px);
+  max-width: 440px;
+  margin: clamp(20px, 2.5vw, 30px) 0 13px;
+  font-size: clamp(27px, 2.7vw, 39px);
   font-weight: 600;
-  line-height: 0.98;
-  letter-spacing: -0.07em;
-}
-
-.videoCaseProduct .videoCaseCopy h3,
-.videoCaseWide .videoCaseCopy h3 {
-  margin-top: 27px;
-  font-size: clamp(29px, 3vw, 44px);
+  line-height: 1;
+  letter-spacing: -0.065em;
 }
 
 .videoCaseCopy > p {
@@ -1483,7 +1523,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 7px;
-  margin: 24px 0 31px;
+  margin: 21px 0 25px;
   padding: 0;
   list-style: none;
 }
@@ -1626,7 +1666,8 @@
 
 .videoTileMedia:hover .videoTilePlay,
 .videoTileMedia:focus-visible .videoTilePlay {
-  transform: scale(1.08);
+  opacity: 0;
+  transform: scale(0.84);
 }
 
 .videoTileCopy {
@@ -2419,24 +2460,6 @@
   .toolGroup:last-child .toolGrid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
-  .videoCaseLead,
-  .videoCaseProduct,
-  .videoCaseWide {
-    grid-column: 1 / -1;
-    grid-template-columns: minmax(250px, 0.75fr) minmax(0, 1.25fr);
-    grid-template-rows: none;
-  }
-  .videoCaseLead .videoCaseMedia,
-  .videoCaseProduct .videoCaseMedia {
-    min-height: 570px;
-  }
-  .videoCaseWide {
-    grid-template-columns: minmax(0, 1.25fr) minmax(290px, 0.75fr);
-  }
-  .videoGalleryTrack {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 28px 13px;
-  }
 }
 
 @media (max-width: 860px) {
@@ -2496,6 +2519,9 @@
   }
   .signalCore {
     top: 48%;
+  }
+  .videoCaseGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -2687,26 +2713,13 @@
     grid-template-columns: 1fr;
     gap: 11px;
   }
-  .videoCaseLead,
-  .videoCaseProduct,
-  .videoCaseWide {
-    grid-column: 1;
-    display: block;
-  }
-  .videoCaseLead .videoCaseMedia,
-  .videoCaseProduct .videoCaseMedia {
-    min-height: 0;
+  .videoCaseMedia {
     aspect-ratio: 4 / 5;
-  }
-  .videoCaseWide .videoCaseMedia {
-    aspect-ratio: 16 / 9;
   }
   .videoCaseCopy {
     padding: 24px 20px 25px;
   }
-  .videoCaseCopy h3,
-  .videoCaseProduct .videoCaseCopy h3,
-  .videoCaseWide .videoCaseCopy h3 {
+  .videoCaseCopy h3 {
     margin-top: 22px;
     font-size: clamp(30px, 9vw, 43px);
   }
@@ -3094,6 +3107,20 @@
   .videoModalBackdrop,
   .videoModal {
     animation: none;
+  }
+  .videoPreview,
+  .videoPreviewStatus {
+    display: none;
+  }
+  .videoCaseMedia:hover .videoPlayButton,
+  .videoCaseMedia:focus-visible .videoPlayButton {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+  .videoTileMedia:hover .videoTilePlay,
+  .videoTileMedia:focus-visible .videoTilePlay {
+    opacity: 1;
+    transform: none;
   }
 }
 

@@ -37,6 +37,44 @@ a {
   color: var(--color-background);
 }
 
+/* Let the browser compositor draw the custom pointer. Unlike a tracked DOM
+   cursor, this adds no pointer listeners, animation loop, or full-screen paint. */
+@media (hover: hover) and (pointer: fine) {
+  html,
+  body {
+    cursor: url("/flaming-cursor.svg") 6 5, auto;
+  }
+
+  a,
+  button,
+  [role="button"],
+  input[type="button"],
+  input[type="reset"],
+  input[type="submit"] {
+    cursor: url("/flaming-cursor.svg") 6 5, auto !important;
+  }
+
+  input,
+  textarea,
+  select,
+  [contenteditable="true"] {
+    cursor: auto !important;
+  }
+
+  input:not([type]),
+  input[type="email"],
+  input[type="number"],
+  input[type="password"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="text"],
+  input[type="url"],
+  textarea,
+  [contenteditable="true"] {
+    cursor: text !important;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
