@@ -1,0 +1,1674 @@
+{
+  "methodology": {
+    "black_frames": "FFmpeg blackdetect: >=0.50s, >=98% black pixels, pixel threshold 0.10",
+    "long_silence": "FFmpeg silencedetect: below -50 dB for >=5s",
+    "loudness": "FFmpeg loudnorm measurement; extreme outside -30 to -8 LUFS; hot/clipping risk at >=-0.1 dBTP",
+    "low_bitrate": "Codec-adjusted bits-per-pixel-per-frame threshold (H.264/other <0.018; HEVC/AV1/VP9 <0.009)",
+    "near_duplicates": "Perceptual dHash comparison across nine evenly spaced sample frames; candidates require >=34% short-cut coverage",
+    "contact_frames": "Frames sampled at 5%, 50%, and 95% of runtime"
+  },
+  "exact_duplicates": [],
+  "near_duplicate_candidates": [],
+  "videos": [
+    {
+      "filename": "1.mp4",
+      "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\portfolio\\1.mp4",
+      "duration_seconds": 78.144733,
+      "coded_width": 1080,
+      "coded_height": 1920,
+      "width": 1080,
+      "height": 1920,
+      "resolution": "1080x1920",
+      "fps": 29.97002997002997,
+      "orientation": "vertical",
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "format_bitrate_bps": 20010102.0,
+      "video_bitrate_bps": 19676477.0,
+      "file_size_bytes": 195460519,
+      "has_audio": true,
+      "audio_codec": "aac",
+      "audio_channels": 2,
+      "rotation": 0,
+      "silences": [],
+      "loudness": {
+        "input_i": -20.55,
+        "input_tp": -2.77,
+        "input_lra": 2.8,
+        "input_thresh": -30.6,
+        "target_offset": 0.58
+      },
+      "black_segments": [],
+      "contact_frames": [
+        {
+          "label": "START",
+          "time": 3.90723665,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\frames\\1-start.jpg"
+        },
+        {
+          "label": "MIDDLE",
+          "time": 39.0723665,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\frames\\1-middle.jpg"
+        },
+        {
+          "label": "END",
+          "time": 74.23749635,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\frames\\1-end.jpg"
+        }
+      ],
+      "sample_frames": [
+        {
+          "fraction": 0.05,
+          "time": 3.90723665,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\1-01.jpg"
+        },
+        {
+          "fraction": 0.1625,
+          "time": 12.698519112500001,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\1-02.jpg"
+        },
+        {
+          "fraction": 0.275,
+          "time": 21.489801575,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\1-03.jpg"
+        },
+        {
+          "fraction": 0.3875,
+          "time": 30.2810840375,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\1-04.jpg"
+        },
+        {
+          "fraction": 0.5,
+          "time": 39.0723665,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\1-05.jpg"
+        },
+        {
+          "fraction": 0.6125,
+          "time": 47.86364896250001,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\1-06.jpg"
+        },
+        {
+          "fraction": 0.725,
+          "time": 56.654931425,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\1-07.jpg"
+        },
+        {
+          "fraction": 0.8375,
+          "time": 65.44621388750001,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\1-08.jpg"
+        },
+        {
+          "fraction": 0.95,
+          "time": 74.23749635,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\1-09.jpg"
+        }
+      ],
+      "bits_per_pixel_frame": 0.3166176934960134,
+      "technical_issues": []
+    },
+    {
+      "filename": "3.mp4",
+      "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\portfolio\\3.mp4",
+      "duration_seconds": 21.087733,
+      "coded_width": 1080,
+      "coded_height": 1920,
+      "width": 1080,
+      "height": 1920,
+      "resolution": "1080x1920",
+      "fps": 29.97002997002997,
+      "orientation": "vertical",
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "format_bitrate_bps": 18667872.0,
+      "video_bitrate_bps": 18325373.0,
+      "file_size_bytes": 49207889,
+      "has_audio": true,
+      "audio_codec": "aac",
+      "audio_channels": 2,
+      "rotation": 0,
+      "black_segments": [],
+      "silences": [],
+      "loudness": {
+        "input_i": -20.31,
+        "input_tp": -2.75,
+        "input_lra": 2.6,
+        "input_thresh": -30.32,
+        "target_offset": 0.51
+      },
+      "contact_frames": [
+        {
+          "label": "START",
+          "time": 1.05438665,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\frames\\3-start.jpg"
+        },
+        {
+          "label": "MIDDLE",
+          "time": 10.5438665,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\frames\\3-middle.jpg"
+        },
+        {
+          "label": "END",
+          "time": 20.03334635,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\frames\\3-end.jpg"
+        }
+      ],
+      "sample_frames": [
+        {
+          "fraction": 0.05,
+          "time": 1.05438665,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\3-01.jpg"
+        },
+        {
+          "fraction": 0.1625,
+          "time": 3.4267566125,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\3-02.jpg"
+        },
+        {
+          "fraction": 0.275,
+          "time": 5.799126575000001,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\3-03.jpg"
+        },
+        {
+          "fraction": 0.3875,
+          "time": 8.1714965375,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\3-04.jpg"
+        },
+        {
+          "fraction": 0.5,
+          "time": 10.5438665,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\3-05.jpg"
+        },
+        {
+          "fraction": 0.6125,
+          "time": 12.9162364625,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\3-06.jpg"
+        },
+        {
+          "fraction": 0.725,
+          "time": 15.288606425,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\3-07.jpg"
+        },
+        {
+          "fraction": 0.8375,
+          "time": 17.6609763875,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\3-08.jpg"
+        },
+        {
+          "fraction": 0.95,
+          "time": 20.03334635,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\3-09.jpg"
+        }
+      ],
+      "bits_per_pixel_frame": 0.29487683855774177,
+      "technical_issues": []
+    },
+    {
+      "filename": "4.mp4",
+      "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\portfolio\\4.mp4",
+      "duration_seconds": 60.810204,
+      "coded_width": 720,
+      "coded_height": 1280,
+      "width": 720,
+      "height": 1280,
+      "resolution": "720x1280",
+      "fps": 30.0,
+      "orientation": "vertical",
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "format_bitrate_bps": 1035615.0,
+      "video_bitrate_bps": 968661.0,
+      "file_size_bytes": 7871995,
+      "has_audio": true,
+      "audio_codec": "aac",
+      "audio_channels": 2,
+      "rotation": 0,
+      "black_segments": [],
+      "silences": [],
+      "loudness": {
+        "input_i": -14.17,
+        "input_tp": -1.27,
+        "input_lra": 1.0,
+        "input_thresh": -24.22,
+        "target_offset": -0.02
+      },
+      "contact_frames": [
+        {
+          "label": "START",
+          "time": 3.0405102,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\frames\\4-start.jpg"
+        },
+        {
+          "label": "MIDDLE",
+          "time": 30.405102,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\frames\\4-middle.jpg"
+        },
+        {
+          "label": "END",
+          "time": 57.7696938,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\frames\\4-end.jpg"
+        }
+      ],
+      "sample_frames": [
+        {
+          "fraction": 0.05,
+          "time": 3.0405102,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\4-01.jpg"
+        },
+        {
+          "fraction": 0.1625,
+          "time": 9.88165815,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\4-02.jpg"
+        },
+        {
+          "fraction": 0.275,
+          "time": 16.7228061,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\4-03.jpg"
+        },
+        {
+          "fraction": 0.3875,
+          "time": 23.56395405,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\4-04.jpg"
+        },
+        {
+          "fraction": 0.5,
+          "time": 30.405102,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\4-05.jpg"
+        },
+        {
+          "fraction": 0.6125,
+          "time": 37.24624995,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\4-06.jpg"
+        },
+        {
+          "fraction": 0.725,
+          "time": 44.0873979,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\4-07.jpg"
+        },
+        {
+          "fraction": 0.8375,
+          "time": 50.92854585,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\4-08.jpg"
+        },
+        {
+          "fraction": 0.95,
+          "time": 57.7696938,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\4-09.jpg"
+        }
+      ],
+      "bits_per_pixel_frame": 0.035035481770833335,
+      "technical_issues": [
+        "under 1080p (720x1280)"
+      ]
+    },
+    {
+      "filename": "5.mp4",
+      "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\portfolio\\5.mp4",
+      "duration_seconds": 93.157052,
+      "coded_width": 720,
+      "coded_height": 1280,
+      "width": 720,
+      "height": 1280,
+      "resolution": "720x1280",
+      "fps": 30.0,
+      "orientation": "vertical",
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "format_bitrate_bps": 943224.0,
+      "video_bitrate_bps": 874098.0,
+      "file_size_bytes": 10983497,
+      "has_audio": true,
+      "audio_codec": "aac",
+      "audio_channels": 2,
+      "rotation": 0,
+      "black_segments": [],
+      "silences": [],
+      "loudness": {
+        "input_i": -14.25,
+        "input_tp": 0.13,
+        "input_lra": 1.9,
+        "input_thresh": -24.25,
+        "target_offset": -0.05
+      },
+      "contact_frames": [
+        {
+          "label": "START",
+          "time": 4.6578526,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\frames\\5-start.jpg"
+        },
+        {
+          "label": "MIDDLE",
+          "time": 46.578526,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\frames\\5-middle.jpg"
+        },
+        {
+          "label": "END",
+          "time": 88.4991994,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\frames\\5-end.jpg"
+        }
+      ],
+      "sample_frames": [
+        {
+          "fraction": 0.05,
+          "time": 4.6578526,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\5-01.jpg"
+        },
+        {
+          "fraction": 0.1625,
+          "time": 15.13802095,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\5-02.jpg"
+        },
+        {
+          "fraction": 0.275,
+          "time": 25.6181893,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\5-03.jpg"
+        },
+        {
+          "fraction": 0.3875,
+          "time": 36.09835765,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\5-04.jpg"
+        },
+        {
+          "fraction": 0.5,
+          "time": 46.578526,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\5-05.jpg"
+        },
+        {
+          "fraction": 0.6125,
+          "time": 57.05869435,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\5-06.jpg"
+        },
+        {
+          "fraction": 0.725,
+          "time": 67.5388627,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\5-07.jpg"
+        },
+        {
+          "fraction": 0.8375,
+          "time": 78.01903105,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\5-08.jpg"
+        },
+        {
+          "fraction": 0.95,
+          "time": 88.4991994,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\5-09.jpg"
+        }
+      ],
+      "bits_per_pixel_frame": 0.031615234375,
+      "technical_issues": [
+        "under 1080p (720x1280)",
+        "possible clipping / hot true peak (0.1 dBTP)"
+      ]
+    },
+    {
+      "filename": "8.mp4",
+      "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\portfolio\\8.mp4",
+      "duration_seconds": 29.534376,
+      "coded_width": 720,
+      "coded_height": 1280,
+      "width": 720,
+      "height": 1280,
+      "resolution": "720x1280",
+      "fps": 30.0,
+      "orientation": "vertical",
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "format_bitrate_bps": 603379.0,
+      "video_bitrate_bps": 546331.0,
+      "file_size_bytes": 2227553,
+      "has_audio": true,
+      "audio_codec": "aac",
+      "audio_channels": 2,
+      "rotation": 0,
+      "black_segments": [],
+      "silences": [],
+      "loudness": {
+        "input_i": -14.33,
+        "input_tp": -0.84,
+        "input_lra": 2.4,
+        "input_thresh": -24.33,
+        "target_offset": -0.07
+      },
+      "contact_frames": [
+        {
+          "label": "START",
+          "time": 1.4767188000000002,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\frames\\8-start.jpg"
+        },
+        {
+          "label": "MIDDLE",
+          "time": 14.767188,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\frames\\8-middle.jpg"
+        },
+        {
+          "label": "END",
+          "time": 28.0576572,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\frames\\8-end.jpg"
+        }
+      ],
+      "sample_frames": [
+        {
+          "fraction": 0.05,
+          "time": 1.4767188000000002,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\8-01.jpg"
+        },
+        {
+          "fraction": 0.1625,
+          "time": 4.7993361000000005,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\8-02.jpg"
+        },
+        {
+          "fraction": 0.275,
+          "time": 8.1219534,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\8-03.jpg"
+        },
+        {
+          "fraction": 0.3875,
+          "time": 11.444570700000002,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\8-04.jpg"
+        },
+        {
+          "fraction": 0.5,
+          "time": 14.767188,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\8-05.jpg"
+        },
+        {
+          "fraction": 0.6125,
+          "time": 18.089805300000002,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\8-06.jpg"
+        },
+        {
+          "fraction": 0.725,
+          "time": 21.4124226,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\8-07.jpg"
+        },
+        {
+          "fraction": 0.8375,
+          "time": 24.735039900000004,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\8-08.jpg"
+        },
+        {
+          "fraction": 0.95,
+          "time": 28.0576572,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\8-09.jpg"
+        }
+      ],
+      "bits_per_pixel_frame": 0.01976023582175926,
+      "technical_issues": [
+        "under 1080p (720x1280)"
+      ]
+    },
+    {
+      "filename": "9.mp4",
+      "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\portfolio\\9.mp4",
+      "duration_seconds": 110.076633,
+      "coded_width": 1080,
+      "coded_height": 1920,
+      "width": 1080,
+      "height": 1920,
+      "resolution": "1080x1920",
+      "fps": 29.97002997002997,
+      "orientation": "vertical",
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "format_bitrate_bps": 20185669.0,
+      "video_bitrate_bps": 19851552.0,
+      "file_size_bytes": 277746318,
+      "has_audio": true,
+      "audio_codec": "aac",
+      "audio_channels": 2,
+      "rotation": 0,
+      "silences": [],
+      "loudness": {
+        "input_i": -20.32,
+        "input_tp": -3.05,
+        "input_lra": 2.7,
+        "input_thresh": -30.36,
+        "target_offset": 0.25
+      },
+      "black_segments": [],
+      "contact_frames": [
+        {
+          "label": "START",
+          "time": 5.50383165,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\frames\\9-start.jpg"
+        },
+        {
+          "label": "MIDDLE",
+          "time": 55.0383165,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\frames\\9-middle.jpg"
+        },
+        {
+          "label": "END",
+          "time": 104.57280134999999,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\frames\\9-end.jpg"
+        }
+      ],
+      "sample_frames": [
+        {
+          "fraction": 0.05,
+          "time": 5.50383165,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\9-01.jpg"
+        },
+        {
+          "fraction": 0.1625,
+          "time": 17.8874528625,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\9-02.jpg"
+        },
+        {
+          "fraction": 0.275,
+          "time": 30.271074075,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\9-03.jpg"
+        },
+        {
+          "fraction": 0.3875,
+          "time": 42.654695287500004,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\9-04.jpg"
+        },
+        {
+          "fraction": 0.5,
+          "time": 55.0383165,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\9-05.jpg"
+        },
+        {
+          "fraction": 0.6125,
+          "time": 67.42193771250001,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\9-06.jpg"
+        },
+        {
+          "fraction": 0.725,
+          "time": 79.805558925,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\9-07.jpg"
+        },
+        {
+          "fraction": 0.8375,
+          "time": 92.1891801375,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\9-08.jpg"
+        },
+        {
+          "fraction": 0.95,
+          "time": 104.57280134999999,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\9-09.jpg"
+        }
+      ],
+      "bits_per_pixel_frame": 0.3194348564814815,
+      "technical_issues": []
+    },
+    {
+      "filename": "11.mp4",
+      "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\portfolio\\11.mp4",
+      "duration_seconds": 34.401042,
+      "coded_width": 1080,
+      "coded_height": 1920,
+      "width": 1080,
+      "height": 1920,
+      "resolution": "1080x1920",
+      "fps": 29.97002997002997,
+      "orientation": "vertical",
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "format_bitrate_bps": 32026218.0,
+      "video_bitrate_bps": 31700067.0,
+      "file_size_bytes": 137716910,
+      "has_audio": true,
+      "audio_codec": "aac",
+      "audio_channels": 2,
+      "rotation": 0,
+      "silences": [],
+      "loudness": {
+        "input_i": -21.55,
+        "input_tp": -4.18,
+        "input_lra": 5.2,
+        "input_thresh": -31.78,
+        "target_offset": 0.83
+      },
+      "black_segments": [],
+      "contact_frames": [
+        {
+          "label": "START",
+          "time": 1.7200521,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\frames\\11-start.jpg"
+        },
+        {
+          "label": "MIDDLE",
+          "time": 17.200521,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\frames\\11-middle.jpg"
+        },
+        {
+          "label": "END",
+          "time": 32.68098989999999,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\frames\\11-end.jpg"
+        }
+      ],
+      "sample_frames": [
+        {
+          "fraction": 0.05,
+          "time": 1.7200521,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\11-01.jpg"
+        },
+        {
+          "fraction": 0.1625,
+          "time": 5.590169325,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\11-02.jpg"
+        },
+        {
+          "fraction": 0.275,
+          "time": 9.46028655,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\11-03.jpg"
+        },
+        {
+          "fraction": 0.3875,
+          "time": 13.330403774999999,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\11-04.jpg"
+        },
+        {
+          "fraction": 0.5,
+          "time": 17.200521,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\11-05.jpg"
+        },
+        {
+          "fraction": 0.6125,
+          "time": 21.070638225,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\11-06.jpg"
+        },
+        {
+          "fraction": 0.725,
+          "time": 24.940755449999997,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\11-07.jpg"
+        },
+        {
+          "fraction": 0.8375,
+          "time": 28.810872675,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\11-08.jpg"
+        },
+        {
+          "fraction": 0.95,
+          "time": 32.68098989999999,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\11-09.jpg"
+        }
+      ],
+      "bits_per_pixel_frame": 0.5100914201871142,
+      "technical_issues": []
+    },
+    {
+      "filename": "15.mp4",
+      "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\portfolio\\15.mp4",
+      "duration_seconds": 28.24,
+      "coded_width": 1080,
+      "coded_height": 1920,
+      "width": 1080,
+      "height": 1920,
+      "resolution": "1080x1920",
+      "fps": 25.0,
+      "orientation": "vertical",
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "format_bitrate_bps": 44037564.0,
+      "video_bitrate_bps": 43699509.0,
+      "file_size_bytes": 155452603,
+      "has_audio": true,
+      "audio_codec": "aac",
+      "audio_channels": 2,
+      "rotation": 0,
+      "black_segments": [],
+      "silences": [],
+      "loudness": {
+        "input_i": -17.48,
+        "input_tp": -4.0,
+        "input_lra": 1.1,
+        "input_thresh": -27.48,
+        "target_offset": 0.3
+      },
+      "contact_frames": [
+        {
+          "label": "START",
+          "time": 1.412,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\frames\\15-start.jpg"
+        },
+        {
+          "label": "MIDDLE",
+          "time": 14.12,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\frames\\15-middle.jpg"
+        },
+        {
+          "label": "END",
+          "time": 26.827999999999996,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\frames\\15-end.jpg"
+        }
+      ],
+      "sample_frames": [
+        {
+          "fraction": 0.05,
+          "time": 1.412,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\15-01.jpg"
+        },
+        {
+          "fraction": 0.1625,
+          "time": 4.5889999999999995,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\15-02.jpg"
+        },
+        {
+          "fraction": 0.275,
+          "time": 7.766,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\15-03.jpg"
+        },
+        {
+          "fraction": 0.3875,
+          "time": 10.943,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\15-04.jpg"
+        },
+        {
+          "fraction": 0.5,
+          "time": 14.12,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\15-05.jpg"
+        },
+        {
+          "fraction": 0.6125,
+          "time": 17.297,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\15-06.jpg"
+        },
+        {
+          "fraction": 0.725,
+          "time": 20.473999999999997,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\15-07.jpg"
+        },
+        {
+          "fraction": 0.8375,
+          "time": 23.651,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\15-08.jpg"
+        },
+        {
+          "fraction": 0.95,
+          "time": 26.827999999999996,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\15-09.jpg"
+        }
+      ],
+      "bits_per_pixel_frame": 0.8429689236111111,
+      "technical_issues": []
+    },
+    {
+      "filename": "16.mp4",
+      "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\portfolio\\16.mp4",
+      "duration_seconds": 60.326938,
+      "coded_width": 1080,
+      "coded_height": 1920,
+      "width": 1080,
+      "height": 1920,
+      "resolution": "1080x1920",
+      "fps": 29.97002997002997,
+      "orientation": "vertical",
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "format_bitrate_bps": 14061855.0,
+      "video_bitrate_bps": 13739699.0,
+      "file_size_bytes": 106038582,
+      "has_audio": true,
+      "audio_codec": "aac",
+      "audio_channels": 2,
+      "rotation": 0,
+      "silences": [],
+      "loudness": {
+        "input_i": -16.93,
+        "input_tp": 0.01,
+        "input_lra": 6.6,
+        "input_thresh": -26.93,
+        "target_offset": 2.11
+      },
+      "black_segments": [],
+      "contact_frames": [
+        {
+          "label": "START",
+          "time": 3.0163469000000003,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\frames\\16-start.jpg"
+        },
+        {
+          "label": "MIDDLE",
+          "time": 30.163469,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\frames\\16-middle.jpg"
+        },
+        {
+          "label": "END",
+          "time": 57.310591099999996,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\frames\\16-end.jpg"
+        }
+      ],
+      "sample_frames": [
+        {
+          "fraction": 0.05,
+          "time": 3.0163469000000003,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\16-01.jpg"
+        },
+        {
+          "fraction": 0.1625,
+          "time": 9.803127425,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\16-02.jpg"
+        },
+        {
+          "fraction": 0.275,
+          "time": 16.58990795,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\16-03.jpg"
+        },
+        {
+          "fraction": 0.3875,
+          "time": 23.376688475,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\16-04.jpg"
+        },
+        {
+          "fraction": 0.5,
+          "time": 30.163469,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\16-05.jpg"
+        },
+        {
+          "fraction": 0.6125,
+          "time": 36.950249525000004,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\16-06.jpg"
+        },
+        {
+          "fraction": 0.725,
+          "time": 43.737030049999994,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\16-07.jpg"
+        },
+        {
+          "fraction": 0.8375,
+          "time": 50.523810575,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\16-08.jpg"
+        },
+        {
+          "fraction": 0.95,
+          "time": 57.310591099999996,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\16-09.jpg"
+        }
+      ],
+      "bits_per_pixel_frame": 0.2210879420492541,
+      "technical_issues": [
+        "possible clipping / hot true peak (0.0 dBTP)"
+      ]
+    },
+    {
+      "filename": "20.mp4",
+      "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\portfolio\\20.mp4",
+      "duration_seconds": 99.933333,
+      "coded_width": 1080,
+      "coded_height": 1920,
+      "width": 1080,
+      "height": 1920,
+      "resolution": "1080x1920",
+      "fps": 30.0,
+      "orientation": "vertical",
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "format_bitrate_bps": 15852552.0,
+      "video_bitrate_bps": 15659088.0,
+      "file_size_bytes": 198024805,
+      "has_audio": true,
+      "audio_codec": "aac",
+      "audio_channels": 2,
+      "rotation": 0,
+      "silences": [],
+      "loudness": {
+        "input_i": -17.95,
+        "input_tp": 0.11,
+        "input_lra": 4.9,
+        "input_thresh": -28.12,
+        "target_offset": 0.94
+      },
+      "black_segments": [],
+      "contact_frames": [
+        {
+          "label": "START",
+          "time": 4.996666650000001,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\frames\\20-start.jpg"
+        },
+        {
+          "label": "MIDDLE",
+          "time": 49.9666665,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\frames\\20-middle.jpg"
+        },
+        {
+          "label": "END",
+          "time": 94.93666635,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\frames\\20-end.jpg"
+        }
+      ],
+      "sample_frames": [
+        {
+          "fraction": 0.05,
+          "time": 4.996666650000001,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\20-01.jpg"
+        },
+        {
+          "fraction": 0.1625,
+          "time": 16.2391666125,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\20-02.jpg"
+        },
+        {
+          "fraction": 0.275,
+          "time": 27.481666575000002,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\20-03.jpg"
+        },
+        {
+          "fraction": 0.3875,
+          "time": 38.724166537500004,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\20-04.jpg"
+        },
+        {
+          "fraction": 0.5,
+          "time": 49.9666665,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\20-05.jpg"
+        },
+        {
+          "fraction": 0.6125,
+          "time": 61.20916646250001,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\20-06.jpg"
+        },
+        {
+          "fraction": 0.725,
+          "time": 72.451666425,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\20-07.jpg"
+        },
+        {
+          "fraction": 0.8375,
+          "time": 83.6941663875,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\20-08.jpg"
+        },
+        {
+          "fraction": 0.95,
+          "time": 94.93666635,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\20-09.jpg"
+        }
+      ],
+      "bits_per_pixel_frame": 0.25172145061728396,
+      "technical_issues": [
+        "possible clipping / hot true peak (0.1 dBTP)"
+      ]
+    },
+    {
+      "filename": "21.mp4",
+      "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\portfolio\\21.mp4",
+      "duration_seconds": 104.737967,
+      "coded_width": 1080,
+      "coded_height": 1920,
+      "width": 1080,
+      "height": 1920,
+      "resolution": "1080x1920",
+      "fps": 29.97002997002997,
+      "orientation": "vertical",
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "format_bitrate_bps": 20213715.0,
+      "video_bitrate_bps": 19887998.0,
+      "file_size_bytes": 264642939,
+      "has_audio": true,
+      "audio_codec": "aac",
+      "audio_channels": 2,
+      "rotation": 0,
+      "silences": [],
+      "loudness": {
+        "input_i": -18.28,
+        "input_tp": 0.02,
+        "input_lra": 5.4,
+        "input_thresh": -28.46,
+        "target_offset": 0.96
+      },
+      "black_segments": [],
+      "contact_frames": [
+        {
+          "label": "START",
+          "time": 5.236898350000001,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\frames\\21-start.jpg"
+        },
+        {
+          "label": "MIDDLE",
+          "time": 52.3689835,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\frames\\21-middle.jpg"
+        },
+        {
+          "label": "END",
+          "time": 99.50106865,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\frames\\21-end.jpg"
+        }
+      ],
+      "sample_frames": [
+        {
+          "fraction": 0.05,
+          "time": 5.236898350000001,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\21-01.jpg"
+        },
+        {
+          "fraction": 0.1625,
+          "time": 17.0199196375,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\21-02.jpg"
+        },
+        {
+          "fraction": 0.275,
+          "time": 28.802940925,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\21-03.jpg"
+        },
+        {
+          "fraction": 0.3875,
+          "time": 40.5859622125,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\21-04.jpg"
+        },
+        {
+          "fraction": 0.5,
+          "time": 52.3689835,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\21-05.jpg"
+        },
+        {
+          "fraction": 0.6125,
+          "time": 64.1520047875,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\21-06.jpg"
+        },
+        {
+          "fraction": 0.725,
+          "time": 75.935026075,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\21-07.jpg"
+        },
+        {
+          "fraction": 0.8375,
+          "time": 87.7180473625,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\21-08.jpg"
+        },
+        {
+          "fraction": 0.95,
+          "time": 99.50106865,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\21-09.jpg"
+        }
+      ],
+      "bits_per_pixel_frame": 0.32002131555426955,
+      "technical_issues": [
+        "possible clipping / hot true peak (0.0 dBTP)"
+      ]
+    },
+    {
+      "filename": "24.mp4",
+      "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\portfolio\\24.mp4",
+      "duration_seconds": 48.882167,
+      "coded_width": 1080,
+      "coded_height": 1920,
+      "width": 1080,
+      "height": 1920,
+      "resolution": "1080x1920",
+      "fps": 29.97002997002997,
+      "orientation": "vertical",
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "format_bitrate_bps": 15718331.0,
+      "video_bitrate_bps": 15523890.0,
+      "file_size_bytes": 96043265,
+      "has_audio": true,
+      "audio_codec": "aac",
+      "audio_channels": 2,
+      "rotation": 0,
+      "silences": [],
+      "loudness": {
+        "input_i": -17.84,
+        "input_tp": -0.03,
+        "input_lra": 5.1,
+        "input_thresh": -27.94,
+        "target_offset": 0.81
+      },
+      "black_segments": [],
+      "contact_frames": [
+        {
+          "label": "START",
+          "time": 2.4441083500000005,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\frames\\24-start.jpg"
+        },
+        {
+          "label": "MIDDLE",
+          "time": 24.4410835,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\frames\\24-middle.jpg"
+        },
+        {
+          "label": "END",
+          "time": 46.43805865,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\frames\\24-end.jpg"
+        }
+      ],
+      "sample_frames": [
+        {
+          "fraction": 0.05,
+          "time": 2.4441083500000005,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\24-01.jpg"
+        },
+        {
+          "fraction": 0.1625,
+          "time": 7.943352137500001,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\24-02.jpg"
+        },
+        {
+          "fraction": 0.275,
+          "time": 13.442595925000003,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\24-03.jpg"
+        },
+        {
+          "fraction": 0.3875,
+          "time": 18.941839712500002,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\24-04.jpg"
+        },
+        {
+          "fraction": 0.5,
+          "time": 24.4410835,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\24-05.jpg"
+        },
+        {
+          "fraction": 0.6125,
+          "time": 29.940327287500004,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\24-06.jpg"
+        },
+        {
+          "fraction": 0.725,
+          "time": 35.439571075,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\24-07.jpg"
+        },
+        {
+          "fraction": 0.8375,
+          "time": 40.9388148625,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\24-08.jpg"
+        },
+        {
+          "fraction": 0.95,
+          "time": 46.43805865,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\24-09.jpg"
+        }
+      ],
+      "bits_per_pixel_frame": 0.2497976769868827,
+      "technical_issues": [
+        "possible clipping / hot true peak (-0.0 dBTP)"
+      ]
+    },
+    {
+      "filename": "25.mp4",
+      "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\portfolio\\25.mp4",
+      "duration_seconds": 8.753946,
+      "coded_width": 1080,
+      "coded_height": 1920,
+      "width": 1080,
+      "height": 1920,
+      "resolution": "1080x1920",
+      "fps": 30.0,
+      "orientation": "vertical",
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "format_bitrate_bps": 11271001.0,
+      "video_bitrate_bps": 11094426.0,
+      "file_size_bytes": 12333217,
+      "has_audio": true,
+      "audio_codec": "aac",
+      "audio_channels": 2,
+      "rotation": 0,
+      "black_segments": [],
+      "silences": [],
+      "loudness": {
+        "input_i": -14.95,
+        "input_tp": -1.02,
+        "input_lra": 8.7,
+        "input_thresh": -25.14,
+        "target_offset": 2.46
+      },
+      "contact_frames": [
+        {
+          "label": "START",
+          "time": 0.43769729999999996,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\frames\\25-start.jpg"
+        },
+        {
+          "label": "MIDDLE",
+          "time": 4.376973,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\frames\\25-middle.jpg"
+        },
+        {
+          "label": "END",
+          "time": 8.3162487,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\frames\\25-end.jpg"
+        }
+      ],
+      "sample_frames": [
+        {
+          "fraction": 0.05,
+          "time": 0.43769729999999996,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\25-01.jpg"
+        },
+        {
+          "fraction": 0.1625,
+          "time": 1.4225162249999999,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\25-02.jpg"
+        },
+        {
+          "fraction": 0.275,
+          "time": 2.4073351499999998,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\25-03.jpg"
+        },
+        {
+          "fraction": 0.3875,
+          "time": 3.3921540749999997,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\25-04.jpg"
+        },
+        {
+          "fraction": 0.5,
+          "time": 4.376973,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\25-05.jpg"
+        },
+        {
+          "fraction": 0.6125,
+          "time": 5.3617919249999995,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\25-06.jpg"
+        },
+        {
+          "fraction": 0.725,
+          "time": 6.346610849999999,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\25-07.jpg"
+        },
+        {
+          "fraction": 0.8375,
+          "time": 7.331429774999999,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\25-08.jpg"
+        },
+        {
+          "fraction": 0.95,
+          "time": 8.3162487,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\25-09.jpg"
+        }
+      ],
+      "bits_per_pixel_frame": 0.17834403935185186,
+      "technical_issues": []
+    },
+    {
+      "filename": "26.mp4",
+      "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\portfolio\\26.mp4",
+      "duration_seconds": 130.26,
+      "coded_width": 1920,
+      "coded_height": 1080,
+      "width": 1920,
+      "height": 1080,
+      "resolution": "1920x1080",
+      "fps": 24.0,
+      "orientation": "horizontal",
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "format_bitrate_bps": 1934008.0,
+      "video_bitrate_bps": 1741147.0,
+      "file_size_bytes": 31490499,
+      "has_audio": true,
+      "audio_codec": "aac",
+      "audio_channels": 2,
+      "rotation": 0,
+      "black_segments": [
+        {
+          "start": 128.125,
+          "end": 130.166667,
+          "duration": 2.041667
+        }
+      ],
+      "silences": [],
+      "loudness": {
+        "input_i": -20.65,
+        "input_tp": -4.22,
+        "input_lra": 3.4,
+        "input_thresh": -30.74,
+        "target_offset": 0.76
+      },
+      "contact_frames": [
+        {
+          "label": "START",
+          "time": 6.513,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\frames\\26-start.jpg"
+        },
+        {
+          "label": "MIDDLE",
+          "time": 65.13,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\frames\\26-middle.jpg"
+        },
+        {
+          "label": "END",
+          "time": 123.74699999999999,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\frames\\26-end.jpg"
+        }
+      ],
+      "sample_frames": [
+        {
+          "fraction": 0.05,
+          "time": 6.513,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\26-01.jpg"
+        },
+        {
+          "fraction": 0.1625,
+          "time": 21.16725,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\26-02.jpg"
+        },
+        {
+          "fraction": 0.275,
+          "time": 35.8215,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\26-03.jpg"
+        },
+        {
+          "fraction": 0.3875,
+          "time": 50.47575,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\26-04.jpg"
+        },
+        {
+          "fraction": 0.5,
+          "time": 65.13,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\26-05.jpg"
+        },
+        {
+          "fraction": 0.6125,
+          "time": 79.78425,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\26-06.jpg"
+        },
+        {
+          "fraction": 0.725,
+          "time": 94.43849999999999,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\26-07.jpg"
+        },
+        {
+          "fraction": 0.8375,
+          "time": 109.09275,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\26-08.jpg"
+        },
+        {
+          "fraction": 0.95,
+          "time": 123.74699999999999,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\26-09.jpg"
+        }
+      ],
+      "bits_per_pixel_frame": 0.034986396444187245,
+      "technical_issues": [
+        "trailing black (2.0s)"
+      ]
+    },
+    {
+      "filename": "28.mp4",
+      "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\portfolio\\28.mp4",
+      "duration_seconds": 26.866667,
+      "coded_width": 1080,
+      "coded_height": 1920,
+      "width": 1080,
+      "height": 1920,
+      "resolution": "1080x1920",
+      "fps": 30.0,
+      "orientation": "vertical",
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "format_bitrate_bps": 20125746.0,
+      "video_bitrate_bps": 19787449.0,
+      "file_size_bytes": 67588967,
+      "has_audio": true,
+      "audio_codec": "aac",
+      "audio_channels": 2,
+      "rotation": 0,
+      "black_segments": [],
+      "silences": [],
+      "loudness": {
+        "input_i": -19.92,
+        "input_tp": -1.25,
+        "input_lra": 3.3,
+        "input_thresh": -30.06,
+        "target_offset": 1.02
+      },
+      "contact_frames": [
+        {
+          "label": "START",
+          "time": 1.34333335,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\frames\\28-start.jpg"
+        },
+        {
+          "label": "MIDDLE",
+          "time": 13.4333335,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\frames\\28-middle.jpg"
+        },
+        {
+          "label": "END",
+          "time": 25.523333649999998,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\frames\\28-end.jpg"
+        }
+      ],
+      "sample_frames": [
+        {
+          "fraction": 0.05,
+          "time": 1.34333335,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\28-01.jpg"
+        },
+        {
+          "fraction": 0.1625,
+          "time": 4.3658333875,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\28-02.jpg"
+        },
+        {
+          "fraction": 0.275,
+          "time": 7.388333425000001,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\28-03.jpg"
+        },
+        {
+          "fraction": 0.3875,
+          "time": 10.4108334625,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\28-04.jpg"
+        },
+        {
+          "fraction": 0.5,
+          "time": 13.4333335,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\28-05.jpg"
+        },
+        {
+          "fraction": 0.6125,
+          "time": 16.455833537500002,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\28-06.jpg"
+        },
+        {
+          "fraction": 0.725,
+          "time": 19.478333575,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\28-07.jpg"
+        },
+        {
+          "fraction": 0.8375,
+          "time": 22.5008336125,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\28-08.jpg"
+        },
+        {
+          "fraction": 0.95,
+          "time": 25.523333649999998,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\28-09.jpg"
+        }
+      ],
+      "bits_per_pixel_frame": 0.3180852784207819,
+      "technical_issues": []
+    },
+    {
+      "filename": "31.mp4",
+      "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\portfolio\\31.mp4",
+      "duration_seconds": 24.0,
+      "coded_width": 720,
+      "coded_height": 1280,
+      "width": 720,
+      "height": 1280,
+      "resolution": "720x1280",
+      "fps": 30.0,
+      "orientation": "vertical",
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "format_bitrate_bps": 739265.0,
+      "video_bitrate_bps": 668111.0,
+      "file_size_bytes": 2217795,
+      "has_audio": true,
+      "audio_codec": "aac",
+      "audio_channels": 2,
+      "rotation": 0,
+      "black_segments": [],
+      "silences": [],
+      "loudness": {
+        "input_i": -20.33,
+        "input_tp": -6.88,
+        "input_lra": 4.2,
+        "input_thresh": -30.51,
+        "target_offset": -0.04
+      },
+      "contact_frames": [
+        {
+          "label": "START",
+          "time": 1.2000000000000002,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\frames\\31-start.jpg"
+        },
+        {
+          "label": "MIDDLE",
+          "time": 12.0,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\frames\\31-middle.jpg"
+        },
+        {
+          "label": "END",
+          "time": 22.799999999999997,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\frames\\31-end.jpg"
+        }
+      ],
+      "sample_frames": [
+        {
+          "fraction": 0.05,
+          "time": 1.2000000000000002,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\31-01.jpg"
+        },
+        {
+          "fraction": 0.1625,
+          "time": 3.9000000000000004,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\31-02.jpg"
+        },
+        {
+          "fraction": 0.275,
+          "time": 6.6000000000000005,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\31-03.jpg"
+        },
+        {
+          "fraction": 0.3875,
+          "time": 9.3,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\31-04.jpg"
+        },
+        {
+          "fraction": 0.5,
+          "time": 12.0,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\31-05.jpg"
+        },
+        {
+          "fraction": 0.6125,
+          "time": 14.700000000000001,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\31-06.jpg"
+        },
+        {
+          "fraction": 0.725,
+          "time": 17.4,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\31-07.jpg"
+        },
+        {
+          "fraction": 0.8375,
+          "time": 20.1,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\31-08.jpg"
+        },
+        {
+          "fraction": 0.95,
+          "time": 22.799999999999997,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\31-09.jpg"
+        }
+      ],
+      "bits_per_pixel_frame": 0.024164894386574074,
+      "technical_issues": [
+        "under 1080p (720x1280)"
+      ]
+    },
+    {
+      "filename": "32.mp4",
+      "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\portfolio\\32.mp4",
+      "duration_seconds": 58.539002,
+      "coded_width": 576,
+      "coded_height": 1024,
+      "width": 576,
+      "height": 1024,
+      "resolution": "576x1024",
+      "fps": 30.0,
+      "orientation": "vertical",
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "format_bitrate_bps": 970567.0,
+      "video_bitrate_bps": 900582.0,
+      "file_size_bytes": 7102004,
+      "has_audio": true,
+      "audio_codec": "aac",
+      "audio_channels": 2,
+      "rotation": 0,
+      "black_segments": [],
+      "silences": [],
+      "loudness": {
+        "input_i": -17.23,
+        "input_tp": 0.29,
+        "input_lra": 2.7,
+        "input_thresh": -27.28,
+        "target_offset": 0.88
+      },
+      "contact_frames": [
+        {
+          "label": "START",
+          "time": 2.9269501000000004,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\frames\\32-start.jpg"
+        },
+        {
+          "label": "MIDDLE",
+          "time": 29.269501,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\frames\\32-middle.jpg"
+        },
+        {
+          "label": "END",
+          "time": 55.6120519,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\frames\\32-end.jpg"
+        }
+      ],
+      "sample_frames": [
+        {
+          "fraction": 0.05,
+          "time": 2.9269501000000004,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\32-01.jpg"
+        },
+        {
+          "fraction": 0.1625,
+          "time": 9.512587825,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\32-02.jpg"
+        },
+        {
+          "fraction": 0.275,
+          "time": 16.098225550000002,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\32-03.jpg"
+        },
+        {
+          "fraction": 0.3875,
+          "time": 22.683863275000004,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\32-04.jpg"
+        },
+        {
+          "fraction": 0.5,
+          "time": 29.269501,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\32-05.jpg"
+        },
+        {
+          "fraction": 0.6125,
+          "time": 35.855138725,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\32-06.jpg"
+        },
+        {
+          "fraction": 0.725,
+          "time": 42.44077645,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\32-07.jpg"
+        },
+        {
+          "fraction": 0.8375,
+          "time": 49.026414175000006,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\32-08.jpg"
+        },
+        {
+          "fraction": 0.95,
+          "time": 55.6120519,
+          "path": "C:\\Users\\DONI BUTT\\Documents\\Huzaifa's Portfolio\\review\\sample-frames\\32-09.jpg"
+        }
+      ],
+      "bits_per_pixel_frame": 0.05089552137586806,
+      "technical_issues": [
+        "under 1080p (576x1024)",
+        "possible clipping / hot true peak (0.3 dBTP)"
+      ]
+    }
+  ]
+}
